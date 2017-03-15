@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>iOS-开发学习日记-20141209</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Sunrise Boulevard </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/guan-yu-wo.html">关于我</a></li>
+                    <li class="active"><a href="/category/ri-zhi.html">日志</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/learning-iOS-20141209.html" rel="bookmark"
+           title="Permalink to iOS-开发学习日记-20141209">iOS-开发学习日记-20141209</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-12-09T13:15:00+08:00">
+                Published: 二 09 十二月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/ios.html">iOS</a> <a href="/tag/bi-ji.html">笔记</a> <a href="/tag/xue-xi.html">学习</a> </p>
+</footer><!-- /.post-info -->      <h1>I.《马上着手开发 iOS 应用程序 (Start Developing iOS Apps Today)》</h1>
+<p>使用系统 OS X 10.10，Xcode 6.1.1 进行开发学习，教程中有遗漏的点：</p>
+<ul>
+<li><code>Introduction</code> —&gt; <code>Tutorial: Basics</code> 中，Xcode 6.1.1 缺少的 <code>Empty Application</code> 模版可以在这里进行下载：<a href="https://github.com/cDigger/AddMissingTemplates">the Missing Templates</a></li>
+<li><code>串联图（Storyboard）</code>步骤中，Xcode 6 中会出现按照教程中步骤创建完 Storyboard 无法启动模拟器、程序 crash 掉的现象，新创建的这个串联图也并没有教程中所说的“箭头”产生。这是因为默认新创建的 storyboard 没有将其设置为初始的视图控制器。解决方法是：在右侧的工具窗中选择 <code>Show the Attributes inspector</code>，勾选窗体中 <code>View Controller</code> 栏目下的 <code>Is Initial View Controller</code>，此时可以看到控制器右侧可以出现箭头。</li>
+<li>
+<p>iPhone 6 发布后，iOS 应用出现了更多不同的屏幕大小、分辨率。此时 Xcode 已经不再单纯的仅仅默认添加一个长方形的 View Controller 在串联图中。按照教程上面的步骤将 <code>View Controller</code> 组件拖入串联图界面中，发现我们创建的 View 是正方形的，运行模拟器后发现 iPhone 6 的模拟器只能勉强显示图的左半边。原因是新的 iOS 系统使用更加复杂的 <code>Size classes</code> 类来设置应用 View 的大小。解决方法：在 <code>Show the Size inspector</code> 中自行调整 View Controller 的大小。如果你仅仅想按照此教程简单的过一遍，用回原来的长方形组件，那么可以在 <code>Show the File inspector</code> 中，取消勾选 <code>Interface Builder Document</code> 栏目下 <code>Use Size Classes</code> 选项，此时组件变回长方形。但是由于 <code>View as</code> 选项中可以看到它是基于 iOS 7 的，在 iPhone 6 设备/模拟器上面依然无法符合屏幕的尺寸，我们可以选择 iPhone 5s 的模拟器来运行此项目，此时我们的app就可以显示的比较完美了。更多适配尺寸的介绍，参考以下苹果官方文档：</p>
+</li>
+<li>
+<p><a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/LayoutandAppearance.html">iOS Human Interface Guidelines -- Adaptivity and Layout</a> </p>
+</li>
+<li><a href="https://developer.apple.com/library/ios/recipes/xcode_help-IB_adaptive_sizes/_index.html">Size Classes Design Help</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://www.jianshu.com/u/c55c7952061c">我的简书</a></li>
+                            <li><a href="https://ezgolinux.org">Ezgo Linux 中国</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/andiechu">Twitter</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

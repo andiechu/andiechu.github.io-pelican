@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>Sunrise Boulevard - 笔记</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Sunrise Boulevard </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/guan-yu-wo.html">关于我</a></li>
+                    <li><a href="/category/ri-zhi.html">日志</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/learning-iOS-20141209.html">iOS-开发学习日记-20141209</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-12-09T13:15:00+08:00">
+                Published: 二 09 十二月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/ios.html">iOS</a> <a href="/tag/bi-ji.html">笔记</a> <a href="/tag/xue-xi.html">学习</a> </p>
+</footer><!-- /.post-info --><h1>I.《马上着手开发 iOS 应用程序 (Start Developing iOS Apps Today)》</h1>
+<p>使用系统 OS X 10.10，Xcode 6.1.1 进行开发学习，教程中有遗漏的点：</p>
+<ul>
+<li><code>Introduction</code> —&gt; <code>Tutorial: Basics</code> 中，Xcode 6.1.1 缺少的 <code>Empty Application</code> 模版可以在这里进行下载：<a href="https://github.com/cDigger/AddMissingTemplates">the Missing Templates</a></li>
+<li><code>串联图（Storyboard）</code>步骤中，Xcode 6 中会出现按照教程中步骤创建完 Storyboard 无法启动模拟器、程序 crash 掉的现象，新创建的这个串联图也并没有教程中所说的“箭头”产生。这是因为默认新创建的 storyboard 没有将其设置为初始的视图控制器。解决方法是：在右侧的工具窗中选择 <code>Show the Attributes inspector</code>，勾选窗体中 <code>View Controller</code> 栏目下的 <code>Is Initial View Controller</code>，此时可以看到控制器右侧可以出现箭头。</li>
+<li>
+<p>iPhone 6 发布后，iOS 应用出现了更多不同的屏幕大小、分辨率。此时 Xcode 已经不再单纯的仅仅默认添加一个长方形的 View Controller 在串联图中。按照教程上面的步骤将 <code>View Controller</code> 组件拖入串联图界面中，发现我们创建的 View 是正方形的，运行模拟器后发现 iPhone 6 的模拟器只能勉强显示图的左半边。原因是新的 iOS 系统使用更加复杂的 <code>Size classes</code> 类来设置应用 View 的大小。解决方法：在 <code>Show the Size inspector</code> 中自行调整 View Controller 的大小。如果你仅仅想按照此教程简单的过一遍，用回原来的长方形组件，那么可以在 <code>Show the File inspector</code> 中，取消勾选 <code>Interface Builder Document</code> 栏目下 <code>Use Size Classes</code> 选项，此时组件变回长方形。但是由于 <code>View as</code> 选项中可以看到它是基于 iOS 7 的，在 iPhone 6 设备/模拟器上面依然无法符合屏幕的尺寸，我们可以选择 iPhone 5s 的模拟器来运行此项目，此时我们的app就可以显示的比较完美了。更多适配尺寸的介绍，参考以下苹果官方文档：</p>
+</li>
+<li>
+<p><a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/LayoutandAppearance.html">iOS Human Interface Guidelines -- Adaptivity and Layout</a> </p>
+</li>
+<li><a href="https://developer.apple.com/library/ios/recipes/xcode_help-IB_adaptive_sizes/_index.html">Size Classes Design Help</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/learn-redis.html" rel="bookmark"
+                           title="Permalink to Redis学习笔记">Redis学习笔记</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-11-12T22:56:00+08:00">
+                Published: 三 12 十一月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/redis.html">redis</a> <a href="/tag/nosql.html">NoSQL</a> <a href="/tag/bi-ji.html">笔记</a> <a href="/tag/xue-xi.html">学习</a> <a href="/tag/hou-duan-kai-fa.html">后端开发</a> </p>
+</footer><!-- /.post-info -->                <h2>Redis 介绍</h2>
+<ul>
+<li>Redis 是一种“key-value”的存储，通常被当做一个NoSQL数据库</li>
+<li>原子操作：<code>INCR</code></li>
+</ul>
+<h2>基本操作</h2>
+<ul>
+<li><code>SET</code> 负责<strong>永久</strong>存储一个数值在指定的键上；<code>SETNX</code> = set if key not exit：</li>
+</ul>
+<p><code>shell
+    SET key some-value</code></p>
+<ul>
+<li><code>GET</code> 负责读取一个键对应的值：</li>
+</ul>
+<p><code>shell
+    GET key</code></p>
+<ul>
+<li><code>DEL</code> 操作删除一个key；<code>INCR</code> 自增</li>
+<li><code>EXPIRE</code> 定时过期：</li>
+</ul>
+<p><code>shell
+    EXPIRE key second</code></p>
+<p><code>TTL</code> 过期前的剩余时间，返回值是-2则表示key已不存在，-1表示永远不会过期。如果 <code>SET</code> 了key，它的 <code>TTL</code> 会被重置：</p>
+<p><code>shell …</code></p>
+                <a class="readmore" href="/learn-redis.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/notes-of-programming-hive-1.html" rel="bookmark"
+                           title="Permalink to Programming Hive 笔记 (I)">Programming Hive 笔记 (I)</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-11-03T22:41:00+08:00">
+                Published: 一 03 十一月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/hive.html">Hive</a> <a href="/tag/bi-ji.html">笔记</a> <a href="/tag/xue-xi.html">学习</a> </p>
+</footer><!-- /.post-info -->                <h2>I. Hive介绍</h2>
+<ul>
+<li>Hadoop中，有一个计算系统MapReduce，将计算任务分解到集群中的服务器上计算，这样可以更有效率的处理大数据的计算；计算系统下面有一个分布式文件系统（HDFS）。那么问题来了：<blockquote>
+<p>怎样把已有的建立在关系型数据库上面的、使用SQL的数据结构，迁移到Hadoop上面呢？</p>
+</blockquote>
+</li>
+</ul>
+<p>答案：</p>
+<blockquote>
+<p>HIVE! </p>
+</blockquote>
+<!--more-->
+
+<ul>
+<li>Hive使用大家都熟悉的类SQL语言从Hadoop集群中查询数据，让使用者把注意力都放在查询上，而不是其他方面</li>
+<li>适合使用Hive的场景：数据仓储应用中——相对静态的数据被分析，不要求快速回应，数据没有频繁的变化</li>
+<li>Hive不是完整的数据库。Hive的功能被Hadoop和HDFS的限制所限制。</li>
+<li>Hive不提供一条纪录水平上的update、insert、delete。可以通过查询生成新的表，或者导出查询结果到文件</li>
+<li>因为Hadoop是面向批处理的系统，Hive查询延迟更高（因为MapReduce的开销），再小的数据集，Hive查询相比传统DB也要花费更长的时间</li>
+<li>Hive不提供事务</li>
+</ul>
+                <a class="readmore" href="/notes-of-programming-hive-1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://www.jianshu.com/u/c55c7952061c">我的简书</a></li>
+                            <li><a href="https://ezgolinux.org">Ezgo Linux 中国</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/andiechu">Twitter</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
