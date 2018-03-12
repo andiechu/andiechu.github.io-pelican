@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>Sunrise Boulevard - 几何</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Sunrise Boulevard </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/guan-yu-wo.html">关于我</a></li>
+                    <li><a href="/category/ri-zhi.html">日志</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/geometric-algorithm-if-a-point-is-inside-of-a-polygon.html">几何算法之判断点是否在多边形内</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-03-12T17:19:00+08:00">
+                Published: 一 12 三月 2018
+        </abbr>
+		<br />
+        <abbr class="modified" title="2018-03-12T17:19:00+08:00">
+                Updated: 一 12 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/suan-fa.html">算法</a> <a href="/tag/ji-he.html">几何</a> <a href="/tag/shu-xue.html">数学</a> </p>
+</footer><!-- /.post-info --><p>这是一道经典的算法题。以前我没有用到过，但是在做创意编程甚至是图像处理的时候，我就经常会遇到这个问题。</p>
+<h1>0x00 相交数方法（Crossing Number - CN）</h1>
+<p>总体来说，就是从该点上发射一个射线，如果射线和多边形的边有奇数条相交，那么就是在多边形内部；偶数则为内部。</p>
+<p><img alt="算法示意图" src="/images/algorithm/point-to-polygon.png"></p>
+<p>具体的算法步骤如下：</p>
+<ol>
+<li>从该点向右水平（或者任何一个你喜欢的方向）画一条无限延长的线（即射线）</li>
+<li>数一数这条射线和多边形边的相交数量</li>
+<li>如果是奇数，说明点在多边形内部；如果是偶数，说明点在多边形外部</li>
+<li><strong>这里还需要判断一下特例情况，就是假如这条射线与多边形某个边在同一条直线上的情况：</strong><ol>
+<li>首先，判断出他们共线</li>
+<li>其次，判断这个点是否在这条边的线段中，如果在线段外，则返回否（至于点如果在边上算不算在多边形内，则需要根据你的需要来判断了，具体请见参考 3）</li>
+</ol>
+</li>
+</ol>
+<p>这个算法的复杂度是 <code>O(n)</code>，n 为多边形的顶点数。</p>
+<p>使用 Processing 实现这个算法，代码如下：</p>
+<div class="highlight"><pre><span></span>  <span class="kt">void</span> <span class="nf">setup</span><span class="o">()</span> <span class="o">{</span>
+    <span class="c1">//稍后补充</span>
+  <span class="o">}</span>
+
+  <span class="kt">void</span> <span class="nf">draw</span><span class="o">()</span> <span class="o">{</span>
+
+  <span class="o">}</span>
+</pre></div>
+
+
+<blockquote>
+<p>另：判断两条线段是否相交的方法，一般判断方向是否相同。后续文章我会再做出解释。</p>
+</blockquote>
+<h1>0x01 环绕数方法（Winding Number - WN）</h1>
+<p>总体来说，就是计算多边形环绕该点的次数。当环绕数（wn）为 0 时，该点在多边形之外；否则就在内部。</p>
+<p><img alt="复杂多边形使用环绕数方法更精确" src="/images/algorithm/point-to-polygon-wn.png"></p>
+<p>这个方法在面对非简单多边形、以及距离多边形极近的点时更精确。但是一般说来，时间复杂度更高。</p>
+<h1>0x02 不是算法的算法（强硬地 hack 一下）</h1>
+<p>这个方法我暂时还没有在 Processing 中尝试过，但是算是一种思路，先放在这里。</p>
+<ol>
+<li>新建一个在屏幕之外的画布（Processing 中可以使用 <code>pushMatrix()</code>, <code>translate()</code>, <code>popMatrix()</code> 这一组方法来将其和现实坐标对应起来）</li>
+<li>在这个画布上，先给背景画上一种颜色（比如黑色），然后用另一种颜色（比如白色）画多边形</li>
+<li>取该点在这个画布上的颜色，根据颜色判断是在内部还是外部</li>
+</ol>
+<p>😂😂😂 是不是很巧妙……嗯？🤪🤪🤪</p>
+<blockquote>
+<p>这个方法让我突然觉得，其实在做创意编程的时候，很多时候没必要循规蹈矩非要用传统算法去做。这大概就是设计师和程序员思路的不同吧</p>
+</blockquote>
+<p>注：这个方法在画布不大的时候以及可以使用 GPU 加速的时候好用</p>
+<h1>0x03 参考资料</h1>
+<ol>
+<li><a href="http://www.dcs.gla.ac.uk/~pat/52233/slides/Geometry1x1.pdf">GEOMETRIC ALGORITHMS</a></li>
+<li><a href="https://stackoverflow.com/questions/217578/how-can-i-determine-whether-a-2d-point-is-within-a-polygon">How can I determine whether a 2D Point is within a Polygon?</a></li>
+<li><a href="http://geomalgorithms.com/a03-_inclusion.html">Inclusion of a Point in a Polygon</a></li>
+</ol>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://www.jianshu.com/u/c55c7952061c">我的简书</a></li>
+                            <li><a href="https://ezgolinux.org">Ezgo Linux 中国</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/andiechu">Twitter</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

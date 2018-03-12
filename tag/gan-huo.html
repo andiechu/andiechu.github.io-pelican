@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>Sunrise Boulevard - 干货</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Sunrise Boulevard </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/guan-yu-wo.html">关于我</a></li>
+                    <li><a href="/category/ri-zhi.html">日志</a></li>
+                    <li><a href="/category/wen-zhang-jing-xuan.html">文章精选</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/test-deploy.html">为什么我的 AMP 页面跳出率异常高</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2017-03-15T22:01:00+08:00">
+                Published: 三 15 三月 2017
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/christian-oliveirayuan-zuo.html">Christian Oliveira（原作）</a>
+                        <a class="url fn" href="/author/andie-chuyi.html">Andie Chu（译）</a>
+        </address>
+<p>In <a href="/category/wen-zhang-jing-xuan.html">文章精选</a>.</p>
+<p>tags: <a href="/tag/ji-zhu-ying-xiao.html">技术营销</a> <a href="/tag/seo.html">SEO</a> <a href="/tag/shu-ju-fen-xi.html">数据分析</a> <a href="/tag/amp.html">AMP</a> <a href="/tag/tiao-chu-lu.html">跳出率</a> <a href="/tag/jing-xuan-wen-zhang.html">精选文章</a> <a href="/tag/gan-huo.html">干货</a> </p>
+</footer><!-- /.post-info --><blockquote>
+<p>英文原文由 Christian Oliveira 发表于个人博客：<a href="https://www.christianoliveira.com/blog/en/web-analytics/why-the-bounce-rate-of-my-amp-pages-is-so-high/?from=timeline&amp;isappinstalled=0">Why the bounce rate of my AMP pages is so high?</a></p>
+</blockquote>
+<p>如果你曾经在 GA 等数据统计工具上观察过 AMP 页面的数据，你也许会产生这样的疑问：<strong>为什么我的 AMP 页面跳出率比一般正常的跳出率数值要高？</strong></p>
+<p>拿下面这个实际事例来说，对比一下该篇博客文章来自 SEO 的 AMP 和 非 AMP 流量（均为自然流量，而且这个页面也没有出现在搜索引擎的“Top News”的类似场景）。如下图所示，第一行的非 AMP 流量的跳出率为 62.07%，而第二行的 AMP 里流量的跳出率为 78.86%，远远比前者的行为数据要差得多。</p>
+<p><img alt="不同页面的SEO流量对比示例图" src="http://upload-images.jianshu.io/upload_images/297772-cac73417a47d2faa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>很奇怪吧？可以想到的一个可能的原因是，非 AMP 流量中有更多回流访客，因此他们的每次访问质量都更高。但是按照数据来看，却与假设不同，如下图所示，第一行是全部用户数据、第二行是回流老用户数据、第三行是新用户数据：</p>
+<p><img alt="不同种类访客流量数据图" src="http://upload-images.jianshu.io/upload_images/297772-d13dfa80a448daa5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>实际上，产生如此现象的原因非常简单（同时也很复杂）—— <strong>Google Analytics（或其他你在使用的数据统计工具）并没有给出正确的数据</strong>：UV 和 访问数增长、跳出率比正常偏高、引荐流量升高……</p>
+<p>AMP 带来一个完整的生态系统，在这里<strong>你不再是提供内容方</strong>，带来的结果就是对数据监测有影响。在这篇文章中，我将用详尽的细节向你解释问题所在、问题产生原因以及如何解决。</p>
+<blockquote>
+<p><strong>目录</strong></p>
+<p><strong>1 AMP 在 Google 中的工作原理</strong>
+  1.1 什么是 AMP？
+  1.2 在 Google 中搜索后，AMP 页面是如何展示给用户的？
+<strong>2 AMP 在数据分析工具中的监测原理</strong>
+  2.1 AMP 页面是由 Google 承载的，而非我们的服务器
+  2.2 AMP 页面在另一个域上
+<strong>3 为什么 AMP 的数据会说谎</strong>
+  3.1 </p>
+</blockquote>
+<h1>1 AMP 在 Google 中的工作原理</h1>
+<h2>1.1 什么是 AMP？</h2>
+<p>在进一步深入前，让我们先了解一下 AMP 到底是什么。</p>
+<p><a href="https://www.ampproject.org/">AMP (Accelerated Mobile Pages)</a> 是一个由 Google 领导并被其他很多合作厂商支持（Pinterest、Twitter、Linkedin……）的开源项目，它旨在<strong>定义为手持设备创建访问速度更快的网页的行业标准</strong>。</p>
+<p>它部分上可以看作对 <a href="https://instantarticles.fb.com/">Facebook 的 Instant Articles</a>（目前不是开源）的回应。这两个项目有一个共同的目标：当用户点击一个链接时，在它们的平台中，内容可迅速即刻被加载完毕。</p>
+<p><img alt="AMP 项目官方主页" src="http://upload-images.jianshu.io/upload_images/297772-85eaf34cfed4f670.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>由于尽管大部分公司有资源，但它们仍没有认真的尝试将自己的手机网页打造得更快捷，且造成页面加载速度缓慢的主要原因是广告和页面上的 JS，Google（和 Facebook）决定定义一个有很多限制的新标准，这样无论厂商怎样设计自己的手机网站，网页都会加载的非常迅速。</p>
+<p>在这两个标准中，除了限制页面可包含的 html 标签和元素（JS、CSS、广告……）外，<strong>两个平台均保存了你的 AMP / Instant Article 内容的一份拷贝，以便它们可以直接从自己的服务器上直接加载</strong>。</p>
+<h2>1.2 在 Google 中搜索后，AMP 页面是如何展示给用户的？</h2>
+<p>在 Google 中，当用户点击了任何一个 AMP 结果（底下有小图标和 AMP 标签的），内容在不离开 Google 的 SERP（搜索结果页）的情况下被立刻加载。</p>
+<p><img alt="搜索结果页进入 AMP 页面演示" src="http://upload-images.jianshu.io/upload_images/297772-6e083881ec532b7d.gif?imageMogr2/auto-orient/strip"></p>
+<p>Google 做了哪些事：</p>
+<ul>
+<li>一旦爬虫检测到在“通用”的 URL 中有 amphtml 标签，它就抓取 AMP URL，如果它符合 AMP 的规范就标记上它</li>
+<li>如果是这种情况，那么 AMP 页面被缓存，并分配给“通用” URL</li>
+<li>除此之外，如果 AMP URL 有（或应该有）权威性的标签指向“通用” URL，它则不应该被单独索引</li>
+</ul>
+<p>当用户在手持设备中搜索时，<strong>如果一个结果没有 AMP 版本，点击该结果将会在浏览器中打开“通用” URL</strong>。该域的服务器被联通、客户端的浏览器接收到页面信息（这是任何网页加载的惯常行为）。</p>
+<p><strong>如果一个搜索结果的确有 AMP 版本</strong>，Google 将会（使用图表和 AMP 标签）把该结果高亮。当用户点击这条结果时，浏览器并没有直接打开 URL，<strong>而是产生如下动作：</strong></p>
+<ol>
+<li>SERP 的 html 已经包含了展示任何 AMP 结果内容的 div。</li>
+</ol>
+<p><img alt="这是点击 AMP 结果后展示其内容的div" src="http://upload-images.jianshu.io/upload_images/297772-7c8d7558565c6415.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1>2 AMP 在数据分析工具中的监测原理</h1>
+<h2>2.1 AMP 页面是由 Google 承载的，而非我们的服务器</h2>
+<h2>2.2 AMP 页面在另一个域上</h2>
+<h1>3 为什么 AMP 的数据会说谎</h1>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://www.jianshu.com/u/c55c7952061c">我的简书</a></li>
+                            <li><a href="https://ezgolinux.org">Ezgo Linux 中国</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/andiechu">Twitter</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
