@@ -23,6 +23,35 @@
                     <ol id="posts-list" class="hfeed" start="7">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/to-be-a-growth-hacker.html" rel="bookmark"
+                           title="Permalink to 0岁产品经理(Growth Hacker)体验报告">0岁产品经理(Growth Hacker)体验报告</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-09-17T01:24:00+08:00">
+                Published: 四 17 九月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/gong-zuo-zong-jie.html">工作总结</a> <a href="/tag/ri-ji.html">日记</a> <a href="/tag/zeng-chang-hei-ke.html">增长黑客</a> </p>
+</footer><!-- /.post-info -->                <p>从我正式成为一个产品经理开始，已经有 2 个多月的时间了。这两个月过得十分充实，如果不回想一下，我还以为自己已经在这里工作很久了。感谢自己的 leader，将我放进一池水中让我自己学习游泳，一进入公司便被分配了几项产品来负责。和我做程序员时领悟到的学习方法一样——实践果然是最好的学习！</p>
+<p>目前我手头的产品有三个比较大型的和若干（数量 &gt; 3，且时刻在增长）的小产品。总体来说，有涉及到移动产品，更主要的则是为了营销而做的无线产品（好拗口）。从前这个营销的产品团队最主要都在负责 SEO/SEM 以及现有的某些与无线相关的技术营销产品，但是随着市场的不断变化、技术营销手段的不断进步，未来在这条道路也会变得更加宽广。</p>
+<p>虽然目前我的职位叫做“产品经理”，但是从团队的架构和接手的产品来看，这个职位都更接近目前硅谷很流行的 <code>growth hacker</code> 职位，而我们的团队也在向着增长团队而发展。</p>
+<p>增长黑客，或者技术营销产品经理这个角色，表面上和互联网行业的产品经理很像，但是我也在工作中体会到了两者的不同——</p>
+<ul>
+<li>growth hacker 比一般的产品经理更注重数据，不论是提供论据支撑还是分析现状</li>
+<li>growth hacker 对人本身的执行力要求更高，抗压力更强</li>
+<li>growth …</li></ul>
+                <a class="readmore" href="/to-be-a-growth-hacker.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/opponents-analysis-in-online-music-by-2014.html" rel="bookmark"
                            title="Permalink to 2014年4月QQ音乐竞品分析报告">2014年4月QQ音乐竞品分析报告</a></h1>
                 </header>
@@ -246,51 +275,6 @@
 <li><code>Introduction</code> —&gt; <code>Tutorial: Basics</code> 中，Xcode 6.1.1 缺少的 <code>Empty Application</code> 模版可以在这里进行下载：<a href="https://github.com/cDigger/AddMissingTemplates">the Missing Templates</a></li>
 <li><code>串联图（Storyboard）</code>步骤中，Xcode 6 中会出现按照教程中步骤创建完 Storyboard 无法启动模拟器、程序 crash 掉的现象，新创建的这个串联图也并没有教程中所说的“箭头”产生。这是因为默认新创建的 …</li></ul>
                 <a class="readmore" href="/learning-iOS-20141209.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/learn-redis.html" rel="bookmark"
-                           title="Permalink to Redis学习笔记">Redis学习笔记</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-11-12T22:56:00+08:00">
-                Published: 三 12 十一月 2014
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
-        </address>
-<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
-<p>tags: <a href="/tag/redis.html">redis</a> <a href="/tag/nosql.html">NoSQL</a> <a href="/tag/bi-ji.html">笔记</a> <a href="/tag/xue-xi.html">学习</a> <a href="/tag/hou-duan-kai-fa.html">后端开发</a> </p>
-</footer><!-- /.post-info -->                <h2>Redis 介绍</h2>
-<ul>
-<li>Redis 是一种“key-value”的存储，通常被当做一个NoSQL数据库</li>
-<li>原子操作：<code>INCR</code></li>
-</ul>
-<h2>基本操作</h2>
-<ul>
-<li><code>SET</code> 负责<strong>永久</strong>存储一个数值在指定的键上；<code>SETNX</code> = set if key not exit：</li>
-</ul>
-<p><code>shell
-    SET key some-value</code></p>
-<ul>
-<li><code>GET</code> 负责读取一个键对应的值：</li>
-</ul>
-<p><code>shell
-    GET key</code></p>
-<ul>
-<li><code>DEL</code> 操作删除一个key；<code>INCR</code> 自增</li>
-<li><code>EXPIRE</code> 定时过期：</li>
-</ul>
-<p><code>shell
-    EXPIRE key second</code></p>
-<p><code>TTL</code> 过期前的剩余时间，返回值是-2则表示key已不存在，-1表示永远不会过期。如果 <code>SET</code> 了key，它的 <code>TTL</code> 会被重置：</p>
-<p><code>shell …</code></p>
-                <a class="readmore" href="/learn-redis.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

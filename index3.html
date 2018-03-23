@@ -23,6 +23,51 @@
                     <ol id="posts-list" class="hfeed" start="7">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/learn-redis.html" rel="bookmark"
+                           title="Permalink to Redis学习笔记">Redis学习笔记</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-11-12T22:56:00+08:00">
+                Published: 三 12 十一月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/redis.html">redis</a> <a href="/tag/nosql.html">NoSQL</a> <a href="/tag/bi-ji.html">笔记</a> <a href="/tag/xue-xi.html">学习</a> <a href="/tag/hou-duan-kai-fa.html">后端开发</a> </p>
+</footer><!-- /.post-info -->                <h2>Redis 介绍</h2>
+<ul>
+<li>Redis 是一种“key-value”的存储，通常被当做一个NoSQL数据库</li>
+<li>原子操作：<code>INCR</code></li>
+</ul>
+<h2>基本操作</h2>
+<ul>
+<li><code>SET</code> 负责<strong>永久</strong>存储一个数值在指定的键上；<code>SETNX</code> = set if key not exit：</li>
+</ul>
+<p><code>shell
+    SET key some-value</code></p>
+<ul>
+<li><code>GET</code> 负责读取一个键对应的值：</li>
+</ul>
+<p><code>shell
+    GET key</code></p>
+<ul>
+<li><code>DEL</code> 操作删除一个key；<code>INCR</code> 自增</li>
+<li><code>EXPIRE</code> 定时过期：</li>
+</ul>
+<p><code>shell
+    EXPIRE key second</code></p>
+<p><code>TTL</code> 过期前的剩余时间，返回值是-2则表示key已不存在，-1表示永远不会过期。如果 <code>SET</code> 了key，它的 <code>TTL</code> 会被重置：</p>
+<p><code>shell …</code></p>
+                <a class="readmore" href="/learn-redis.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/difference-between-null-and-empty-in-mysql.html" rel="bookmark"
                            title="Permalink to MySQL中NULL与空值的区别">MySQL中NULL与空值的区别</a></h1>
                 </header>
