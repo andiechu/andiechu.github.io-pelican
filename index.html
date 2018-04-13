@@ -21,7 +21,44 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/how-to-resize-a-large-sketch.html">如何缩放比屏幕尺寸大的 Processing 草图</a></h1>
+                    <h1 class="entry-title"><a href="/print-cold-inlet-immediately-with-trigger-object-in-max-msp.html">巧用 Max/MSP 的 trigger 对象，让 cold inlet 实现立即输出</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-04-13T17:08:00+08:00">
+                Published: 五 13 四月 2018
+        </abbr>
+		<br />
+        <abbr class="modified" title="2018-04-13T17:08:00+08:00">
+                Updated: 五 13 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/maxmspjitter.html">Max/MSP/Jitter</a> <a href="/tag/max.html">Max</a> <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a> <a href="/tag/ji-qiao.html">技巧</a> <a href="/tag/tips.html">tips</a> </p>
+</footer><!-- /.post-info --><p>Max/MSP 中，一个对象通常拥有两种不同的输入端—— hot inlet（鼠标悬浮时红色的输入端口）和 cold inlet（鼠标悬浮时蓝色的输入端口）. 在 hot inlet 不改变的情况下，cold inlet 不论如何改变参数，都只是保存在这个对象中而不会输出结果，等到 hot inlet 改变时，cold inlet 的改动才会一并输出。</p>
+<p>典型的例子就是加减乘除的运算符对象：</p>
+<p><img alt="案例1" src="/images/maxmsp/cold-inlet-01.png"></p>
+<p>此例子中，不管右边的 number box 中数值如何变化，左边的数值不变，最后的结果仍然不变。只有当左边的变化时，整个结果的才会变化：</p>
+<p><img alt="案例1-结果" src="/images/maxmsp/cold-inlet-02.png"></p>
+<p>这时，有的人会产生这样的问题——<strong>如果我想改变右边 cold inlet 的输入并立刻让它输出结果，这时需要怎么做？</strong></p>
+<p>这时，<strong>我们可以使用 <code>trigger</code> 对象来解决这个问题</strong>。用上文中的案例来说明用法，我们将 <code>trigger</code> 对象这样加入到 cold inlet 输入之前：</p>
+<p><img alt="案例1-使用trigger改进" src="/images/maxmsp/cold-inlet-03.png"></p>
+<p>这里我们在 trigger 中同时激发了两个数值：bang 和整形数值 i。效果相当于在改变右边的 number box 时，为右边的 cold inlet 输入了一个整形数值（i）、之后马上为左边的 hot inlet 输入了一个bang，因此右边 number box 的改动可以立刻输出。</p>
+<p>要注意：这里的 bang 不要加在 i 右边，因为 Max/MSP 中执行顺序是从右至左，所以我们一定要让 bang 在 cold inlet 输入完之后再触发 hot inlet。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/how-to-resize-a-large-sketch.html" rel="bookmark"
+                           title="Permalink to 如何缩放比屏幕尺寸大的 Processing 草图">如何缩放比屏幕尺寸大的 Processing 草图</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-26T14:50:00+08:00">
                 Published: 一 26 三月 2018
@@ -36,109 +73,10 @@
         </address>
 <p>In <a href="/category/ri-zhi.html">日志</a>.</p>
 <p>tags: <a href="/tag/processing.html">Processing</a> <a href="/tag/fen-bian-lu.html">分辨率</a> </p>
-</footer><!-- /.post-info --><h2>Q：</h2>
-<p>如果 size() 方法设置的尺寸比电脑分辨率大，怎么才能看到屏幕以外的部分呢？</p>
-<h2>A：</h2>
-<p>Processing 虽然有一个 Presentation Mode，但是实际上它没有自己缩放的功能。所以说，我们只能靠自己在绘图过程中进行缩放。</p>
-<p>目前可以想到的方法有以下两种：</p>
-<h3>0x00 一种方法是使用 <code>scale()</code> 函数</h3>
-<p>需要在 draw() 函数里面第一行就加上 <code>scale()</code> 方法。</p>
-<p><em>具体使用方法见 <a href="https://www.processing.org/reference/scale_.html">scale() reference</a></em></p>
-<h3>0x01 另一种方法是使用 <code>PGraphics</code></h3>
-<ol>
-<li>绘图时，新建一个 <code>PGraphics</code> 图层</li>
-<li>将所有图形按照你需要的原始尺寸绘制在这个图层上（使用方法：<a href="https://www.processing.org/reference/PGraphics.html">PGraphics reference</a>）</li>
-<li>最后使用 <code>PGraphics</code> 对象的 <code>image(pgraphic, 0, 0, your_width, your_height)</code> 方法把图像缩放为你屏幕的大小。</li>
-</ol>
-<p><strong>一个示例</strong></p>
-<ul>
-<li>
-<p>没有缩放的代码：</p>
-<div class="highlight"><pre><span></span>void setup() {
-    size(2000, 1000); // 创建一个2000x1000的草图
-}
-
-void draw() {
-    fill(255);
-    noStroke();
-    rect(500, 100, 1000, 500);
-    fill(0);
-    rect(0, 200, width, 100);
-    noFill();
-    strokeWeight(2);
-    stroke(255,0,0);
-    rect(0, 0, width, height);
-}
-</pre></div>
-
-
-<p>由于我的屏幕分辨率是1280x800，运行后显示不全：</p>
-<p><img alt="显示不全的草图" src="/images/resize-sketch/broken.png"></p>
-</li>
-<li>
-<p>按照第一种方法修改：</p>
-<div class="highlight"><pre><span></span>void setup() {
-  size(2000, 1000); // 创建一个2000x1000的草图
-}
-
-void draw() {
-  scale(1280/2000.0); // 因为我的屏幕分辨率是1280x800，所以除一下得到比例数值
-
-  fill(255);
-  noStroke();
-  rect(500, 100, 1000, 500);
-  fill(0);
-  rect(0, 200, width, 100);
-  noFill();
-  strokeWeight(2);
-  stroke(255,0,0);
-  rect(0, 0, width, height);
-}
-</pre></div>
-
-
-<p>窗口依然是2000x1000，但是图像缩小到1280宽度了：</p>
-<p><img alt="scale 函数效果" src="/images/resize-sketch/scale.png"></p>
-</li>
-<li>
-<p>按照第二种方法修改：</p>
-<div class="highlight"><pre><span></span>PGraphics graphic;  // 新建一个PG图层
-
-void setup() {
-  fullScreen(); // 创建一个全屏的草图，相当于：size(你屏幕宽度, 你屏幕高度)
-  graphic = createGraphics(2000, 1000); // 你需要的尺寸的图层
-}
-
-void draw() {
-  graphic.beginDraw();
-
-  graphic.fill(255);
-  graphic.noStroke();
-  graphic.rect(500, 100, 1000, 500);
-  graphic.fill(0);
-  graphic.rect(0, 200, graphic.width, 100);
-  graphic.noFill();
-  graphic.strokeWeight(2);
-  graphic.stroke(255,0,0);
-  graphic.rect(0, 0, graphic.width, graphic.height);
-
-  graphic.endDraw();
-
-  image(graphic, 0, 0, 1280, 640);  // 我的屏幕分辨率是1280x800，所以将2000x1000的草图等比例缩放到1280x640，你可以根据你的需要更改这两个参数
-</pre></div>
-
-
-<p>效果如下：</p>
-<p><img alt="PGraphics 效果" src="/images/resize-sketch/pg.png"></p>
-</li>
-</ul>
-<hr>
-<p>最后总结：这两种方法都是直接把图像缩小，而不只是缩放预览效果，只能用来临时看图像的效果，无论哪种都比较低效，所以建议还是尽量避免这种情况的发生。</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</footer><!-- /.post-info -->                <p>常遇到的一个问题：如果我们的 sketch 尺寸比自己电脑屏幕的尺寸还大，如何才能让草图完整地显示在屏幕上呢？</p>
+                <a class="readmore" href="/how-to-resize-a-large-sketch.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -297,56 +235,9 @@ void draw() {
                 <a class="readmore" href="/my-2015.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/how-to-prevent-bot.html" rel="bookmark"
-                           title="Permalink to 红包/优惠券防刷手段">红包/优惠券防刷手段</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-10-15T21:38:00+08:00">
-                Published: 四 15 十月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
-        </address>
-<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
-<p>tags: <a href="/tag/ying-xiao.html">营销</a> <a href="/tag/feng-kong.html">风控</a> <a href="/tag/ying-xiao-huo-dong.html">营销活动</a> </p>
-</footer><!-- /.post-info -->                <p>在红包/优惠券发放的流程中，有以下关键的几个流程点：<strong>运营发送时、用户领用时、用户使用时</strong>，以及有时候会有的过程：<strong>现金的转账</strong>或<strong>优惠券的赠送</strong>等。在每个过程点上面都可以进行防刷措施。</p>
-<p>红包/优惠券又分为以下几种：<strong>现金红包、付款时抵扣、使用后返现、使用后返券</strong>等</p>
-<h2>防刷方法</h2>
-<ol>
-<li>
-<p>商业手段</p>
-<ul>
-<li>限制发放的库存</li>
-<li>改变使用的策略</li>
-<li>改变红包/优惠券的类型</li>
-</ul>
-</li>
-<li>
-<p>技术手段</p>
-<ul>
-<li>账户真实性验证（如实名制、验证码、手机校验码等）</li>
-<li>调用频率、时间段、IP/cookies等可疑性用户排除</li>
-<li>对于可获取的用户数据时，研究用户曾经的行为判定是否发放</li>
-<li>学习式防刷机制：学习刷单动作进行自动调整</li>
-</ul>
-</li>
-<li>
-<p>其他手段</p>
-</li>
-</ol>
-<p>最后，不但要注意防刷，还要防止误封了或防刷措施未起作用时对普通用户的补偿措施，以免用户产生怨念情绪。</p>
-                <a class="readmore" href="/how-to-prevent-bot.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <p class="paginator">
-    Page 1 / 3
+    Page 1 / 4
         <a href="/index2.html">&raquo;</a>
 </p>
                 </section><!-- /#content -->
