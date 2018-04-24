@@ -1,80 +1,254 @@
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-        <meta charset="utf-8" />
-        <title>Sunrise Boulevard</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/font-awesome.min.css">
+
+
+
+
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+
+    <meta name="author" content="Andie Chu" />
+    <meta name="description" content="cad0420's blogs and works." />
+<meta property="og:site_name" content="cad0420 | Andie Chu"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="cad0420 | Andie Chu"/>
+<meta property="og:description" content="cad0420's blogs and works."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content=""/>
+<meta property="og:image" content="/images/me.png">
+
+  <title>cad0420 | Andie Chu</title>
+
 </head>
+<body>
+  <aside>
+    <div>
+      <a href="/">
+        <img src="/images/me.png" alt="Sunrise Boulevard" title="Sunrise Boulevard">
+      </a>
+      <h1><a href="/">Sunrise Boulevard</a></h1>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">Sunrise Boulevard </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/guan-yu-wo.html">关于我</a></li>
-                    <li><a href="/category/ri-zhi.html">日志</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+<p>cad0420</p>
+      <nav>
+        <ul class="list">
+          <li><a href="/pages/guan-yu-wo.html#guan-yu-wo">关于我</a></li>
 
-                <section id="content" class="body">
-                    <ol id="posts-list" class="hfeed" start="7">
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/a-coder-destine-to-be.html" rel="bookmark"
-                           title="Permalink to 毕业两年总结展望（I）之事业：我是要做程序员的姑娘！">毕业两年总结展望（I）之事业：我是要做程序员的姑娘！</a></h1>
-                </header>
+          <li><a href="http://www.jianshu.com/u/c55c7952061c" target="_blank">简书</a></li>
+          <li><a href="https://ezgolinux.org" target="_blank">Ezgo Linux 中国</a></li>
+        </ul>
+      </nav>
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-02-22T01:34:00+08:00">
-                Published: 六 22 二月 2014
-        </abbr>
+      <ul class="social">
+        <li><a class="sc-twitter" href="https://twitter.com/andiechu" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-envelope" href="mailto:angdichu@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/andiechu" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-vimeo" href="https://vimeo.com/cad0420" target="_blank"><i class="fa fa-vimeo"></i></a></li>
+        <li><a class="sc-instagram" href="http://instagram.com/cad0420" target="_blank"><i class="fa fa-instagram"></i></a></li>
+      </ul>
+    </div>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
-        </address>
-<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
-<p>tags: <a href="/tag/gong-zuo-zong-jie.html">工作总结</a> <a href="/tag/ri-ji.html">日记</a> </p>
-</footer><!-- /.post-info -->                <p>过往的两年里发生了很多事。由于我已经慢慢丧失了写博客的习惯，因此很多东西也慢慢的被遗忘了。但是不能被遗忘的始终是大四和刚毕业大半年对未来和自我定位的失落和迷惘。如今距离那段日子已有快两年之久，生活也随着岁月的慢慢流逝而渐渐趋于稳定——当然了，对于我来说，是如滚滚长江中央一座磐石一样的稳定，而非四季如春的山谷中花朵般的稳定。在2014新年时，我就想做一下总结，但是一直却犹豫，今天或许可以写一下这一年中的历程。</p>
+
+  </aside>
+  <main>
+
+
+
+
+<article>
+  <header>
+    <h2><a href="/iOS-UI.html#iOS-UI">iOS 开发学习笔记：界面的自定义</a></h2>
+    <p>
+          Posted on 2015年01月08日 in <a href="/category/ri-zhi.html">日志</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="/tag/ios.html">iOS</a>,              <a href="/tag/ui.html">UI</a>,              <a href="/tag/ke-hu-duan-kai-fa.html">客户端开发</a>
+    </p>
+  </header>
+  <div>
+      <p>前几天已经实现了豆瓣的登陆授权，用的比较简单的 UIWebView 中网页方式，没有自己使用界面模拟授权。</p>
+<p>今天开始做豆瓣的首页——即关注的人的广播页面。设计是用自定义的 UITableView  展示。今天学习下 Table View 的自定义。暂时没有用代码实现，继续用 storyboard。</p>
+<p>参考材料：</p>
+<ul>
+<li><em>官方文档：<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TableView_iPhone/AboutTableViewsiPhone/AboutTableViewsiPhone.html">Table View Programming Guide for iOS</a></em></li>
+<li><em>iOS Programming The Big Nerd Ranch Guide 4th Edition</em></li>
+<li><em>官方文档：<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/index.html#//apple_ref/doc/uid/TP40006556">iOS Human Interface Guidelines</a></em></li>
+</ul>
+<h2>I 基础知识</h2>
+<p>两种基本的形式：<code>plain</code> 和 <code>grouped</code>，前者是不可分割的列表，后者有分离的 sections。</p>
+<p>使用 cell …</p>
+      <br>
+      <a class="btn" href="/iOS-UI.html#iOS-UI">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="/my-2014-review.html#my-2014-review">Bye 2014! Hello 2015!</a></h2>
+    <p>
+          Posted on 2015年01月08日 in <a href="/category/ri-zhi.html">日志</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="/tag/gong-zuo-zong-jie.html">工作总结</a>,              <a href="/tag/ri-ji.html">日记</a>
+    </p>
+  </header>
+  <div>
+      <p>2014 过去了，这一年于我来说似乎没有太大的印象。本命年对我的影响似乎不大，但是着实也不小。我不知今年究竟是幸运更多，抑或是不幸更多。但是比起 2013 年，已然是平淡安稳的一年。</p>
+<p>过去的这一年中，我并没有太多的关注自己的技术发展。当初选择 Java 是因为当初恰巧有这样的入行的机遇，而且 Java 又机会比较多、技术相对学过 C 的我来说比较简单。如今算是大半只脚踏入了互联网行业，但是始终工作没有我理想中的那么开心和自如。这一年半做数据项目的时间中，快乐的时间太少。我自然知道未来数据的重要性，数据工作人员的职业发展潜力会很大。但是当初做程序员，我只是希望可以做出有趣的东西，如今这份工作实在谈不上“有趣”，除了和测试妹子们以外，与人的交流也太少，我深深的感觉到自己已经快要长毛了。而且组里给我的机会太少，不知是不是因为我是女生的关系。年中时我看了一些 Android 开发的资料，最终没有下定决心转做移动客户端。最后压垮骆驼的稻草则是，一贯比较自由的公司竟然宣布施行 “996制度”。对魅族深深的失望、对珠海的落后的反感，我终于还是下定了决心不再做 Java 了，也不想再留在魅族 …</p>
+      <br>
+      <a class="btn" href="/my-2014-review.html#my-2014-review">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="/learning-iOS-20141209.html#learning-iOS-20141209">iOS-开发学习日记-20141209</a></h2>
+    <p>
+          Posted on 2014年12月09日 in <a href="/category/ri-zhi.html">日志</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="/tag/ios.html">iOS</a>,              <a href="/tag/bi-ji.html">笔记</a>,              <a href="/tag/xue-xi.html">学习</a>
+    </p>
+  </header>
+  <div>
+      <h1>I.《马上着手开发 iOS 应用程序 (Start Developing iOS Apps Today)》</h1>
+<p>使用系统 OS X 10.10，Xcode 6.1.1 进行开发学习，教程中有遗漏的点：</p>
+<ul>
+<li><code>Introduction</code> —&gt; <code>Tutorial: Basics</code> 中，Xcode 6.1.1 缺少的 <code>Empty Application</code> 模版可以在这里进行下载：<a href="https://github.com/cDigger/AddMissingTemplates">the Missing Templates</a></li>
+<li><code>串联图（Storyboard）</code>步骤中，Xcode 6 中会出现按照教程中步骤创建完 Storyboard 无法启动模拟器、程序 crash 掉的现象，新创建的这个串联图也并没有教程中所说的“箭头”产生。这是因为默认新创建的 …</li></ul>
+      <br>
+      <a class="btn" href="/learning-iOS-20141209.html#learning-iOS-20141209">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="/learn-redis.html#learn-redis">Redis学习笔记</a></h2>
+    <p>
+          Posted on 2014年11月12日 in <a href="/category/ri-zhi.html">日志</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="/tag/redis.html">redis</a>,              <a href="/tag/nosql.html">NoSQL</a>,              <a href="/tag/bi-ji.html">笔记</a>,              <a href="/tag/xue-xi.html">学习</a>,              <a href="/tag/hou-duan-kai-fa.html">后端开发</a>
+    </p>
+  </header>
+  <div>
+      <h2>Redis 介绍</h2>
+<ul>
+<li>Redis 是一种“key-value”的存储，通常被当做一个NoSQL数据库</li>
+<li>原子操作：<code>INCR</code></li>
+</ul>
+<h2>基本操作</h2>
+<ul>
+<li><code>SET</code> 负责<strong>永久</strong>存储一个数值在指定的键上；<code>SETNX</code> = set if key not exit：</li>
+</ul>
+<p><code>shell
+    SET key some-value</code></p>
+<ul>
+<li><code>GET</code> 负责读取一个键对应的值：</li>
+</ul>
+<p><code>shell
+    GET key</code></p>
+<ul>
+<li><code>DEL</code> 操作删除一个key；<code>INCR</code> 自增</li>
+<li><code>EXPIRE</code> 定时过期：</li>
+</ul>
+<p><code>shell
+    EXPIRE key second</code></p>
+<p><code>TTL</code> 过期前的剩余时间，返回值是-2则表示key已不存在，-1表示永远不会过期。如果 <code>SET</code> 了key，它的 <code>TTL</code> 会被重置：</p>
+<p><code>shell …</code></p>
+      <br>
+      <a class="btn" href="/learn-redis.html#learn-redis">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="/difference-between-null-and-empty-in-mysql.html#difference-between-null-and-empty-in-mysql">MySQL中NULL与空值的区别</a></h2>
+    <p>
+          Posted on 2014年11月07日 in <a href="/category/ri-zhi.html">日志</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="/tag/mysql.html">MySQL</a>,              <a href="/tag/shu-ju-ku.html">数据库</a>,              <a href="/tag/database.html">Database</a>,              <a href="/tag/db.html">DB</a>
+    </p>
+  </header>
+  <div>
+      <p>昨天在工作时，出现一个问题：数据库中建表某个字段规定为<code>NOT NULL</code>的，但是插入的相应字段的字符串为<code>""</code>时候，直接插入数据库中，而没有禁止插入。</p>
+<p>在网上查了一下，发现在MySQL中，<code>NULL</code>（空）与 <code>""</code>意义并不相同：</p>
 <!--more-->
 
-<p>刚刚毕业时，我怀揣着一个目前根本不可能实现的“梦想”，其实也是对自己的迷茫，回到北京。当我发现我就是在发梦时，我开始渐渐清醒，想那么就做一个公关吧！毕竟大学时候我也认真的为它投入过。当时面试了几家公司的实习生，只有P公司的digital组要了我。于是我就成为了国贸那边的一枚朝九晚六的小实习生。那段时间我工作的并不投入，渐渐的也看清楚了到底PR是什么，感觉不到这份职业有实质性的创造。在帮忙运营官方微博的时候，我开始觉得“无非就是这个样”，是的，杜蕾斯的微博、肯德基的人人，做的很成功，但是似乎又没创造出什么贡献。或许是我这个人太急功近利，看不到品牌维护和提升中，这些小动作到底做了多少贡献。但是在我看来的是，PR这种东西也是有某种曲线规律的，当公司自己的策略适当、自己的发展恰好到了那个时候，PR才会发出巨大的效果；但是当公司自己的策略都不得当时，PR做的功远远抵消不了公司自己产生的反作用效果。而且我也通过这些社交网络，看了很多人丑恶的一面，包括我自己 …</p>
-                <a class="readmore" href="/a-coder-destine-to-be.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-<p class="paginator">
-        <a href="/index3.html">&laquo;</a>
-    Page 4 / 4
-</p>
-                </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="http://www.jianshu.com/u/c55c7952061c">我的简书</a></li>
-                            <li><a href="https://ezgolinux.org">Ezgo Linux 中国</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
+<ul>
+<li>StackOverFlow.com上相关问题 <a href="http://stackoverflow.com/questions/1267999/mysql-better-to-insert-null-or-empty-string">"MySQL, better to insert NULL or empty string?"</a> 高票答案：</li>
+</ul>
+<p>使用<code>NULL</code>可以区分“没有输入数据”和“输入空数据”， 差异在于：
+  + <code>NULL</code>的长度就是<code>NULL</code>，空字符串的长度为<code>0</code>
+  + 一串<code>NULL</code>数据比空字符串优先排序
+  + <code>COUNT(message)</code>会将空字符串计数进去，但是不会将<code>NULL</code>数据们计入
+  + 可以使用绑定变量搜索某个空字符串，但是不可以这样搜索 …</p>
+      <br>
+      <a class="btn" href="/difference-between-null-and-empty-in-mysql.html#difference-between-null-and-empty-in-mysql">    Continue reading
+</a>
+  </div>
+</article>
 
-                            <li><a href="https://twitter.com/andiechu">Twitter</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+  <div class="pagination">
+    <a class="btn" href="/index5.html">
+      <i class="fa fa-angle-left"></i>     Older Posts
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
+    </a>
+    <a class="btn float-right" href="/index3.html">
+          Newer Posts
+ <i class="fa fa-angle-right"></i>
+    </a>
+  </div>
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
 
+
+
+    <footer>
+<p>&copy; Andie Chu </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " cad0420 | Andie Chu ",
+  "url" : "",
+  "image": "/images/me.png",
+  "description": "cad0420's blogs and works."
+}
+</script>
 </body>
 </html>

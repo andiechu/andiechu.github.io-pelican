@@ -1,270 +1,202 @@
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-        <meta charset="utf-8" />
-        <title>Sunrise Boulevard - 日志</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/font-awesome.min.css">
+
+
+
+
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+
+    <meta name="author" content="Andie Chu" />
+    <meta name="description" content="cad0420's blogs and works." />
+<meta property="og:site_name" content="cad0420 | Andie Chu"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="cad0420 | Andie Chu"/>
+<meta property="og:description" content="cad0420's blogs and works."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content=""/>
+<meta property="og:image" content="/images/me.png">
+
+  <title>cad0420 | Andie Chu &ndash;     Category 日志
+</title>
+
 </head>
+<body>
+  <aside>
+    <div>
+      <a href="/">
+        <img src="/images/me.png" alt="Sunrise Boulevard" title="Sunrise Boulevard">
+      </a>
+      <h1><a href="/">Sunrise Boulevard</a></h1>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">Sunrise Boulevard </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/guan-yu-wo.html">关于我</a></li>
-                    <li class="active"><a href="/category/ri-zhi.html">日志</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+<p>cad0420</p>
+      <nav>
+        <ul class="list">
+          <li><a href="/pages/guan-yu-wo.html#guan-yu-wo">关于我</a></li>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/print-cold-inlet-immediately-with-trigger-object-in-max-msp.html">巧用 Max/MSP 的 trigger 对象，让 cold inlet 实现立即输出</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2018-04-13T17:08:00+08:00">
-                Published: 五 13 四月 2018
-        </abbr>
-		<br />
-        <abbr class="modified" title="2018-04-13T17:08:00+08:00">
-                Updated: 五 13 四月 2018
-        </abbr>
+          <li><a href="http://www.jianshu.com/u/c55c7952061c" target="_blank">简书</a></li>
+          <li><a href="https://ezgolinux.org" target="_blank">Ezgo Linux 中国</a></li>
+        </ul>
+      </nav>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
-        </address>
-<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
-<p>tags: <a href="/tag/maxmspjitter.html">Max/MSP/Jitter</a> <a href="/tag/max.html">Max</a> <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a> <a href="/tag/ji-qiao.html">技巧</a> <a href="/tag/tips.html">tips</a> </p>
-</footer><!-- /.post-info --><p>Max/MSP 中，一个对象通常拥有两种不同的输入端—— hot inlet（鼠标悬浮时红色的输入端口）和 cold inlet（鼠标悬浮时蓝色的输入端口）. 在 hot inlet 不改变的情况下，cold inlet 不论如何改变参数，都只是保存在这个对象中而不会输出结果，等到 hot inlet 改变时，cold inlet 的改动才会一并输出。</p>
-<p>典型的例子就是加减乘除的运算符对象：</p>
-<p><img alt="案例1" src="/images/maxmsp/cold-inlet-01.png"></p>
-<p>此例子中，不管右边的 number box 中数值如何变化，左边的数值不变，最后的结果仍然不变。只有当左边的变化时，整个结果的才会变化：</p>
-<p><img alt="案例1-结果" src="/images/maxmsp/cold-inlet-02.png"></p>
-<p>这时，有的人会产生这样的问题——<strong>如果我想改变右边 cold inlet 的输入并立刻让它输出结果，这时需要怎么做？</strong></p>
-<p>这时，<strong>我们可以使用 <code>trigger</code> 对象来解决这个问题</strong>。用上文中的案例来说明用法，我们将 <code>trigger</code> 对象这样加入到 cold inlet 输入之前：</p>
-<p><img alt="案例1-使用trigger改进" src="/images/maxmsp/cold-inlet-03.png"></p>
-<p>这里我们在 trigger 中同时激发了两个数值：bang 和整形数值 i。效果相当于在改变右边的 number box 时，为右边的 cold inlet 输入了一个整形数值（i）、之后马上为左边的 hot inlet 输入了一个bang，因此右边 number box 的改动可以立刻输出。</p>
-<p>要注意：这里的 bang 不要加在 i 右边，因为 Max/MSP 中执行顺序是从右至左，所以我们一定要让 bang 在 cold inlet 输入完之后再触发 hot inlet。</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+      <ul class="social">
+        <li><a class="sc-twitter" href="https://twitter.com/andiechu" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-envelope" href="mailto:angdichu@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/andiechu" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-vimeo" href="https://vimeo.com/cad0420" target="_blank"><i class="fa fa-vimeo"></i></a></li>
+        <li><a class="sc-instagram" href="http://instagram.com/cad0420" target="_blank"><i class="fa fa-instagram"></i></a></li>
+      </ul>
+    </div>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/how-to-resize-a-large-sketch.html" rel="bookmark"
-                           title="Permalink to 如何缩放比屏幕尺寸大的 Processing 草图">如何缩放比屏幕尺寸大的 Processing 草图</a></h1>
-                </header>
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-03-26T14:50:00+08:00">
-                Published: 一 26 三月 2018
-        </abbr>
-		<br />
-        <abbr class="modified" title="2018-03-26T14:50:00+08:00">
-                Updated: 一 26 三月 2018
-        </abbr>
+  </aside>
+  <main>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
-        </address>
-<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
-<p>tags: <a href="/tag/processing.html">Processing</a> <a href="/tag/fen-bian-lu.html">分辨率</a> </p>
-</footer><!-- /.post-info -->                <p>常遇到的一个问题：如果我们的 sketch 尺寸比自己电脑屏幕的尺寸还大，如何才能让草图完整地显示在屏幕上呢？</p>
-                <a class="readmore" href="/how-to-resize-a-large-sketch.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/how-to-use-simpleopenni-on-Processing-3.html" rel="bookmark"
-                           title="Permalink to 如何在 Processing 3 上使用 SimpleOpenNI 库">如何在 Processing 3 上使用 SimpleOpenNI 库</a></h1>
-                </header>
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-03-23T10:45:00+08:00">
-                Published: 五 23 三月 2018
-        </abbr>
-		<br />
-        <abbr class="modified" title="2018-03-23T10:45:00+08:00">
-                Updated: 五 23 三月 2018
-        </abbr>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
-        </address>
-<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
-<p>tags: <a href="/tag/processing.html">Processing</a> <a href="/tag/creative-coding.html">Creative Coding</a> <a href="/tag/kinect.html">Kinect</a> <a href="/tag/simpleopenni.html">SimpleOpenNI</a> <a href="/tag/openni.html">OpenNI</a> </p>
-</footer><!-- /.post-info -->                <p>SimpleOpenNI 已经很久没有更新了，原来的开发者也不再提供 SimpleOpenNI 对 Processing 3.x 的支持。但是业界始终有人在使用 Kinect 探测人体骨骼。今天来聊聊如何（非常勉强地）在 Processing 3 上使用 SimpleOpenNI 库进行开发。</p>
-                <a class="readmore" href="/how-to-use-simpleopenni-on-Processing-3.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
+<article>
+  <header>
+    <h2><a href="/print-cold-inlet-immediately-with-trigger-object-in-max-msp.html#print-cold-inlet-immediately-with-trigger-object-in-max-msp">巧用 Max/MSP 的 trigger 对象，让 cold inlet 实现立即输出</a></h2>
+    <p>
+          Posted on 2018年04月13日 in <a href="/category/ri-zhi.html">日志</a>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/geometric-algorithm-if-a-point-is-inside-of-a-polygon.html" rel="bookmark"
-                           title="Permalink to 几何算法之判断点是否在多边形内">几何算法之判断点是否在多边形内</a></h1>
-                </header>
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-03-12T17:19:00+08:00">
-                Published: 一 12 三月 2018
-        </abbr>
-		<br />
-        <abbr class="modified" title="2018-03-12T17:19:00+08:00">
-                Updated: 一 12 三月 2018
-        </abbr>
+          &#8226;     Tagged with
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
-        </address>
-<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
-<p>tags: <a href="/tag/suan-fa.html">算法</a> <a href="/tag/ji-he.html">几何</a> <a href="/tag/shu-xue.html">数学</a> </p>
-</footer><!-- /.post-info -->                <p>几何算法系列文章，总结一下判断某个点是否在多边形内的算法</p>
-                <a class="readmore" href="/geometric-algorithm-if-a-point-is-inside-of-a-polygon.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
+              <a href="/tag/maxmspjitter.html">Max/MSP/Jitter</a>,              <a href="/tag/max.html">Max</a>,              <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a>,              <a href="/tag/ji-qiao.html">技巧</a>,              <a href="/tag/tips.html">tips</a>
+    </p>
+  </header>
+  <div>
+      <p>MAX/MSP 中的 cold inlet 输入端仅可以改变对象中存储的参数值，而不会立刻输出。使用 trigger 对象可以实现让 cold inlet 改变后立即输出。</p>
+      <br>
+      <a class="btn" href="/print-cold-inlet-immediately-with-trigger-object-in-max-msp.html#print-cold-inlet-immediately-with-trigger-object-in-max-msp">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="/how-to-resize-a-large-sketch.html#how-to-resize-a-large-sketch">如何缩放比屏幕尺寸大的 Processing 草图</a></h2>
+    <p>
+          Posted on 2018年03月26日 in <a href="/category/ri-zhi.html">日志</a>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/Processing-IDE-tips.html" rel="bookmark"
-                           title="Permalink to Processing IDE (PDE) 使用技巧">Processing IDE (PDE) 使用技巧</a></h1>
-                </header>
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-03-11T11:57:00+08:00">
-                Published: 日 11 三月 2018
-        </abbr>
-		<br />
-        <abbr class="modified" title="2018-03-11T11:57:00+08:00">
-                Updated: 日 11 三月 2018
-        </abbr>
+          &#8226;     Tagged with
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
-        </address>
-<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
-<p>tags: <a href="/tag/processing.html">Processing</a> <a href="/tag/pde.html">PDE</a> <a href="/tag/creative-coding.html">Creative Coding</a> <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a> <a href="/tag/ji-qiao.html">技巧</a> </p>
-</footer><!-- /.post-info -->                <p>总结 Processing 官方编辑器（PDE）的一些使用技巧</p>
-                <a class="readmore" href="/Processing-IDE-tips.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
+              <a href="/tag/processing.html">Processing</a>,              <a href="/tag/fen-bian-lu.html">分辨率</a>
+    </p>
+  </header>
+  <div>
+      <p>常遇到的一个问题：如果我们的 sketch 尺寸比自己电脑屏幕的尺寸还大，如何才能让草图完整地显示在屏幕上呢？</p>
+      <br>
+      <a class="btn" href="/how-to-resize-a-large-sketch.html#how-to-resize-a-large-sketch">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="/how-to-use-simpleopenni-on-Processing-3.html#how-to-use-simpleopenni-on-Processing-3">如何在 Processing 3 上使用 SimpleOpenNI 库</a></h2>
+    <p>
+          Posted on 2018年03月23日 in <a href="/category/ri-zhi.html">日志</a>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/how-to-learn-max-msp-jitter.html" rel="bookmark"
-                           title="Permalink to 如何自学 Max/MSP/Jitter">如何自学 Max/MSP/Jitter</a></h1>
-                </header>
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-01-11T15:40:00+08:00">
-                Published: 四 11 一月 2018
-        </abbr>
+          &#8226;     Tagged with
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
-        </address>
-<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
-<p>tags: <a href="/tag/maxmspjitter.html">MAX/MSP/Jitter</a> <a href="/tag/zi-xue.html">自学</a> <a href="/tag/xue-xi.html">学习</a> <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a> <a href="/tag/jiao-hu-she-ji.html">交互设计</a> </p>
-</footer><!-- /.post-info -->                <ol>
-<li>
-<p>首先，你需要先明白自己学习 Max/MSP/Jitter 的目的是什么？是做交互装置、还是视觉设计，抑或是实验音乐作曲甚至其他的目标？</p>
-<p>Max 是专门为制作交互艺术项目的可视化编程（patching）类软件。它的功能非常强大，既可以为互动视觉设计服务，也可以为互动音乐的制作而服务。Max 软件本身有基础的图形和影像处理能力；而 MSP 是 Max 的一个拓展包，专门；另外还有一个更加高级的视觉处理拓展包 Jitter。所以你可以看到，使用 Max 的人除了交互设计师外，还有专门做 visual-audio 的 VJ们、以及搞实验音乐的大佬。</p>
-<p>所以我建议，你可以先学习软件基础，然后再根据你的不同需要，对这几个拓展包有侧重点的进行学习。</p>
-</li>
-<li>
-<p>在学习方法上，请多实践！是的，不要只读教程，一定要动手做里面的案例。而且不要死记硬背，多用几次自然就记住了。</p>
-<p>这里转一个台湾人写的学习方法（<a href="http://maxmsp.recorderz.org/2006/10/27/轉subborg-on-max學習方法/">原文见此</a>）：</p>
-<blockquote>
-<p>我想一般人對於學習，甚至 …</p></blockquote></li></ol>
-                <a class="readmore" href="/how-to-learn-max-msp-jitter.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
+              <a href="/tag/processing.html">Processing</a>,              <a href="/tag/creative-coding.html">Creative Coding</a>,              <a href="/tag/kinect.html">Kinect</a>,              <a href="/tag/simpleopenni.html">SimpleOpenNI</a>,              <a href="/tag/openni.html">OpenNI</a>
+    </p>
+  </header>
+  <div>
+      <p>SimpleOpenNI 已经很久没有更新了，原来的开发者也不再提供 SimpleOpenNI 对 Processing 3.x 的支持。但是业界始终有人在使用 Kinect 探测人体骨骼。今天来聊聊如何（非常勉强地）在 Processing 3 上使用 SimpleOpenNI 库进行开发。</p>
+      <br>
+      <a class="btn" href="/how-to-use-simpleopenni-on-Processing-3.html#how-to-use-simpleopenni-on-Processing-3">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="/geometric-algorithm-if-a-point-is-inside-of-a-polygon.html#geometric-algorithm-if-a-point-is-inside-of-a-polygon">几何算法之判断点是否在多边形内</a></h2>
+    <p>
+          Posted on 2018年03月12日 in <a href="/category/ri-zhi.html">日志</a>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/how-to-be-a-better-PM.html" rel="bookmark"
-                           title="Permalink to 工作小结与反思——如何做一个更优秀的产品经理">工作小结与反思——如何做一个更优秀的产品经理</a></h1>
-                </header>
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2017-03-07T03:10:00+08:00">
-                Published: 二 07 三月 2017
-        </abbr>
+          &#8226;     Tagged with
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
-        </address>
-<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
-<p>tags: <a href="/tag/chan-pin-guan-li.html">产品管理</a> <a href="/tag/chan-pin-jing-li.html">产品经理</a> <a href="/tag/product-management.html">Product Management</a> <a href="/tag/gong-zuo-zong-jie.html">工作总结</a> <a href="/tag/ri-ji.html">日记</a> </p>
-</footer><!-- /.post-info -->                <p>工作小结与反思——如何做一个更优秀的产品经理</p>
-                <a class="readmore" href="/how-to-be-a-better-PM.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
+              <a href="/tag/suan-fa.html">算法</a>,              <a href="/tag/ji-he.html">几何</a>,              <a href="/tag/shu-xue.html">数学</a>
+    </p>
+  </header>
+  <div>
+      <p>几何算法系列文章，总结一下判断某个点是否在多边形内的算法</p>
+      <br>
+      <a class="btn" href="/geometric-algorithm-if-a-point-is-inside-of-a-polygon.html#geometric-algorithm-if-a-point-is-inside-of-a-polygon">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="/Processing-IDE-tips.html#Processing-IDE-tips">Processing IDE (PDE) 使用技巧</a></h2>
+    <p>
+          Posted on 2018年03月11日 in <a href="/category/ri-zhi.html">日志</a>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/my-2015.html" rel="bookmark"
-                           title="Permalink to 我的2015年终总结">我的2015年终总结</a></h1>
-                </header>
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-01-11T11:08:00+08:00">
-                Published: 一 11 一月 2016
-        </abbr>
+          &#8226;     Tagged with
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
-        </address>
-<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
-<p>tags: <a href="/tag/gong-zuo-zong-jie.html">工作总结</a> <a href="/tag/ri-ji.html">日记</a> </p>
-</footer><!-- /.post-info -->                <p>一转眼又到了写年终总结的时候。还记得去年年终我在自学 iOS 开发时候写的总结。</p>
-<p>一年很快过去了，我的确不再写 Java 了，但是也没有成为一名 iOS 开发，而是成为了一名产品经理。现在我还是想写代码，但是我也喜欢做产品经理自己可以掌握产品生命的感觉。</p>
-<p><strong>今年上半年的关键词是“求职”。</strong></p>
-<p>我在3月份的离职太过冲动，虽然想法已经酝酿很久了——但是对求职市场的认知还是不够到位；对自己的技术水平也太过于自大。现在网络上已经有 iOS 工资大跌的新闻，更有很多培训班学员和公司面试官们对 iOS 求职市场混乱的抱怨，而在今年初我找工作时，这些 iOS 求职市场趋向饱和的现象就已经初见端倪。而且我的学习也的确不够到位，耐心还是太少，做了一半的豆瓣客户端就耐不住性子非想找个工作；另外对技术类职位的求职准备不够，求职知识准备不充分；最后也是最重要的是，我对深层次的技术知识似乎有潜意识的恐惧，不敢踏出自己在心理上的舒适圈，对新技术的特性不敢去深入探究。</p>
-<p>产品经理的工作，找起来更是机会少少，因为“人人都是产品经理”，这也是进入互联网行业门槛最低的职位之一。在珠三角投了一圈简历，还是没有得到几个机会，有的公司则是太奇葩太坑。没想到自己还有机会可以进入现在这家公司，更没有想到自己一进去就负责了这么多的产品，并且完整的参与了几个产品从开始到上线的过程 …</p>
-                <a class="readmore" href="/my-2015.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 4
-        <a href="/category/ri-zhi2.html">&raquo;</a>
-</p>
-                </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="http://www.jianshu.com/u/c55c7952061c">我的简书</a></li>
-                            <li><a href="https://ezgolinux.org">Ezgo Linux 中国</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
+              <a href="/tag/processing.html">Processing</a>,              <a href="/tag/pde.html">PDE</a>,              <a href="/tag/creative-coding.html">Creative Coding</a>,              <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a>,              <a href="/tag/ji-qiao.html">技巧</a>
+    </p>
+  </header>
+  <div>
+      <p>总结 Processing 官方编辑器（PDE）的一些使用技巧</p>
+      <br>
+      <a class="btn" href="/Processing-IDE-tips.html#Processing-IDE-tips">    Continue reading
+</a>
+  </div>
+</article>
 
-                            <li><a href="https://twitter.com/andiechu">Twitter</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+  <div class="pagination">
+    <a class="btn" href="/category/ri-zhi2.html">
+      <i class="fa fa-angle-left"></i>     Older Posts
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
+    </a>
+  </div>
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
 
+
+
+    <footer>
+<p>&copy; Andie Chu </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " cad0420 | Andie Chu ",
+  "url" : "",
+  "image": "/images/me.png",
+  "description": "cad0420's blogs and works."
+}
+</script>
 </body>
 </html>

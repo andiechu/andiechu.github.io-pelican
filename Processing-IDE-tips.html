@@ -1,47 +1,93 @@
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-        <meta charset="utf-8" />
-        <title>Processing IDE (PDE) 使用技巧</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/font-awesome.min.css">
+
+
+
+
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+
+<meta name="author" content="Andie Chu" />
+<meta name="description" content="总结 Processing 官方编辑器（PDE）的一些使用技巧" />
+<meta name="keywords" content="Processing, PDE, Creative Coding, 创意编程, 技巧">
+<meta property="og:site_name" content="cad0420 | Andie Chu"/>
+<meta property="og:title" content="Processing IDE (PDE) 使用技巧"/>
+<meta property="og:description" content="总结 Processing 官方编辑器（PDE）的一些使用技巧"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/Processing-IDE-tips.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-03-11 11:57:00+08:00"/>
+<meta property="article:modified_time" content="2018-03-11 11:57:00+08:00"/>
+<meta property="article:author" content="/author/andie-chu.html">
+<meta property="article:section" content="日志"/>
+<meta property="article:tag" content="Processing"/>
+<meta property="article:tag" content="PDE"/>
+<meta property="article:tag" content="Creative Coding"/>
+<meta property="article:tag" content="创意编程"/>
+<meta property="article:tag" content="技巧"/>
+<meta property="og:image" content="/images/me.png">
+
+  <title>cad0420 | Andie Chu &ndash; Processing IDE (PDE) 使用技巧</title>
+
 </head>
+<body>
+  <aside>
+    <div>
+      <a href="/">
+        <img src="/images/me.png" alt="Sunrise Boulevard" title="Sunrise Boulevard">
+      </a>
+      <h1><a href="/">Sunrise Boulevard</a></h1>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">Sunrise Boulevard </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/guan-yu-wo.html">关于我</a></li>
-                    <li class="active"><a href="/category/ri-zhi.html">日志</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
-<section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="/Processing-IDE-tips.html" rel="bookmark"
-           title="Permalink to Processing IDE (PDE) 使用技巧">Processing IDE (PDE) 使用技巧</a></h1>
-    </header>
+<p>cad0420</p>
+      <nav>
+        <ul class="list">
+          <li><a href="/pages/guan-yu-wo.html#guan-yu-wo">关于我</a></li>
 
-    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-03-11T11:57:00+08:00">
-                Published: 日 11 三月 2018
-        </abbr>
-		<br />
-        <abbr class="modified" title="2018-03-11T11:57:00+08:00">
-                Updated: 日 11 三月 2018
-        </abbr>
+          <li><a href="http://www.jianshu.com/u/c55c7952061c" target="_blank">简书</a></li>
+          <li><a href="https://ezgolinux.org" target="_blank">Ezgo Linux 中国</a></li>
+        </ul>
+      </nav>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
-        </address>
-<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
-<p>tags: <a href="/tag/processing.html">Processing</a> <a href="/tag/pde.html">PDE</a> <a href="/tag/creative-coding.html">Creative Coding</a> <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a> <a href="/tag/ji-qiao.html">技巧</a> </p>
-</footer><!-- /.post-info -->      <p><em>本文将持续更新</em></p>
+      <ul class="social">
+        <li><a class="sc-twitter" href="https://twitter.com/andiechu" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-envelope" href="mailto:angdichu@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/andiechu" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-vimeo" href="https://vimeo.com/cad0420" target="_blank"><i class="fa fa-vimeo"></i></a></li>
+        <li><a class="sc-instagram" href="http://instagram.com/cad0420" target="_blank"><i class="fa fa-instagram"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+    <h1 id="Processing-IDE-tips">Processing IDE (PDE) 使用技巧</h1>
+    <p>
+          Posted on 2018年03月11日 in <a href="/category/ri-zhi.html">日志</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p><em>本文将持续更新</em></p>
 <p>最近一直在写 Processing 的程序，并且给别人做教学答疑。用了 Processing 官方的 IDE（官方叫 PDE）感觉非常难用，虽然也可以导入 Eclipse 或者 IntelliJ IDEA 进行开发，但是想快速的画出一个 sketch 还是官方的方法最简便。于是抽时间总结各方资料，统计一下目前 PDE 的一些使用技巧作为参考。</p>
 <h1>0x00 快捷键</h1>
 <p>本文将以 OSX 平台为示例，Windows 系统可以尝试将 <code>CMD</code> 换成 <code>Ctrl</code>。</p>
@@ -90,34 +136,54 @@
 </li>
 <li></li>
 </ul>
-    </div><!-- /.entry-content -->
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/processing.html">Processing</a>
+      <a href="/tag/pde.html">PDE</a>
+      <a href="/tag/creative-coding.html">Creative Coding</a>
+      <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a>
+      <a href="/tag/ji-qiao.html">技巧</a>
+    </p>
+  </div>
 
-  </article>
-</section>
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="http://www.jianshu.com/u/c55c7952061c">我的简书</a></li>
-                            <li><a href="https://ezgolinux.org">Ezgo Linux 中国</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
 
-                            <li><a href="https://twitter.com/andiechu">Twitter</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'andiechu';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
 
+</noscript>
+</article>
+
+    <footer>
+<p>&copy; Andie Chu </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " cad0420 | Andie Chu ",
+  "url" : "",
+  "image": "/images/me.png",
+  "description": "cad0420's blogs and works."
+}
+</script>
 </body>
 </html>

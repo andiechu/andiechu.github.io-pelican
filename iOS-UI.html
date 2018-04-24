@@ -1,43 +1,91 @@
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-        <meta charset="utf-8" />
-        <title>iOS 开发学习笔记：界面的自定义</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/font-awesome.min.css">
+
+
+
+
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+
+<meta name="author" content="Andie Chu" />
+<meta name="description" content="前几天已经实现了豆瓣的登陆授权，用的比较简单的 UIWebView 中网页方式，没有自己使用界面模拟授权。 今天开始做豆瓣的首页——即关注的人的广播页面。设计是用自定义的 UITableView 展示。今天学习下 Table View 的自定义。暂时没有用代码实现，继续用 storyboard。 参考材料： 官方文档：Table View Programming Guide for iOS iOS Programming The Big Nerd Ranch Guide 4th Edition 官方文档：iOS Human Interface Guidelines I 基础知识 两种基本的形式：plain 和 grouped，前者是不可分割的列表，后者有分离的 sections。 使用 cell …" />
+<meta name="keywords" content="iOS, UI, 客户端开发">
+<meta property="og:site_name" content="cad0420 | Andie Chu"/>
+<meta property="og:title" content="iOS 开发学习笔记：界面的自定义"/>
+<meta property="og:description" content="前几天已经实现了豆瓣的登陆授权，用的比较简单的 UIWebView 中网页方式，没有自己使用界面模拟授权。 今天开始做豆瓣的首页——即关注的人的广播页面。设计是用自定义的 UITableView 展示。今天学习下 Table View 的自定义。暂时没有用代码实现，继续用 storyboard。 参考材料： 官方文档：Table View Programming Guide for iOS iOS Programming The Big Nerd Ranch Guide 4th Edition 官方文档：iOS Human Interface Guidelines I 基础知识 两种基本的形式：plain 和 grouped，前者是不可分割的列表，后者有分离的 sections。 使用 cell …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/iOS-UI.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-01-08 17:31:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="/author/andie-chu.html">
+<meta property="article:section" content="日志"/>
+<meta property="article:tag" content="iOS"/>
+<meta property="article:tag" content="UI"/>
+<meta property="article:tag" content="客户端开发"/>
+<meta property="og:image" content="/images/me.png">
+
+  <title>cad0420 | Andie Chu &ndash; iOS 开发学习笔记：界面的自定义</title>
+
 </head>
+<body>
+  <aside>
+    <div>
+      <a href="/">
+        <img src="/images/me.png" alt="Sunrise Boulevard" title="Sunrise Boulevard">
+      </a>
+      <h1><a href="/">Sunrise Boulevard</a></h1>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">Sunrise Boulevard </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/guan-yu-wo.html">关于我</a></li>
-                    <li class="active"><a href="/category/ri-zhi.html">日志</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
-<section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="/iOS-UI.html" rel="bookmark"
-           title="Permalink to iOS 开发学习笔记：界面的自定义">iOS 开发学习笔记：界面的自定义</a></h1>
-    </header>
+<p>cad0420</p>
+      <nav>
+        <ul class="list">
+          <li><a href="/pages/guan-yu-wo.html#guan-yu-wo">关于我</a></li>
 
-    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-01-08T17:31:00+08:00">
-                Published: 四 08 一月 2015
-        </abbr>
+          <li><a href="http://www.jianshu.com/u/c55c7952061c" target="_blank">简书</a></li>
+          <li><a href="https://ezgolinux.org" target="_blank">Ezgo Linux 中国</a></li>
+        </ul>
+      </nav>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
-        </address>
-<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
-<p>tags: <a href="/tag/ios.html">iOS</a> <a href="/tag/ui.html">UI</a> <a href="/tag/ke-hu-duan-kai-fa.html">客户端开发</a> </p>
-</footer><!-- /.post-info -->      <p>前几天已经实现了豆瓣的登陆授权，用的比较简单的 UIWebView 中网页方式，没有自己使用界面模拟授权。</p>
+      <ul class="social">
+        <li><a class="sc-twitter" href="https://twitter.com/andiechu" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-envelope" href="mailto:angdichu@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/andiechu" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-vimeo" href="https://vimeo.com/cad0420" target="_blank"><i class="fa fa-vimeo"></i></a></li>
+        <li><a class="sc-instagram" href="http://instagram.com/cad0420" target="_blank"><i class="fa fa-instagram"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+    <h1 id="iOS-UI">iOS 开发学习笔记：界面的自定义</h1>
+    <p>
+          Posted on 2015年01月08日 in <a href="/category/ri-zhi.html">日志</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>前几天已经实现了豆瓣的登陆授权，用的比较简单的 UIWebView 中网页方式，没有自己使用界面模拟授权。</p>
 <p>今天开始做豆瓣的首页——即关注的人的广播页面。设计是用自定义的 UITableView  展示。今天学习下 Table View 的自定义。暂时没有用代码实现，继续用 storyboard。</p>
 <p>参考材料：</p>
 <ul>
@@ -74,34 +122,52 @@
 <blockquote>
 <p>待续……</p>
 </blockquote>
-    </div><!-- /.entry-content -->
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/ios.html">iOS</a>
+      <a href="/tag/ui.html">UI</a>
+      <a href="/tag/ke-hu-duan-kai-fa.html">客户端开发</a>
+    </p>
+  </div>
 
-  </article>
-</section>
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="http://www.jianshu.com/u/c55c7952061c">我的简书</a></li>
-                            <li><a href="https://ezgolinux.org">Ezgo Linux 中国</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
 
-                            <li><a href="https://twitter.com/andiechu">Twitter</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'andiechu';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
 
+</noscript>
+</article>
+
+    <footer>
+<p>&copy; Andie Chu </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " cad0420 | Andie Chu ",
+  "url" : "",
+  "image": "/images/me.png",
+  "description": "cad0420's blogs and works."
+}
+</script>
 </body>
 </html>

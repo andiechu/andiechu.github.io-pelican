@@ -1,38 +1,87 @@
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-        <meta charset="utf-8" />
-        <title>Sunrise Boulevard - DB</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/font-awesome.min.css">
+
+
+
+
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+
+    <meta name="author" content="Andie Chu" />
+    <meta name="description" content="cad0420's blogs and works." />
+<meta property="og:site_name" content="cad0420 | Andie Chu"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="cad0420 | Andie Chu"/>
+<meta property="og:description" content="cad0420's blogs and works."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content=""/>
+<meta property="og:image" content="/images/me.png">
+
+  <title>cad0420 | Andie Chu &ndash;     Tag DB
+</title>
+
 </head>
+<body>
+  <aside>
+    <div>
+      <a href="/">
+        <img src="/images/me.png" alt="Sunrise Boulevard" title="Sunrise Boulevard">
+      </a>
+      <h1><a href="/">Sunrise Boulevard</a></h1>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">Sunrise Boulevard </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/guan-yu-wo.html">关于我</a></li>
-                    <li><a href="/category/ri-zhi.html">日志</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+<p>cad0420</p>
+      <nav>
+        <ul class="list">
+          <li><a href="/pages/guan-yu-wo.html#guan-yu-wo">关于我</a></li>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/difference-between-null-and-empty-in-mysql.html">MySQL中NULL与空值的区别</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2014-11-07T18:57:00+08:00">
-                Published: 五 07 十一月 2014
-        </abbr>
+          <li><a href="http://www.jianshu.com/u/c55c7952061c" target="_blank">简书</a></li>
+          <li><a href="https://ezgolinux.org" target="_blank">Ezgo Linux 中国</a></li>
+        </ul>
+      </nav>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
-        </address>
-<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
-<p>tags: <a href="/tag/mysql.html">MySQL</a> <a href="/tag/shu-ju-ku.html">数据库</a> <a href="/tag/database.html">Database</a> <a href="/tag/db.html">DB</a> </p>
-</footer><!-- /.post-info --><p>昨天在工作时，出现一个问题：数据库中建表某个字段规定为<code>NOT NULL</code>的，但是插入的相应字段的字符串为<code>""</code>时候，直接插入数据库中，而没有禁止插入。</p>
+      <ul class="social">
+        <li><a class="sc-twitter" href="https://twitter.com/andiechu" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-envelope" href="mailto:angdichu@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/andiechu" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-vimeo" href="https://vimeo.com/cad0420" target="_blank"><i class="fa fa-vimeo"></i></a></li>
+        <li><a class="sc-instagram" href="http://instagram.com/cad0420" target="_blank"><i class="fa fa-instagram"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+
+
+<article>
+  <header>
+    <h2><a href="/difference-between-null-and-empty-in-mysql.html#difference-between-null-and-empty-in-mysql">MySQL中NULL与空值的区别</a></h2>
+    <p>
+          Posted on 2014年11月07日 in <a href="/category/ri-zhi.html">日志</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="/tag/mysql.html">MySQL</a>,              <a href="/tag/shu-ju-ku.html">数据库</a>,              <a href="/tag/database.html">Database</a>,              <a href="/tag/db.html">DB</a>
+    </p>
+  </header>
+  <div>
+      <p>昨天在工作时，出现一个问题：数据库中建表某个字段规定为<code>NOT NULL</code>的，但是插入的相应字段的字符串为<code>""</code>时候，直接插入数据库中，而没有禁止插入。</p>
 <p>在网上查了一下，发现在MySQL中，<code>NULL</code>（空）与 <code>""</code>意义并不相同：</p>
 <!--more-->
 
@@ -43,48 +92,38 @@
   + <code>NULL</code>的长度就是<code>NULL</code>，空字符串的长度为<code>0</code>
   + 一串<code>NULL</code>数据比空字符串优先排序
   + <code>COUNT(message)</code>会将空字符串计数进去，但是不会将<code>NULL</code>数据们计入
-  + 可以使用绑定变量搜索某个空字符串，但是不可以这样搜索<code>NULL</code>，例如：
-    <code>SQL
-        SELECT * 
-        FROM mytable
-        WHERE mytext = ?</code>
-    mytext永远不可能匹配<code>NULL</code>值，无论你从客户端如何传值。匹配<code>NULL</code>的方法只能这样查询：
-    <code>SQL
-        SELECT * 
-        FROM mytable 
-        WHERE mytext IS NULL</code></p>
-<ul>
-<li><a href="http://dev.mysql.com/doc/refman/5.0/en/working-with-null.html">MySQL Manual (5.0版本)</a></li>
-<li>测试<code>NULL</code>需要用<code>IS NULL</code>或者<code>IS NOT NULL</code>；<code>=</code>, <code>&lt;&gt;</code>, <code>&lt;</code>, <code>&gt;</code>等与<code>NULL</code>的计算比较，结果仍然为<code>NULL</code></li>
-<li>MySQL中，<code>0</code>或<code>NULL</code>表示假，任何其他的值表示真。默认布尔操作的真值为<code>1</code></li>
-<li>在<code>GROUP BY</code>操作中，两个<code>NULL</code>被认为是相等的；并且<code>NULL</code>值在<code>ORDER BY ... ASC</code>中第一个显示，而在<code>DESC</code>中则是最后一个</li>
-<li></li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="http://www.jianshu.com/u/c55c7952061c">我的简书</a></li>
-                            <li><a href="https://ezgolinux.org">Ezgo Linux 中国</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
+  + 可以使用绑定变量搜索某个空字符串，但是不可以这样搜索 …</p>
+      <br>
+      <a class="btn" href="/difference-between-null-and-empty-in-mysql.html#difference-between-null-and-empty-in-mysql">    Continue reading
+</a>
+  </div>
+</article>
 
-                            <li><a href="https://twitter.com/andiechu">Twitter</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+  <div class="pagination">
+  </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
 
+
+    <footer>
+<p>&copy; Andie Chu </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " cad0420 | Andie Chu ",
+  "url" : "",
+  "image": "/images/me.png",
+  "description": "cad0420's blogs and works."
+}
+</script>
 </body>
 </html>

@@ -1,108 +1,138 @@
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-        <meta charset="utf-8" />
-        <title>Sunrise Boulevard - 技巧</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/font-awesome.min.css">
+
+
+
+
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+
+    <meta name="author" content="Andie Chu" />
+    <meta name="description" content="cad0420's blogs and works." />
+<meta property="og:site_name" content="cad0420 | Andie Chu"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="cad0420 | Andie Chu"/>
+<meta property="og:description" content="cad0420's blogs and works."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content=""/>
+<meta property="og:image" content="/images/me.png">
+
+  <title>cad0420 | Andie Chu &ndash;     Tag 技巧
+</title>
+
 </head>
+<body>
+  <aside>
+    <div>
+      <a href="/">
+        <img src="/images/me.png" alt="Sunrise Boulevard" title="Sunrise Boulevard">
+      </a>
+      <h1><a href="/">Sunrise Boulevard</a></h1>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">Sunrise Boulevard </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/guan-yu-wo.html">关于我</a></li>
-                    <li><a href="/category/ri-zhi.html">日志</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+<p>cad0420</p>
+      <nav>
+        <ul class="list">
+          <li><a href="/pages/guan-yu-wo.html#guan-yu-wo">关于我</a></li>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/print-cold-inlet-immediately-with-trigger-object-in-max-msp.html">巧用 Max/MSP 的 trigger 对象，让 cold inlet 实现立即输出</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2018-04-13T17:08:00+08:00">
-                Published: 五 13 四月 2018
-        </abbr>
-		<br />
-        <abbr class="modified" title="2018-04-13T17:08:00+08:00">
-                Updated: 五 13 四月 2018
-        </abbr>
+          <li><a href="http://www.jianshu.com/u/c55c7952061c" target="_blank">简书</a></li>
+          <li><a href="https://ezgolinux.org" target="_blank">Ezgo Linux 中国</a></li>
+        </ul>
+      </nav>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
-        </address>
-<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
-<p>tags: <a href="/tag/maxmspjitter.html">Max/MSP/Jitter</a> <a href="/tag/max.html">Max</a> <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a> <a href="/tag/ji-qiao.html">技巧</a> <a href="/tag/tips.html">tips</a> </p>
-</footer><!-- /.post-info --><p>Max/MSP 中，一个对象通常拥有两种不同的输入端—— hot inlet（鼠标悬浮时红色的输入端口）和 cold inlet（鼠标悬浮时蓝色的输入端口）. 在 hot inlet 不改变的情况下，cold inlet 不论如何改变参数，都只是保存在这个对象中而不会输出结果，等到 hot inlet 改变时，cold inlet 的改动才会一并输出。</p>
-<p>典型的例子就是加减乘除的运算符对象：</p>
-<p><img alt="案例1" src="/images/maxmsp/cold-inlet-01.png"></p>
-<p>此例子中，不管右边的 number box 中数值如何变化，左边的数值不变，最后的结果仍然不变。只有当左边的变化时，整个结果的才会变化：</p>
-<p><img alt="案例1-结果" src="/images/maxmsp/cold-inlet-02.png"></p>
-<p>这时，有的人会产生这样的问题——<strong>如果我想改变右边 cold inlet 的输入并立刻让它输出结果，这时需要怎么做？</strong></p>
-<p>这时，<strong>我们可以使用 <code>trigger</code> 对象来解决这个问题</strong>。用上文中的案例来说明用法，我们将 <code>trigger</code> 对象这样加入到 cold inlet 输入之前：</p>
-<p><img alt="案例1-使用trigger改进" src="/images/maxmsp/cold-inlet-03.png"></p>
-<p>这里我们在 trigger 中同时激发了两个数值：bang 和整形数值 i。效果相当于在改变右边的 number box 时，为右边的 cold inlet 输入了一个整形数值（i）、之后马上为左边的 hot inlet 输入了一个bang，因此右边 number box 的改动可以立刻输出。</p>
-<p>要注意：这里的 bang 不要加在 i 右边，因为 Max/MSP 中执行顺序是从右至左，所以我们一定要让 bang 在 cold inlet 输入完之后再触发 hot inlet。</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+      <ul class="social">
+        <li><a class="sc-twitter" href="https://twitter.com/andiechu" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-envelope" href="mailto:angdichu@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/andiechu" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-vimeo" href="https://vimeo.com/cad0420" target="_blank"><i class="fa fa-vimeo"></i></a></li>
+        <li><a class="sc-instagram" href="http://instagram.com/cad0420" target="_blank"><i class="fa fa-instagram"></i></a></li>
+      </ul>
+    </div>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/Processing-IDE-tips.html" rel="bookmark"
-                           title="Permalink to Processing IDE (PDE) 使用技巧">Processing IDE (PDE) 使用技巧</a></h1>
-                </header>
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-03-11T11:57:00+08:00">
-                Published: 日 11 三月 2018
-        </abbr>
-		<br />
-        <abbr class="modified" title="2018-03-11T11:57:00+08:00">
-                Updated: 日 11 三月 2018
-        </abbr>
+  </aside>
+  <main>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
-        </address>
-<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
-<p>tags: <a href="/tag/processing.html">Processing</a> <a href="/tag/pde.html">PDE</a> <a href="/tag/creative-coding.html">Creative Coding</a> <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a> <a href="/tag/ji-qiao.html">技巧</a> </p>
-</footer><!-- /.post-info -->                <p>总结 Processing 官方编辑器（PDE）的一些使用技巧</p>
-                <a class="readmore" href="/Processing-IDE-tips.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="http://www.jianshu.com/u/c55c7952061c">我的简书</a></li>
-                            <li><a href="https://ezgolinux.org">Ezgo Linux 中国</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
 
-                            <li><a href="https://twitter.com/andiechu">Twitter</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+<article>
+  <header>
+    <h2><a href="/print-cold-inlet-immediately-with-trigger-object-in-max-msp.html#print-cold-inlet-immediately-with-trigger-object-in-max-msp">巧用 Max/MSP 的 trigger 对象，让 cold inlet 实现立即输出</a></h2>
+    <p>
+          Posted on 2018年04月13日 in <a href="/category/ri-zhi.html">日志</a>
 
+
+          &#8226;     Tagged with
+
+              <a href="/tag/maxmspjitter.html">Max/MSP/Jitter</a>,              <a href="/tag/max.html">Max</a>,              <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a>,              <a href="/tag/ji-qiao.html">技巧</a>,              <a href="/tag/tips.html">tips</a>
+    </p>
+  </header>
+  <div>
+      <p>MAX/MSP 中的 cold inlet 输入端仅可以改变对象中存储的参数值，而不会立刻输出。使用 trigger 对象可以实现让 cold inlet 改变后立即输出。</p>
+      <br>
+      <a class="btn" href="/print-cold-inlet-immediately-with-trigger-object-in-max-msp.html#print-cold-inlet-immediately-with-trigger-object-in-max-msp">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="/Processing-IDE-tips.html#Processing-IDE-tips">Processing IDE (PDE) 使用技巧</a></h2>
+    <p>
+          Posted on 2018年03月11日 in <a href="/category/ri-zhi.html">日志</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="/tag/processing.html">Processing</a>,              <a href="/tag/pde.html">PDE</a>,              <a href="/tag/creative-coding.html">Creative Coding</a>,              <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a>,              <a href="/tag/ji-qiao.html">技巧</a>
+    </p>
+  </header>
+  <div>
+      <p>总结 Processing 官方编辑器（PDE）的一些使用技巧</p>
+      <br>
+      <a class="btn" href="/Processing-IDE-tips.html#Processing-IDE-tips">    Continue reading
+</a>
+  </div>
+</article>
+
+  <div class="pagination">
+  </div>
+
+
+
+
+    <footer>
+<p>&copy; Andie Chu </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " cad0420 | Andie Chu ",
+  "url" : "",
+  "image": "/images/me.png",
+  "description": "cad0420's blogs and works."
+}
+</script>
 </body>
 </html>
