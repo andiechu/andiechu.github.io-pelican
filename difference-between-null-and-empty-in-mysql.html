@@ -23,7 +23,7 @@
 <meta name="author" content="Andie Chu" />
 <meta name="description" content="昨天在工作时，出现一个问题：数据库中建表某个字段规定为NOT NULL的，但是插入的相应字段的字符串为""时候，直接插入数据库中，而没有禁止插入。 在网上查了一下，发现在MySQL中，NULL（空）与 ""意义并不相同： StackOverFlow.com上相关问题 "MySQL, better to insert NULL or empty string?" 高票答案： 使用NULL可以区分“没有输入数据”和“输入空数据”， 差异在于： + NULL的长度就是NULL，空字符串的长度为0 + 一串NULL数据比空字符串优先排序 + COUNT(message)会将空字符串计数进去，但是不会将NULL数据们计入 + 可以使用绑定变量搜索某个空字符串，但是不可以这样搜索 …" />
 <meta name="keywords" content="MySQL, 数据库, Database, DB">
-<meta property="og:site_name" content="cad0420 | Andie Chu"/>
+<meta property="og:site_name" content="Sunrise Boulevard"/>
 <meta property="og:title" content="MySQL中NULL与空值的区别"/>
 <meta property="og:description" content="昨天在工作时，出现一个问题：数据库中建表某个字段规定为NOT NULL的，但是插入的相应字段的字符串为""时候，直接插入数据库中，而没有禁止插入。 在网上查了一下，发现在MySQL中，NULL（空）与 ""意义并不相同： StackOverFlow.com上相关问题 "MySQL, better to insert NULL or empty string?" 高票答案： 使用NULL可以区分“没有输入数据”和“输入空数据”， 差异在于： + NULL的长度就是NULL，空字符串的长度为0 + 一串NULL数据比空字符串优先排序 + COUNT(message)会将空字符串计数进去，但是不会将NULL数据们计入 + 可以使用绑定变量搜索某个空字符串，但是不可以这样搜索 …"/>
 <meta property="og:locale" content="en_US"/>
@@ -39,7 +39,7 @@
 <meta property="article:tag" content="DB"/>
 <meta property="og:image" content="/images/me.png">
 
-  <title>cad0420 | Andie Chu &ndash; MySQL中NULL与空值的区别</title>
+  <title>Sunrise Boulevard &ndash; MySQL中NULL与空值的区别</title>
 
 </head>
 <body>
@@ -144,7 +144,7 @@
 
     <footer>
 <p>&copy; Andie Chu </p>
-<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme: created by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>, optimized by <a href="http://andiechu.com" target="_blank">cad0420</a>
 </p>    </footer>
   </main>
 
@@ -156,7 +156,7 @@
 {
   "@context" : "http://schema.org",
   "@type" : "Blog",
-  "name": " cad0420 | Andie Chu ",
+  "name": " Sunrise Boulevard ",
   "url" : "",
   "image": "/images/me.png",
   "description": "cad0420's blogs and works."
