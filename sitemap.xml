@@ -4,574 +4,574 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>/</loc>
-<lastmod>2018-04-26T17:23:29-00:00</lastmod>
+<loc>http://andiechu.com/</loc>
+<lastmod>2018-04-26T17:28:17-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/archives.html</loc>
-<lastmod>2018-04-26T17:23:29-00:00</lastmod>
+<loc>http://andiechu.com/archives.html</loc>
+<lastmod>2018-04-26T17:28:17-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tags.html</loc>
-<lastmod>2018-04-26T17:23:29-00:00</lastmod>
+<loc>http://andiechu.com/tags.html</loc>
+<lastmod>2018-04-26T17:28:17-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/categories.html</loc>
-<lastmod>2018-04-26T17:23:29-00:00</lastmod>
+<loc>http://andiechu.com/categories.html</loc>
+<lastmod>2018-04-26T17:28:17-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/pages/guan-yu-wo.html</loc>
-<lastmod>2018-04-26T17:23:29-00:00</lastmod>
+<loc>http://andiechu.com/pages/guan-yu-wo.html</loc>
+<lastmod>2018-04-26T17:28:17-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/print-cold-inlet-immediately-with-trigger-object-in-max-msp.html</loc>
+<loc>http://andiechu.com/print-cold-inlet-immediately-with-trigger-object-in-max-msp.html</loc>
 <lastmod>2018-04-13T17:08:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/how-to-resize-a-large-sketch.html</loc>
+<loc>http://andiechu.com/how-to-resize-a-large-sketch.html</loc>
 <lastmod>2018-03-26T14:50:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/how-to-use-simpleopenni-on-Processing-3.html</loc>
+<loc>http://andiechu.com/how-to-use-simpleopenni-on-Processing-3.html</loc>
 <lastmod>2018-03-23T10:45:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/geometric-algorithm-if-a-point-is-inside-of-a-polygon.html</loc>
+<loc>http://andiechu.com/geometric-algorithm-if-a-point-is-inside-of-a-polygon.html</loc>
 <lastmod>2018-03-12T17:19:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/Processing-IDE-tips.html</loc>
+<loc>http://andiechu.com/Processing-IDE-tips.html</loc>
 <lastmod>2018-03-11T11:57:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/how-to-learn-max-msp-jitter.html</loc>
+<loc>http://andiechu.com/how-to-learn-max-msp-jitter.html</loc>
 <lastmod>2018-01-11T15:40:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/how-to-be-a-better-PM.html</loc>
+<loc>http://andiechu.com/how-to-be-a-better-PM.html</loc>
 <lastmod>2017-03-07T03:10:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/my-2015.html</loc>
+<loc>http://andiechu.com/my-2015.html</loc>
 <lastmod>2016-01-11T11:08:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/how-to-prevent-bot.html</loc>
+<loc>http://andiechu.com/how-to-prevent-bot.html</loc>
 <lastmod>2015-10-15T21:38:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/about-my-first-product.html</loc>
+<loc>http://andiechu.com/about-my-first-product.html</loc>
 <lastmod>2015-09-29T18:22:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/to-be-a-growth-hacker.html</loc>
+<loc>http://andiechu.com/to-be-a-growth-hacker.html</loc>
 <lastmod>2015-09-17T01:24:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/opponents-analysis-in-online-music-by-2014.html</loc>
+<loc>http://andiechu.com/opponents-analysis-in-online-music-by-2014.html</loc>
 <lastmod>2015-05-09T10:01:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/prepare-for-apple-watch-app-design.html</loc>
+<loc>http://andiechu.com/prepare-for-apple-watch-app-design.html</loc>
 <lastmod>2015-03-28T16:14:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/develop-lbs-on-coding-app.html</loc>
+<loc>http://andiechu.com/develop-lbs-on-coding-app.html</loc>
 <lastmod>2015-03-06T13:35:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/ios-delegation.html</loc>
+<loc>http://andiechu.com/ios-delegation.html</loc>
 <lastmod>2015-01-16T16:23:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/iOS-UI.html</loc>
+<loc>http://andiechu.com/iOS-UI.html</loc>
 <lastmod>2015-01-08T17:31:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/my-2014-review.html</loc>
+<loc>http://andiechu.com/my-2014-review.html</loc>
 <lastmod>2015-01-08T10:39:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/learning-iOS-20141209.html</loc>
+<loc>http://andiechu.com/learning-iOS-20141209.html</loc>
 <lastmod>2014-12-09T13:15:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/learn-redis.html</loc>
+<loc>http://andiechu.com/learn-redis.html</loc>
 <lastmod>2014-11-12T22:56:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/difference-between-null-and-empty-in-mysql.html</loc>
+<loc>http://andiechu.com/difference-between-null-and-empty-in-mysql.html</loc>
 <lastmod>2014-11-07T18:57:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/notes-of-programming-hive-1.html</loc>
+<loc>http://andiechu.com/notes-of-programming-hive-1.html</loc>
 <lastmod>2014-11-03T22:41:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/my-last-week-review.html</loc>
+<loc>http://andiechu.com/my-last-week-review.html</loc>
 <lastmod>2014-03-09T02:06:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/gdg-devfest-woman.html</loc>
+<loc>http://andiechu.com/gdg-devfest-woman.html</loc>
 <lastmod>2014-03-09T02:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/install-java-blog-platform.html</loc>
+<loc>http://andiechu.com/install-java-blog-platform.html</loc>
 <lastmod>2014-02-27T01:47:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/a-coder-destine-to-be.html</loc>
+<loc>http://andiechu.com/a-coder-destine-to-be.html</loc>
 <lastmod>2014-02-22T01:34:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/category/ri-zhi.html</loc>
+<loc>http://andiechu.com/category/ri-zhi.html</loc>
 <lastmod>2018-04-13T17:08:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/maxmspjitter.html</loc>
+<loc>http://andiechu.com/tag/maxmspjitter.html</loc>
 <lastmod>2018-04-13T17:08:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/max.html</loc>
+<loc>http://andiechu.com/tag/max.html</loc>
 <lastmod>2018-04-13T17:08:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/chuang-yi-bian-cheng.html</loc>
+<loc>http://andiechu.com/tag/chuang-yi-bian-cheng.html</loc>
 <lastmod>2018-04-13T17:08:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/ji-qiao.html</loc>
+<loc>http://andiechu.com/tag/ji-qiao.html</loc>
 <lastmod>2018-04-13T17:08:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/tips.html</loc>
+<loc>http://andiechu.com/tag/tips.html</loc>
 <lastmod>2018-04-13T17:08:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/processing.html</loc>
+<loc>http://andiechu.com/tag/processing.html</loc>
 <lastmod>2018-03-26T14:50:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/fen-bian-lu.html</loc>
+<loc>http://andiechu.com/tag/fen-bian-lu.html</loc>
 <lastmod>2018-03-26T14:50:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/creative-coding.html</loc>
+<loc>http://andiechu.com/tag/creative-coding.html</loc>
 <lastmod>2018-03-23T10:45:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/kinect.html</loc>
+<loc>http://andiechu.com/tag/kinect.html</loc>
 <lastmod>2018-03-23T10:45:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/simpleopenni.html</loc>
+<loc>http://andiechu.com/tag/simpleopenni.html</loc>
 <lastmod>2018-03-23T10:45:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/openni.html</loc>
+<loc>http://andiechu.com/tag/openni.html</loc>
 <lastmod>2018-03-23T10:45:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/suan-fa.html</loc>
+<loc>http://andiechu.com/tag/suan-fa.html</loc>
 <lastmod>2018-03-12T17:19:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/ji-he.html</loc>
+<loc>http://andiechu.com/tag/ji-he.html</loc>
 <lastmod>2018-03-12T17:19:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/shu-xue.html</loc>
+<loc>http://andiechu.com/tag/shu-xue.html</loc>
 <lastmod>2018-03-12T17:19:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/pde.html</loc>
+<loc>http://andiechu.com/tag/pde.html</loc>
 <lastmod>2018-03-11T11:57:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/zi-xue.html</loc>
+<loc>http://andiechu.com/tag/zi-xue.html</loc>
 <lastmod>2018-01-11T15:40:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/xue-xi.html</loc>
+<loc>http://andiechu.com/tag/xue-xi.html</loc>
 <lastmod>2018-01-11T15:40:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/jiao-hu-she-ji.html</loc>
+<loc>http://andiechu.com/tag/jiao-hu-she-ji.html</loc>
 <lastmod>2018-01-11T15:40:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/chan-pin-guan-li.html</loc>
+<loc>http://andiechu.com/tag/chan-pin-guan-li.html</loc>
 <lastmod>2017-03-07T03:10:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/chan-pin-jing-li.html</loc>
+<loc>http://andiechu.com/tag/chan-pin-jing-li.html</loc>
 <lastmod>2017-03-07T03:10:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/product-management.html</loc>
+<loc>http://andiechu.com/tag/product-management.html</loc>
 <lastmod>2017-03-07T03:10:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/gong-zuo-zong-jie.html</loc>
+<loc>http://andiechu.com/tag/gong-zuo-zong-jie.html</loc>
 <lastmod>2017-03-07T03:10:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/ri-ji.html</loc>
+<loc>http://andiechu.com/tag/ri-ji.html</loc>
 <lastmod>2017-03-07T03:10:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/ying-xiao.html</loc>
+<loc>http://andiechu.com/tag/ying-xiao.html</loc>
 <lastmod>2015-10-15T21:38:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/feng-kong.html</loc>
+<loc>http://andiechu.com/tag/feng-kong.html</loc>
 <lastmod>2015-10-15T21:38:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/ying-xiao-huo-dong.html</loc>
+<loc>http://andiechu.com/tag/ying-xiao-huo-dong.html</loc>
 <lastmod>2015-10-15T21:38:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/zeng-chang-hei-ke.html</loc>
+<loc>http://andiechu.com/tag/zeng-chang-hei-ke.html</loc>
 <lastmod>2015-09-17T01:24:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/jing-pin-fen-xi.html</loc>
+<loc>http://andiechu.com/tag/jing-pin-fen-xi.html</loc>
 <lastmod>2015-05-09T10:01:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/apple-watch.html</loc>
+<loc>http://andiechu.com/tag/apple-watch.html</loc>
 <lastmod>2015-03-28T16:14:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/chan-pin-fen-xi.html</loc>
+<loc>http://andiechu.com/tag/chan-pin-fen-xi.html</loc>
 <lastmod>2015-03-28T16:14:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/ios.html</loc>
+<loc>http://andiechu.com/tag/ios.html</loc>
 <lastmod>2015-03-06T13:35:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/core-location.html</loc>
+<loc>http://andiechu.com/tag/core-location.html</loc>
 <lastmod>2015-03-06T13:35:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/ke-hu-duan-kai-fa.html</loc>
+<loc>http://andiechu.com/tag/ke-hu-duan-kai-fa.html</loc>
 <lastmod>2015-03-06T13:35:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/delegate.html</loc>
+<loc>http://andiechu.com/tag/delegate.html</loc>
 <lastmod>2015-01-16T16:23:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/dai-li-mo-shi.html</loc>
+<loc>http://andiechu.com/tag/dai-li-mo-shi.html</loc>
 <lastmod>2015-01-16T16:23:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/ui.html</loc>
+<loc>http://andiechu.com/tag/ui.html</loc>
 <lastmod>2015-01-08T17:31:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/bi-ji.html</loc>
+<loc>http://andiechu.com/tag/bi-ji.html</loc>
 <lastmod>2014-12-09T13:15:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/redis.html</loc>
+<loc>http://andiechu.com/tag/redis.html</loc>
 <lastmod>2014-11-12T22:56:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/nosql.html</loc>
+<loc>http://andiechu.com/tag/nosql.html</loc>
 <lastmod>2014-11-12T22:56:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/hou-duan-kai-fa.html</loc>
+<loc>http://andiechu.com/tag/hou-duan-kai-fa.html</loc>
 <lastmod>2014-11-12T22:56:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/mysql.html</loc>
+<loc>http://andiechu.com/tag/mysql.html</loc>
 <lastmod>2014-11-07T18:57:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/shu-ju-ku.html</loc>
+<loc>http://andiechu.com/tag/shu-ju-ku.html</loc>
 <lastmod>2014-11-07T18:57:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/database.html</loc>
+<loc>http://andiechu.com/tag/database.html</loc>
 <lastmod>2014-11-07T18:57:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/db.html</loc>
+<loc>http://andiechu.com/tag/db.html</loc>
 <lastmod>2014-11-07T18:57:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/hive.html</loc>
+<loc>http://andiechu.com/tag/hive.html</loc>
 <lastmod>2014-11-03T22:41:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/gdg.html</loc>
+<loc>http://andiechu.com/tag/gdg.html</loc>
 <lastmod>2014-03-09T02:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/gu-ge-kai-fa-zhe-she-qu.html</loc>
+<loc>http://andiechu.com/tag/gu-ge-kai-fa-zhe-she-qu.html</loc>
 <lastmod>2014-03-09T02:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/dev-fest.html</loc>
+<loc>http://andiechu.com/tag/dev-fest.html</loc>
 <lastmod>2014-03-09T02:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/java.html</loc>
+<loc>http://andiechu.com/tag/java.html</loc>
 <lastmod>2014-02-27T01:47:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tag/xia-gu-dao.html</loc>
+<loc>http://andiechu.com/tag/xia-gu-dao.html</loc>
 <lastmod>2014-02-27T01:47:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/author/andie-chu.html</loc>
+<loc>http://andiechu.com/author/andie-chu.html</loc>
 <lastmod>2018-04-13T17:08:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
