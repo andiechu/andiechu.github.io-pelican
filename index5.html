@@ -69,6 +69,37 @@
 
 <article>
   <header>
+    <h2><a href="http://andiechu.com/difference-between-null-and-empty-in-mysql.html#difference-between-null-and-empty-in-mysql">MySQL中NULL与空值的区别</a></h2>
+    <p>
+          Posted on 2014年11月07日 in <a href="http://andiechu.com/category/ri-zhi.html">日志</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="http://andiechu.com/tag/mysql.html">MySQL</a>,              <a href="http://andiechu.com/tag/shu-ju-ku.html">数据库</a>,              <a href="http://andiechu.com/tag/database.html">Database</a>,              <a href="http://andiechu.com/tag/db.html">DB</a>
+    </p>
+  </header>
+  <div>
+      <p>昨天在工作时，出现一个问题：数据库中建表某个字段规定为<code>NOT NULL</code>的，但是插入的相应字段的字符串为<code>""</code>时候，直接插入数据库中，而没有禁止插入。</p>
+<p>在网上查了一下，发现在MySQL中，<code>NULL</code>（空）与 <code>""</code>意义并不相同：</p>
+<!--more-->
+
+<ul>
+<li>StackOverFlow.com上相关问题 <a href="http://stackoverflow.com/questions/1267999/mysql-better-to-insert-null-or-empty-string">"MySQL, better to insert NULL or empty string?"</a> 高票答案：</li>
+</ul>
+<p>使用<code>NULL</code>可以区分“没有输入数据”和“输入空数据”， 差异在于：
+  + <code>NULL</code>的长度就是<code>NULL</code>，空字符串的长度为<code>0</code>
+  + 一串<code>NULL</code>数据比空字符串优先排序
+  + <code>COUNT(message)</code>会将空字符串计数进去，但是不会将<code>NULL</code>数据们计入
+  + 可以使用绑定变量搜索某个空字符串，但是不可以这样搜索 …</p>
+      <br>
+      <a class="btn" href="http://andiechu.com/difference-between-null-and-empty-in-mysql.html#difference-between-null-and-empty-in-mysql">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
     <h2><a href="http://andiechu.com/notes-of-programming-hive-1.html#notes-of-programming-hive-1">Programming Hive 笔记 (I)</a></h2>
     <p>
           Posted on 2014年11月03日 in <a href="http://andiechu.com/category/ri-zhi.html">日志</a>
@@ -188,32 +219,13 @@
       <a class="btn" href="http://andiechu.com/install-java-blog-platform.html#install-java-blog-platform">    Continue reading
 </a>
   </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="http://andiechu.com/a-coder-destine-to-be.html#a-coder-destine-to-be">毕业两年总结展望（I）之事业：我是要做程序员的姑娘！</a></h2>
-    <p>
-          Posted on 2014年02月22日 in <a href="http://andiechu.com/category/ri-zhi.html">日志</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="http://andiechu.com/tag/gong-zuo-zong-jie.html">工作总结</a>,              <a href="http://andiechu.com/tag/ri-ji.html">日记</a>
-    </p>
-  </header>
-  <div>
-      <p>过往的两年里发生了很多事。由于我已经慢慢丧失了写博客的习惯，因此很多东西也慢慢的被遗忘了。但是不能被遗忘的始终是大四和刚毕业大半年对未来和自我定位的失落和迷惘。如今距离那段日子已有快两年之久，生活也随着岁月的慢慢流逝而渐渐趋于稳定——当然了，对于我来说，是如滚滚长江中央一座磐石一样的稳定，而非四季如春的山谷中花朵般的稳定。在2014新年时，我就想做一下总结，但是一直却犹豫，今天或许可以写一下这一年中的历程。</p>
-<!--more-->
-
-<p>刚刚毕业时，我怀揣着一个目前根本不可能实现的“梦想”，其实也是对自己的迷茫，回到北京。当我发现我就是在发梦时，我开始渐渐清醒，想那么就做一个公关吧！毕竟大学时候我也认真的为它投入过。当时面试了几家公司的实习生，只有P公司的digital组要了我。于是我就成为了国贸那边的一枚朝九晚六的小实习生。那段时间我工作的并不投入，渐渐的也看清楚了到底PR是什么，感觉不到这份职业有实质性的创造。在帮忙运营官方微博的时候，我开始觉得“无非就是这个样”，是的，杜蕾斯的微博、肯德基的人人，做的很成功，但是似乎又没创造出什么贡献。或许是我这个人太急功近利，看不到品牌维护和提升中，这些小动作到底做了多少贡献。但是在我看来的是，PR这种东西也是有某种曲线规律的，当公司自己的策略适当、自己的发展恰好到了那个时候，PR才会发出巨大的效果；但是当公司自己的策略都不得当时，PR做的功远远抵消不了公司自己产生的反作用效果。而且我也通过这些社交网络，看了很多人丑恶的一面，包括我自己 …</p>
-      <br>
-      <a class="btn" href="http://andiechu.com/a-coder-destine-to-be.html#a-coder-destine-to-be">    Continue reading
-</a>
-  </div>
 </article>
 
   <div class="pagination">
+    <a class="btn" href="http://andiechu.com/index6.html">
+      <i class="fa fa-angle-left"></i>     Older Posts
+
+    </a>
     <a class="btn float-right" href="http://andiechu.com/index4.html">
           Newer Posts
  <i class="fa fa-angle-right"></i>

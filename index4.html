@@ -69,6 +69,34 @@
 
 <article>
   <header>
+    <h2><a href="http://andiechu.com/ios-delegation.html#ios-delegation">iOS 开发学习笔记：Delegation 的理解</a></h2>
+    <p>
+          Posted on 2015年01月16日 in <a href="http://andiechu.com/category/ri-zhi.html">日志</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="http://andiechu.com/tag/ios.html">iOS</a>,              <a href="http://andiechu.com/tag/delegate.html">delegate</a>,              <a href="http://andiechu.com/tag/dai-li-mo-shi.html">代理模式</a>,              <a href="http://andiechu.com/tag/ke-hu-duan-kai-fa.html">客户端开发</a>
+    </p>
+  </header>
+  <div>
+      <p>iOS中的 delegation 对于我来说一直比较难以理解，这个代理模式按照字面看不难，但是深层次就比较难以理解了。在网上查了很多资料，理清了下思路：</p>
+<ul>
+<li><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/CocoaEncyclopedia/DelegatesandDataSources/DelegatesandDataSources.html#//apple_ref/doc/uid/TP40010810-CH11-SW1">Apple 官方文档：Concepts in Objective-C 中的 Delegates and Data Source 章节</a></li>
+<li><a href="http://programmers.stackexchange.com/a/190400/80422">What is Delegation and why is it important in iOS programming?</a></li>
+<li><a href="http://www.raywenderlich.com/46988/ios-design-patterns">Raywenderlich.com 的 iOS Design Pattern 教程</a></li>
+</ul>
+<p>理解：</p>
+<ul>
+<li>松耦合：使得 A 类（delegate）依赖于 B 类（delegating 类），而不让 B 类知晓 …</li></ul>
+      <br>
+      <a class="btn" href="http://andiechu.com/ios-delegation.html#ios-delegation">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
     <h2><a href="http://andiechu.com/iOS-UI.html#iOS-UI">iOS 开发学习笔记：界面的自定义</a></h2>
     <p>
           Posted on 2015年01月08日 in <a href="http://andiechu.com/category/ri-zhi.html">日志</a>
@@ -181,37 +209,6 @@
 <p><code>shell …</code></p>
       <br>
       <a class="btn" href="http://andiechu.com/learn-redis.html#learn-redis">    Continue reading
-</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="http://andiechu.com/difference-between-null-and-empty-in-mysql.html#difference-between-null-and-empty-in-mysql">MySQL中NULL与空值的区别</a></h2>
-    <p>
-          Posted on 2014年11月07日 in <a href="http://andiechu.com/category/ri-zhi.html">日志</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="http://andiechu.com/tag/mysql.html">MySQL</a>,              <a href="http://andiechu.com/tag/shu-ju-ku.html">数据库</a>,              <a href="http://andiechu.com/tag/database.html">Database</a>,              <a href="http://andiechu.com/tag/db.html">DB</a>
-    </p>
-  </header>
-  <div>
-      <p>昨天在工作时，出现一个问题：数据库中建表某个字段规定为<code>NOT NULL</code>的，但是插入的相应字段的字符串为<code>""</code>时候，直接插入数据库中，而没有禁止插入。</p>
-<p>在网上查了一下，发现在MySQL中，<code>NULL</code>（空）与 <code>""</code>意义并不相同：</p>
-<!--more-->
-
-<ul>
-<li>StackOverFlow.com上相关问题 <a href="http://stackoverflow.com/questions/1267999/mysql-better-to-insert-null-or-empty-string">"MySQL, better to insert NULL or empty string?"</a> 高票答案：</li>
-</ul>
-<p>使用<code>NULL</code>可以区分“没有输入数据”和“输入空数据”， 差异在于：
-  + <code>NULL</code>的长度就是<code>NULL</code>，空字符串的长度为<code>0</code>
-  + 一串<code>NULL</code>数据比空字符串优先排序
-  + <code>COUNT(message)</code>会将空字符串计数进去，但是不会将<code>NULL</code>数据们计入
-  + 可以使用绑定变量搜索某个空字符串，但是不可以这样搜索 …</p>
-      <br>
-      <a class="btn" href="http://andiechu.com/difference-between-null-and-empty-in-mysql.html#difference-between-null-and-empty-in-mysql">    Continue reading
 </a>
   </div>
 </article>
