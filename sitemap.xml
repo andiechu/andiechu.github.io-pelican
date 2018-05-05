@@ -5,35 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://andiechu.com/</loc>
-<lastmod>2018-05-05T23:10:44-00:00</lastmod>
+<lastmod>2018-05-05T23:13:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://andiechu.com/archives.html</loc>
-<lastmod>2018-05-05T23:10:44-00:00</lastmod>
+<lastmod>2018-05-05T23:13:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://andiechu.com/tags.html</loc>
-<lastmod>2018-05-05T23:10:44-00:00</lastmod>
+<lastmod>2018-05-05T23:13:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://andiechu.com/categories.html</loc>
-<lastmod>2018-05-05T23:10:44-00:00</lastmod>
+<lastmod>2018-05-05T23:13:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://andiechu.com/pages/guan-yu-wo.html</loc>
-<lastmod>2018-05-05T23:10:44-00:00</lastmod>
+<lastmod>2018-05-05T23:13:56-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -250,14 +250,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://andiechu.com/tag/ji-qiao.html</loc>
-<lastmod>2018-05-05T15:16:00+08:06</lastmod>
+<lastmod>2018-04-13T17:08:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://andiechu.com/tag/tips.html</loc>
-<lastmod>2018-05-05T15:16:00+08:06</lastmod>
+<lastmod>2018-04-13T17:08:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
