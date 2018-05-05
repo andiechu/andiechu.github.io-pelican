@@ -21,25 +21,24 @@
 
 
 <meta name="author" content="Andie Chu" />
-<meta name="description" content="MAX/MSP 中的 message（信息）是最让人迷惑的一个对象（或者不应该称为对象），我们经常能够看到它扮演着不同角色出现在各种操作中。是时候总结一下它的用法了。" />
-<meta name="keywords" content="Max/MSP/Jitter, Max, 创意编程, Creative Coding">
+<meta name="description" content="最害怕庞大的 Max 文件了。要是有个哆啦A梦的口袋就好了。" />
+<meta name="keywords" content="Max/MSP/Jitter, Max, 创意编程">
 <meta property="og:site_name" content="Sunrise Boulevard"/>
-<meta property="og:title" content="浅谈 Max/MSP 中 message 的用途"/>
-<meta property="og:description" content="MAX/MSP 中的 message（信息）是最让人迷惑的一个对象（或者不应该称为对象），我们经常能够看到它扮演着不同角色出现在各种操作中。是时候总结一下它的用法了。"/>
+<meta property="og:title" content="Max/MSP 中的打包操作"/>
+<meta property="og:description" content="最害怕庞大的 Max 文件了。要是有个哆啦A梦的口袋就好了。"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="http://andiechu.com/the-usage-of-message-in-max-msp.html"/>
+<meta property="og:url" content="http://andiechu.com/how-to-encapsulate-in-max-msp.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2018-05-05 15:16:00+08:00"/>
-<meta property="article:modified_time" content="2018-05-05 15:16:00+08:00"/>
+<meta property="article:published_time" content="2018-05-05 23:34:00+08:00"/>
+<meta property="article:modified_time" content="2018-05-05 23:34:00+08:00"/>
 <meta property="article:author" content="http://andiechu.com/author/andie-chu.html">
 <meta property="article:section" content="日志"/>
 <meta property="article:tag" content="Max/MSP/Jitter"/>
 <meta property="article:tag" content="Max"/>
 <meta property="article:tag" content="创意编程"/>
-<meta property="article:tag" content="Creative Coding"/>
 <meta property="og:image" content="/images/me.png">
 
-  <title>Sunrise Boulevard &ndash; 浅谈 Max/MSP 中 message 的用途</title>
+  <title>Sunrise Boulevard &ndash; Max/MSP 中的打包操作</title>
 
 </head>
 <body>
@@ -76,7 +75,7 @@
 
 <article class="single">
   <header>
-    <h1 id="the-usage-of-message-in-max-msp">浅谈 Max/MSP 中 message 的用途</h1>
+    <h1 id="how-to-encapsulate-in-max-msp">Max/MSP 中的打包操作</h1>
     <p>
           Posted on 2018年05月05日 in <a href="http://andiechu.com/category/ri-zhi.html">日志</a>
 
@@ -86,44 +85,43 @@
 
 
   <div>
-    <ul>
-<li>
-<p>message box 的功能和用途：</p>
-</li>
-<li>
-<p>点击时生成信息</p>
-</li>
-<li>当一个信息被收到时，生成新的信息</li>
-<li>储存并创建混合类型（文本、数字和列表型）的数据</li>
-<li>展示输入的信息</li>
-<li>
-<p>用在其他对象上的指令（比如 open message、reset message）</p>
-</li>
-<li>
-<p>变量的占位符：<code>$1</code>、<code>$2</code> 等</p>
-</li>
-<li>
-<p>参数的用法：</p>
+    <h2>0x00 随手打包：使用 patcher 对象进行打包</h2>
 <ul>
-<li><code>append</code> 和 <code>prepend</code>，在输入的信息后面或者前面加上特定的信息段</li>
+<li>使用对象：<code>patcher</code>（简称 <code>p</code>）</li>
+<li>其他使用的对象：<code>inlet</code> 和 <code>outlet</code></li>
+<li>具体使用方法：新建 patcher 对象，并且在新弹出的窗口中创建自己的模块化逻辑。使用 inlet 作为输入的代替；outlet 作为输出的代替。或者选中要打包的对象，按 <code>CMD/Control</code> + <code>SHIFT</code> + <code>E</code> 快捷键，快速新建并打包好一个 patcher. </li>
 </ul>
+<h2>0x01 多次复用：抽象操作（Abstraction）</h2>
+<p>上述 subpatcher 方法虽然简单，但是不太方便复用。Max/MSP 中还有另一个方法可以重新实现这一点，这个方法叫做——抽象操作（abstraction）。</p>
+<p>创建一个 abstraction 其实酒是新建一个 patcher 并保存在另一个独立的文件中（须要在 Max 定义的文件路径中）。然后你就可以像新建一个对象一样，可以直接写它的名字进行使用。</p>
+<p>在 abstraction 的 patcher 中加入 <code>#1</code>、<code>#2</code> 这类占位符，代表它的参数，如下图所示：</p>
+<p><img alt="Abstraction 的用法及参数的使用" src="/images/maxmsp/create-abstraction.png"></p>
+<h2>0x02 白盒打包：<code>bpatcher</code></h2>
+<p>以上两种方法在使用时，在不打开包文件的时候是看不到包内各种数据的变化，只能看到输入对输出结果的影响——所谓的“黑盒”操作。但是如果我们想要看到包内的各种对象是怎么变化的呢？这时我们就需要 <code>bpatcher</code> 对象。</p>
+<p>使用方法：</p>
+<ol>
+<li>
+<p>新建一个文件，把你想要的对象、inlet、outlet 全放进去，然后保存为一个 abstraction
+    <img alt="新建一个abstraction" src="/images/maxmsp/create-bpatcher-1.png"></p>
 </li>
 <li>
-<p>使用 message 作为指令：</p>
-<ul>
-<li>改变下一个对象的外观，例如：<code>bgcolor 0.1 0. 0. 1.</code></li>
-<li><code>set</code> 改变 message box 的值重置，并且<strong>改变时不输出结果</strong>。因此，使用 <code>set</code> 可以达到输出不影响对后续对象的效果，如下个例子所示（另外，这个例子如果想要 output，可以在第二个 number box 上加一个 bang）：</li>
-</ul>
-<p><img alt="两个 number box 后面的 message box 值不变" src="/images/maxmsp/use-set-in-message.png"></p>
+<p>在主文件中，新建一个 bpatcher 对象。</p>
 </li>
-</ul>
+<li>
+<p>选择这个 bpatcher 对象，并打开检视器，在监视器中的 <code>Fatcher File</code> 中选择刚才你保存的 abstraction
+    <img alt="新建 bpatcher" src="/images/maxmsp/create-bpatcher-2.png"></p>
+</li>
+<li>
+<p>搞掂！随心所欲的用吧。
+    <img alt="可以看到 UI 的哦" src="/images/maxmsp/create-bpatcher-3.png"></p>
+</li>
+</ol>
   </div>
   <div class="tag-cloud">
     <p>
       <a href="http://andiechu.com/tag/maxmspjitter.html">Max/MSP/Jitter</a>
       <a href="http://andiechu.com/tag/max.html">Max</a>
       <a href="http://andiechu.com/tag/chuang-yi-bian-cheng.html">创意编程</a>
-      <a href="http://andiechu.com/tag/creative-coding.html">Creative Coding</a>
     </p>
   </div>
 

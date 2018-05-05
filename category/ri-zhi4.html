@@ -70,6 +70,50 @@
 
 <article>
   <header>
+    <h2><a href="http://andiechu.com/develop-lbs-on-coding-app.html#develop-lbs-on-coding-app">为Coding iOS 客户端添加 LBS 定位功能</a></h2>
+    <p>
+          Posted on 2015年03月06日 in <a href="http://andiechu.com/category/ri-zhi.html">日志</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="http://andiechu.com/tag/ios.html">iOS</a>,              <a href="http://andiechu.com/tag/core-location.html">Core Location</a>,              <a href="http://andiechu.com/tag/ke-hu-duan-kai-fa.html">客户端开发</a>
+    </p>
+  </header>
+  <div>
+      <h2>I 准备工作</h2>
+<h3>项目中的需要考虑的问题与难点</h3>
+<ol>
+<li>
+<p>地点信息怎样获取？怎样显示在地图上？</p>
+<p>Core Location Framework : 如何获得权限？以及向前（&lt; iOS 8）兼容的代码如何实现？</p>
+</li>
+<li>
+<p>周边情况如何获取？大众点评或者其他的SDK吗？</p>
+<p>难点：如果用了别人的SDK，自己创建一个地点，怎么保存？只是保存在自己手机中，还是怎样？</p>
+</li>
+<li>
+<p>搜索用什么方法实现？</p>
+</li>
+<li>
+<p>储存的格式？怎样实现的？</p>
+</li>
+<li>
+<p>界面的实现：统一自定义的 View 的设计——刷新时候的插件？搜索框？还有其他的……都如何实现？</p>
+</li>
+</ol>
+<h3>分析结构</h3>
+<ul>
+<li>“冒泡”页面中，每个 cell 都加一个显示地点的 UIButton，点击该地点 button 打开一个新视图，显示该地点的具体信息（或打开地图显示信息）</li>
+<li>“发布新冒泡”页面，加入一个“添加一个地点”的 UIButton …</li></ul>
+      <br>
+      <a class="btn" href="http://andiechu.com/develop-lbs-on-coding-app.html#develop-lbs-on-coding-app">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
     <h2><a href="http://andiechu.com/ios-delegation.html#ios-delegation">iOS 开发学习笔记：Delegation 的理解</a></h2>
     <p>
           Posted on 2015年01月16日 in <a href="http://andiechu.com/category/ri-zhi.html">日志</a>
@@ -167,49 +211,6 @@
 <li><code>串联图（Storyboard）</code>步骤中，Xcode 6 中会出现按照教程中步骤创建完 Storyboard 无法启动模拟器、程序 crash 掉的现象，新创建的这个串联图也并没有教程中所说的“箭头”产生。这是因为默认新创建的 …</li></ul>
       <br>
       <a class="btn" href="http://andiechu.com/learning-iOS-20141209.html#learning-iOS-20141209">    Continue reading
-</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="http://andiechu.com/learn-redis.html#learn-redis">Redis学习笔记</a></h2>
-    <p>
-          Posted on 2014年11月12日 in <a href="http://andiechu.com/category/ri-zhi.html">日志</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="http://andiechu.com/tag/redis.html">redis</a>,              <a href="http://andiechu.com/tag/nosql.html">NoSQL</a>,              <a href="http://andiechu.com/tag/bi-ji.html">笔记</a>,              <a href="http://andiechu.com/tag/xue-xi.html">学习</a>,              <a href="http://andiechu.com/tag/hou-duan-kai-fa.html">后端开发</a>
-    </p>
-  </header>
-  <div>
-      <h2>Redis 介绍</h2>
-<ul>
-<li>Redis 是一种“key-value”的存储，通常被当做一个NoSQL数据库</li>
-<li>原子操作：<code>INCR</code></li>
-</ul>
-<h2>基本操作</h2>
-<ul>
-<li><code>SET</code> 负责<strong>永久</strong>存储一个数值在指定的键上；<code>SETNX</code> = set if key not exit：</li>
-</ul>
-<p><code>shell
-    SET key some-value</code></p>
-<ul>
-<li><code>GET</code> 负责读取一个键对应的值：</li>
-</ul>
-<p><code>shell
-    GET key</code></p>
-<ul>
-<li><code>DEL</code> 操作删除一个key；<code>INCR</code> 自增</li>
-<li><code>EXPIRE</code> 定时过期：</li>
-</ul>
-<p><code>shell
-    EXPIRE key second</code></p>
-<p><code>TTL</code> 过期前的剩余时间，返回值是-2则表示key已不存在，-1表示永远不会过期。如果 <code>SET</code> 了key，它的 <code>TTL</code> 会被重置：</p>
-<p><code>shell …</code></p>
-      <br>
-      <a class="btn" href="http://andiechu.com/learn-redis.html#learn-redis">    Continue reading
 </a>
   </div>
 </article>
