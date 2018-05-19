@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>浅谈 Max/MSP 中 message 的用途</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/guan-yu-wo.html">关于我</a></li>
+                    <li class="active"><a href="/category/ri-zhi.html">日志</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/the-usage-of-message-in-max-msp.html" rel="bookmark"
+           title="Permalink to 浅谈 Max/MSP 中 message 的用途">浅谈 Max/MSP 中 message 的用途</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-05T15:16:00+00:00">
+                Published: 六 05 五月 2018
+        </abbr>
+		<br />
+        <abbr class="modified" title="2018-05-08T18:37:00+00:00">
+                Updated: 二 08 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/maxmspjitter.html">Max/MSP/Jitter</a> <a href="/tag/max.html">Max</a> <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a> </p>
+</footer><!-- /.post-info -->      <ul>
+<li>
+<p>message box 的功能和用途：</p>
+</li>
+<li>
+<p>点击时生成信息</p>
+</li>
+<li>当一个信息被收到时，生成新的信息</li>
+<li>储存并创建混合类型（文本、数字和列表型）的数据</li>
+<li>展示输入的信息</li>
+<li>
+<p>用在其他对象上的指令（比如 open message、reset message）</p>
+</li>
+<li>
+<p>变量的占位符：<code>$1</code>、<code>$2</code> 等</p>
+</li>
+<li>
+<p>参数的用法：</p>
+<ul>
+<li><code>append</code> 和 <code>prepend</code>，在输入的信息后面或者前面加上特定的信息段</li>
+</ul>
+</li>
+<li>
+<p>使用 message 作为指令：</p>
+<ul>
+<li>改变下一个对象的外观，例如：<code>bgcolor 0.1 0. 0. 1.</code></li>
+<li>
+<p><code>set</code> 改变 message box 的值重置，并且<strong>改变时不输出结果</strong>。因此，使用 <code>set</code> 可以达到输出不影响对后续对象的效果，如下个例子所示（另外，这个例子如果想要 output，可以在第二个 number box 上加一个 bang）：</p>
+<p><img alt="两个 number box 后面的 message box 值不变" src="/images/maxmsp/use-set-in-message.png"></p>
+</li>
+<li>
+<p>如果想要知道某个对象的输入端口可以接收什么指令或 message，按住 <code>Control + 鼠标右击</code>，即可弹出这个端口接收的指令。</p>
+<p><img alt="查看接收指令" src="/images/maxmsp/see-inlet-message-list.png"></p>
+</li>
+</ul>
+</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

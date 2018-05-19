@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>如何缩放比屏幕尺寸大的 Processing 草图</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/guan-yu-wo.html">关于我</a></li>
+                    <li class="active"><a href="/category/ri-zhi.html">日志</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/how-to-resize-a-large-sketch.html" rel="bookmark"
+           title="Permalink to 如何缩放比屏幕尺寸大的 Processing 草图">如何缩放比屏幕尺寸大的 Processing 草图</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-26T14:50:00+00:00">
+                Published: 一 26 三月 2018
+        </abbr>
+		<br />
+        <abbr class="modified" title="2018-03-26T14:50:00+00:00">
+                Updated: 一 26 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/processing.html">Processing</a> <a href="/tag/fen-bian-lu.html">分辨率</a> </p>
+</footer><!-- /.post-info -->      <h2>Q：</h2>
+<p>如果 size() 方法设置的尺寸比电脑分辨率大，怎么才能看到屏幕以外的部分呢？</p>
+<h2>A：</h2>
+<p>Processing 虽然有一个 Presentation Mode，但是实际上它没有自己缩放的功能。所以说，我们只能靠自己在绘图过程中进行缩放。</p>
+<p>目前可以想到的方法有以下两种：</p>
+<h3>0x00 一种方法是使用 <code>scale()</code> 函数</h3>
+<p>需要在 draw() 函数里面第一行就加上 <code>scale()</code> 方法。</p>
+<p><em>具体使用方法见 <a href="https://www.processing.org/reference/scale_.html">scale() reference</a></em></p>
+<h3>0x01 另一种方法是使用 <code>PGraphics</code></h3>
+<ol>
+<li>绘图时，新建一个 <code>PGraphics</code> 图层</li>
+<li>将所有图形按照你需要的原始尺寸绘制在这个图层上（使用方法：<a href="https://www.processing.org/reference/PGraphics.html">PGraphics reference</a>）</li>
+<li>最后使用 <code>PGraphics</code> 对象的 <code>image(pgraphic, 0, 0, your_width, your_height)</code> 方法把图像缩放为你屏幕的大小。</li>
+</ol>
+<p><strong>一个示例</strong></p>
+<ul>
+<li>
+<p>没有缩放的代码：</p>
+<div class="highlight"><pre><span></span>void setup() {
+    size(2000, 1000); // 创建一个2000x1000的草图
+}
+
+void draw() {
+    fill(255);
+    noStroke();
+    rect(500, 100, 1000, 500);
+    fill(0);
+    rect(0, 200, width, 100);
+    noFill();
+    strokeWeight(2);
+    stroke(255,0,0);
+    rect(0, 0, width, height);
+}
+</pre></div>
+
+
+<p>由于我的屏幕分辨率是1280x800，运行后显示不全：</p>
+<p><img alt="显示不全的草图" src="/images/resize-sketch/broken.png"></p>
+</li>
+<li>
+<p>按照第一种方法修改：</p>
+<div class="highlight"><pre><span></span>void setup() {
+  size(2000, 1000); // 创建一个2000x1000的草图
+}
+
+void draw() {
+  scale(1280/2000.0); // 因为我的屏幕分辨率是1280x800，所以除一下得到比例数值
+
+  fill(255);
+  noStroke();
+  rect(500, 100, 1000, 500);
+  fill(0);
+  rect(0, 200, width, 100);
+  noFill();
+  strokeWeight(2);
+  stroke(255,0,0);
+  rect(0, 0, width, height);
+}
+</pre></div>
+
+
+<p>窗口依然是2000x1000，但是图像缩小到1280宽度了：</p>
+<p><img alt="scale 函数效果" src="/images/resize-sketch/scale.png"></p>
+</li>
+<li>
+<p>按照第二种方法修改：</p>
+<div class="highlight"><pre><span></span>PGraphics graphic;  // 新建一个PG图层
+
+void setup() {
+  fullScreen(); // 创建一个全屏的草图，相当于：size(你屏幕宽度, 你屏幕高度)
+  graphic = createGraphics(2000, 1000); // 你需要的尺寸的图层
+}
+
+void draw() {
+  graphic.beginDraw();
+
+  graphic.fill(255);
+  graphic.noStroke();
+  graphic.rect(500, 100, 1000, 500);
+  graphic.fill(0);
+  graphic.rect(0, 200, graphic.width, 100);
+  graphic.noFill();
+  graphic.strokeWeight(2);
+  graphic.stroke(255,0,0);
+  graphic.rect(0, 0, graphic.width, graphic.height);
+
+  graphic.endDraw();
+
+  image(graphic, 0, 0, 1280, 640);  // 我的屏幕分辨率是1280x800，所以将2000x1000的草图等比例缩放到1280x640，你可以根据你的需要更改这两个参数
+</pre></div>
+
+
+<p>效果如下：</p>
+<p><img alt="PGraphics 效果" src="/images/resize-sketch/pg.png"></p>
+</li>
+</ul>
+<hr>
+<p>最后总结：这两种方法都是直接把图像缩小，而不只是缩放预览效果，只能用来临时看图像的效果，无论哪种都比较低效，所以建议还是尽量避免这种情况的发生。</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

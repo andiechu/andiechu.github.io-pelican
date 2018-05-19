@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>艺术展上机器学习环境的搭建与配置记录</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/guan-yu-wo.html">关于我</a></li>
+                    <li class="active"><a href="/category/ri-zhi.html">日志</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/installing-and-configuring-for-machine-learning-enviroment-of-ai-art.html" rel="bookmark"
+           title="Permalink to 艺术展上机器学习环境的搭建与配置记录">艺术展上机器学习环境的搭建与配置记录</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-15T14:46:00+00:00">
+                Published: 二 15 五月 2018
+        </abbr>
+		<br />
+        <abbr class="modified" title="2018-05-19T10:58:00+00:00">
+                Updated: 六 19 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/ji-qi-xue-xi.html">机器学习</a> <a href="/tag/machine-learning.html">Machine Learning</a> <a href="/tag/ren-gong-zhi-neng.html">人工智能</a> </p>
+</footer><!-- /.post-info -->      <p>最近公司要办一个艺术展，主要都是通过人工智能生成的互动作品。为了运行这些作品，我帮助公司配置了5台计算机作为开发环境。Linux 系统上坑比较多，这里记录一下碰到的问题，给以后其他人做一个参考。</p>
+<h2>0x00 硬件准备</h2>
+<ul>
+<li>一台安装了 Linux 的 PC（具体安装方法如下文所示）</li>
+<li>最关键的是显卡的性能：至少 4 GB VRAM 的 NVIDIA 显卡（推荐 GTX 1080 ti 或 Titan X, GTX 1070 或 1060 也可以。GTX 1050 或许也可以，但是可能帧数会比较低、会出现卡顿）</li>
+<li>CPU：虽然没有显卡的参数重要，但是对最小处理速度仍然有要求，推荐是 Intel i5 及以上的配置。内存 16 GB 以上性能会比较好。</li>
+</ul>
+<h2>0x01 安装 Ubuntu 16.04 LTS</h2>
+<p>目前推荐的系统是 Ubuntu 16.04 LTS 发行版，但是 17.x（稳定版本的）也可以。Debian 理论上也可以，喜欢折腾的同学可以试着安装看看。</p>
+<h4>1. 制作 U 盘安装盘</h4>
+<h4>2. 安装</h4>
+<p>分区是朋友推荐的最简化的分区方案：</p>
+<ul>
+<li>/ ext4 主分区 100GB （放在硬盘扇区的头上）</li>
+<li>swap 16GB</li>
+<li>/home ext4 主分区 剩下的硬盘空间全部放这个，不分 /usr 等其他分区了</li>
+</ul>
+<h2>0x02 安装相关支持软件和 GPU 驱动</h2>
+<h4>1. 支持性软件的安装</h4>
+<h5>a. ShadowSocks 安装和配置</h5>
+<ol>
+<li>Linux 下使用 qt5 版本，<a href="https://github.com/shadowsocks/shadowsocks-qt5/realeases">去 Github 下载</a>，可以选择 .AppImage 版本</li>
+<li>进入下载所在的文件夹后，首先给它添加可执行权限：<code>chmod a+x Shadowsocks-Qt5-VERSION-PLATFORM.AppImage</code></li>
+<li>可以直接执行这个文件了</li>
+<li>给浏览器增加代理插件，比如 SwitchyOmega 等。各种配置都不再详细阐述</li>
+</ol>
+<h5>b. 安装 git</h5>
+<p>按照<a href="https://git-scm.com/download/linux">官网的安装指示</a>安装。由于我的系统用的是 LTS 版本，所以按照稳定版的 Git 安装。</p>
+<h5>c. 编辑器安装（atom）</h5>
+<ol>
+<li>官网下载 .deb 的安装包</li>
+<li>到下载的目录下，执行：<code>sudo dpkg -i atom-VERSION.deb</code></li>
+</ol>
+<h5>d. 安装 CUDA Toolkit 9.0</h5>
+<p>按照<a href="https://gist.github.com/zhanwenchen/e520767a409325d9961072f666815bb8">这个英文教程</a>安装</p>
+<p>需要注意的是，我们需要安装的是 9.0 版本，而不是最新的 9.1 版本（也许 9.1 版本也可以用，但是安装 9.1 时，不应该再按照上述英文教程安装 384 的驱动，而应该安装 9.1 适配的 387 版本。这个有兴趣的同学可以自行探索，我之后有时间也会折腾一下试试。）</p>
+<p>这里有几个问题：</p>
+<ol>
+<li>勘误：文中安装驱动时的指令 <code>sudo apt-get nvidia-384 nvidia-modprobe</code> 应为 <code>sudo apt-get install nvidia-384 nvidia-modprobe</code></li>
+<li>CUDA Toolkit 9.0 的下载地址是 <a href="https://developer.nvidia.com/cuda-90-download-archive?target_os=Linux">https://developer.nvidia.com/cuda-90-download-archive?target_os=Linux</a>。安装按照 NVIDIA 官网上的安装指令操作。安装时，在询问是否要安装 driver 的时候，选择否（n）。其他安装问题和路径问题都选择是（y）即可。</li>
+</ol>
+<h5>e. 安装 NVIDIA 的 cuDNN</h5>
+<p>cuDNN 下载地址是：<a href="http://developer.nvidia.com/rdp/cudnn-download">http://developer.nvidia.com/rdp/cudnn-download</a> </p>
+<p>首选需要注册一个 NVIDIA developer membership，登录以后，在下载时选择适配 CUDA Toolkit 版本的 cuDNN 版本，安装即可</p>
+<h2>0x03 安装 Python 和相关的机器学习库</h2>
+<h4>1. 我们使用 Python3</h4>
+<p>Ubuntu 16.04 LTS 自带的 Python3 版本是 Python3.5.x，我之前安装了python 3.6，反而会让系统很多依赖 Python 的指令直接崩溃（特别是 Terminal 啊啊啊啊啊啊啊好坑）。所以我们暂时不要动，保持 Python 3.5 版本。当然如果喜欢折腾，完全可以一点点攻克这个问题，但是我们的目标是快速地搭建出展出需要的稳定环境（或者学习）所以就暂时先不管了。</p>
+<h4>2. 安装 pip</h4>
+<ol>
+<li>首先安装 curl：<code>sudo apt-get install curl</code></li>
+<li>然后就可以按照官方参考说明上的安装指导进行安装了：<a href="https://pip.pypa.io/en/stable/installing/">https://pip.pypa.io/en/stable/installing/</a></li>
+<li>注意，如果你的系统默认 Python 是 2.x版本的，执行命令时候要用 Python3，而且记得执行时候的系统权限</li>
+</ol>
+<h4>3. 安装机器学习艺术相关的各种 Python 库</h4>
+<p>我们这次安装了以下几个库：</p>
+<ul>
+<li>
+<p><a href="http://genekogan.com">Gene Kogan</a> 的“风格转移”作品</p>
+<p><img alt="Style Transfer" src="/images/ai/ml_cubist_expressionist_impressionist.jpg"></p>
+<ul>
+<li>Opencv-Python: <code>pip install opencv-python</code></li>
+<li>Chainer: <code>pip install chainer</code></li>
+<li>Cupy: 如果 pip 版本比较老了，首先升级一下 <code>pip install -U setuptools pip</code> 然后再安装<strong>与 CUDA Toolkit 对应版本</strong>的 cupy 库（我的CUDA Toolkit 是 9.0，所以是 cuda-90）：<code>pip install cupy-cuda90</code></li>
+</ul>
+</li>
+<li>
+<p><a href="http://genekogan.com">Gene Kogan</a> 的“肉木偶”作品</p>
+<p><img alt="Meat Puppet" src="/images/ai/meat-puppet.jpg"></p>
+<ul>
+<li>Opencv-Python: <code>pip install opencv-python</code></li>
+<li>Tensorflow: <code>pip install tensorflow-gpu</code></li>
+<li>dlib: 首先要安装 cmake：<code>pip install cmake</code>，然后安装 dlib 库：<code>pip install dlib</code>（如果失败了，可以去 <a href="https://github.com/davisking/dlib">dlib 的 Github 库</a>上面 clone，然后按照它的说明 build 安装）</li>
+<li>Pyqtgraph: <code>pip install pyqtgraph</code></li>
+</ul>
+</li>
+</ul>
+<h2>0x04 测试</h2>
+<h4>1. 环境测试</h4>
+<p>运行一下 Python3，导入几个库试试，如果出现任何问题就 OK：</p>
+<ul>
+<li>
+<p><a href="http://genekogan.com">Gene Kogan</a> 的“风格转移”作品</p>
+<ul>
+<li><code>import chainer</code></li>
+<li><code>from chainer import cuda, Variable, serializers</code></li>
+<li><code>import cv2</code></li>
+</ul>
+</li>
+<li>
+<p><a href="http://genekogan.com">Gene Kogan</a> 的“肉木偶”作品</p>
+<ul>
+<li><code>import tensorflow</code></li>
+<li><code>import cv2</code></li>
+<li><code>import dlib</code>  </li>
+</ul>
+</li>
+</ul>
+<h4>2. 运行代码</h4>
+<p>一般上面安装测试通过了，你的环境就已经搭建成功了！如果你有代码，也可以运行试试。</p>
+<h2>0x05 其他安装</h2>
+<h3>摄像头</h3>
+<p>一般直接插上就可以用了。如果没有，可以用 <code>lsusb</code> 指令看一下 USB 上的情况</p>
+<h2>0x06 安装中遇到的各种坑爹问题</h2>
+<p>一口气配了 5 台电脑，中间各个电脑遇到的问题层出不穷，同样的配置和硬件竟然还遇到不同的问题（当然我觉得完全可能是电脑店装机的人装了什么蜜汁盗版 Windows 的原因【微笑】）</p>
+<p>但是这些问题完全可以靠 Google 解决！这里记录一下可能遇到的问题，以及解决办法。</p>
+<ul>
+<li>由于安装了 CUDA Toolkit 9.1 导致的一些问题，需要卸载删除 9.1 版本，再按照指示重新安装 9.0 版本。</li>
+<li>安装 dlib 库之前，必须要有 cmake，否则会安装失败。</li>
+<li>dlib 安装可以<a href="https://github.com/davisking/dlib">到这里</a>，安装完 C++ 库以后，还要接着按照 Readme.md 上面的“Compiling dlib Python API”继续。</li>
+<li>已经安装好了 cmake，但是在 dlib 安装时仍然出现了 “Python.h: no such file or directory” 的话，需要先安装 python-dev。如果使用的是 Python 3.5，就执行 <code>sudo apt-get install python3-dev</code>；如果使用的是 Python 3.6，则需要执行 <code>sudo apt-get install python3.6-dev</code></li>
+<li>cupy 库需要指定 CUDA 的版本安装，否则会安装失败。</li>
+</ul>
+<h2>0x07 补充资料</h2>
+<ol>
+<li><a href="https://gist.github.com/zhanwenchen/e520767a409325d9961072f666815bb8">如何在 UBUNTU 16.04 LTS 上安装 NVIDIA 驱动和 CUDA 9.0</a></li>
+</ol>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>iOS 开发学习笔记：界面的自定义</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/guan-yu-wo.html">关于我</a></li>
+                    <li class="active"><a href="/category/ri-zhi.html">日志</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/iOS-UI.html" rel="bookmark"
+           title="Permalink to iOS 开发学习笔记：界面的自定义">iOS 开发学习笔记：界面的自定义</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-01-08T17:31:00+00:00">
+                Published: 四 08 一月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/ios.html">iOS</a> <a href="/tag/ui.html">UI</a> <a href="/tag/ke-hu-duan-kai-fa.html">客户端开发</a> </p>
+</footer><!-- /.post-info -->      <p>前几天已经实现了豆瓣的登陆授权，用的比较简单的 UIWebView 中网页方式，没有自己使用界面模拟授权。</p>
+<p>今天开始做豆瓣的首页——即关注的人的广播页面。设计是用自定义的 UITableView  展示。今天学习下 Table View 的自定义。暂时没有用代码实现，继续用 storyboard。</p>
+<p>参考材料：</p>
+<ul>
+<li><em>官方文档：<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TableView_iPhone/AboutTableViewsiPhone/AboutTableViewsiPhone.html">Table View Programming Guide for iOS</a></em></li>
+<li><em>iOS Programming The Big Nerd Ranch Guide 4th Edition</em></li>
+<li><em>官方文档：<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/index.html#//apple_ref/doc/uid/TP40006556">iOS Human Interface Guidelines</a></em></li>
+</ul>
+<h2>I 基础知识</h2>
+<p>两种基本的形式：<code>plain</code> 和 <code>grouped</code>，前者是不可分割的列表，后者有分离的 sections。</p>
+<p>使用 cell 画出，即 <code>UITableViewCell</code> 类：</p>
+<ul>
+<li>
+<p>默认的四个 cell 的 style：</p>
+<p><code>typedef enum {
+    UITableViewCellStyleDefault,
+    UITableViewCellStyleValue1,
+    UITableViewCellStyleValue2,
+    UITableViewCellStyleSubtitle
+} UITableViewCellStyle;</code>
+  * 两个需要 data source 的方法：列表的数量、某个 index 处的 cell（<code>tableView:cellForRowAtIndexPath:</code>）
+  * 配置 cell 的内容，在 <code>tableView:cellForRowAtIndex:</code> 里面。
+  * 复用某个 cell，可以用方法 <code>dequeueReusableCellWithIdentifier:</code>
+  * 修改某个 cell 的外观和动作，用代理。在代理方法 <code>tableView:willDisplayCell:forRowAtIndexPath:</code> 中设置背景等属性，这个方法可以进行 cell 显示出前最后的更改，这个方法中只能进行被 table view 之前就设置好的与状态相关的属性，内容不应该在这里设置。</p>
+</li>
+</ul>
+<h3>自定义 cell 内容</h3>
+<ul>
+<li>两种方法：<ol>
+<li>为 cell 的内容 view 加 subviews </li>
+<li>自定义一个 <code>UITableViewCell</code> 的子类</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>待续……</p>
+</blockquote>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

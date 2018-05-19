@@ -193,7 +193,8 @@
 <ul>
 <li>由于安装了 CUDA Toolkit 9.1 导致的一些问题，需要卸载删除 9.1 版本，再按照指示重新安装 9.0 版本。</li>
 <li>安装 dlib 库之前，必须要有 cmake，否则会安装失败。</li>
-<li>dlib 安装<a href="https://github.com/davisking/dlib">到这里</a>，安装完 C++ 库以后，还要接着按照 Readme.md 上面的“Compiling dlib Python API”继续。</li>
+<li>dlib 安装可以<a href="https://github.com/davisking/dlib">到这里</a>，安装完 C++ 库以后，还要接着按照 Readme.md 上面的“Compiling dlib Python API”继续。</li>
+<li>已经安装好了 cmake，但是在 dlib 安装时仍然出现了 “Python.h: no such file or directory” 的话，需要先安装 python-dev。如果使用的是 Python 3.5，就执行 <code>sudo apt-get install python3-dev</code>；如果使用的是 Python 3.6，则需要执行 <code>sudo apt-get install python3.6-dev</code></li>
 <li>cupy 库需要指定 CUDA 的版本安装，否则会安装失败。</li>
 </ul>
 <h2>0x07 补充资料</h2>

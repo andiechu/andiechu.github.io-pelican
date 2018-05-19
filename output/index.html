@@ -15,14 +15,371 @@
         <header id="banner" class="body">
                 <h1><a href="/">A Pelican Blog </a></h1>
                 <nav><ul>
-                    <li><a href="/category/python.html">Python</a></li>
+                    <li><a href="/pages/guan-yu-wo.html">关于我</a></li>
                     <li><a href="/category/ri-zhi.html">日志</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/how-to-be-a-better-PM.html">工作小结与反思——如何做一个更优秀的产品经理</a></h1>
+                    <h1 class="entry-title"><a href="/installing-and-configuring-for-machine-learning-enviroment-of-ai-art.html">艺术展上机器学习环境的搭建与配置记录</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-05-15T14:46:00+00:00">
+                Published: 二 15 五月 2018
+        </abbr>
+		<br />
+        <abbr class="modified" title="2018-05-19T10:58:00+00:00">
+                Updated: 六 19 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/ji-qi-xue-xi.html">机器学习</a> <a href="/tag/machine-learning.html">Machine Learning</a> <a href="/tag/ren-gong-zhi-neng.html">人工智能</a> </p>
+</footer><!-- /.post-info --><p>最近公司要办一个艺术展，主要都是通过人工智能生成的互动作品。为了运行这些作品，我帮助公司配置了5台计算机作为开发环境。Linux 系统上坑比较多，这里记录一下碰到的问题，给以后其他人做一个参考。</p>
+<h2>0x00 硬件准备</h2>
+<ul>
+<li>一台安装了 Linux 的 PC（具体安装方法如下文所示）</li>
+<li>最关键的是显卡的性能：至少 4 GB VRAM 的 NVIDIA 显卡（推荐 GTX 1080 ti 或 Titan X, GTX 1070 或 1060 也可以。GTX 1050 或许也可以，但是可能帧数会比较低、会出现卡顿）</li>
+<li>CPU：虽然没有显卡的参数重要，但是对最小处理速度仍然有要求，推荐是 Intel i5 及以上的配置。内存 16 GB 以上性能会比较好。</li>
+</ul>
+<h2>0x01 安装 Ubuntu 16.04 LTS</h2>
+<p>目前推荐的系统是 Ubuntu 16.04 LTS 发行版，但是 17.x（稳定版本的）也可以。Debian 理论上也可以，喜欢折腾的同学可以试着安装看看。</p>
+<h4>1. 制作 U 盘安装盘</h4>
+<h4>2. 安装</h4>
+<p>分区是朋友推荐的最简化的分区方案：</p>
+<ul>
+<li>/ ext4 主分区 100GB （放在硬盘扇区的头上）</li>
+<li>swap 16GB</li>
+<li>/home ext4 主分区 剩下的硬盘空间全部放这个，不分 /usr 等其他分区了</li>
+</ul>
+<h2>0x02 安装相关支持软件和 GPU 驱动</h2>
+<h4>1. 支持性软件的安装</h4>
+<h5>a. ShadowSocks 安装和配置</h5>
+<ol>
+<li>Linux 下使用 qt5 版本，<a href="https://github.com/shadowsocks/shadowsocks-qt5/realeases">去 Github 下载</a>，可以选择 .AppImage 版本</li>
+<li>进入下载所在的文件夹后，首先给它添加可执行权限：<code>chmod a+x Shadowsocks-Qt5-VERSION-PLATFORM.AppImage</code></li>
+<li>可以直接执行这个文件了</li>
+<li>给浏览器增加代理插件，比如 SwitchyOmega 等。各种配置都不再详细阐述</li>
+</ol>
+<h5>b. 安装 git</h5>
+<p>按照<a href="https://git-scm.com/download/linux">官网的安装指示</a>安装。由于我的系统用的是 LTS 版本，所以按照稳定版的 Git 安装。</p>
+<h5>c. 编辑器安装（atom）</h5>
+<ol>
+<li>官网下载 .deb 的安装包</li>
+<li>到下载的目录下，执行：<code>sudo dpkg -i atom-VERSION.deb</code></li>
+</ol>
+<h5>d. 安装 CUDA Toolkit 9.0</h5>
+<p>按照<a href="https://gist.github.com/zhanwenchen/e520767a409325d9961072f666815bb8">这个英文教程</a>安装</p>
+<p>需要注意的是，我们需要安装的是 9.0 版本，而不是最新的 9.1 版本（也许 9.1 版本也可以用，但是安装 9.1 时，不应该再按照上述英文教程安装 384 的驱动，而应该安装 9.1 适配的 387 版本。这个有兴趣的同学可以自行探索，我之后有时间也会折腾一下试试。）</p>
+<p>这里有几个问题：</p>
+<ol>
+<li>勘误：文中安装驱动时的指令 <code>sudo apt-get nvidia-384 nvidia-modprobe</code> 应为 <code>sudo apt-get install nvidia-384 nvidia-modprobe</code></li>
+<li>CUDA Toolkit 9.0 的下载地址是 <a href="https://developer.nvidia.com/cuda-90-download-archive?target_os=Linux">https://developer.nvidia.com/cuda-90-download-archive?target_os=Linux</a>。安装按照 NVIDIA 官网上的安装指令操作。安装时，在询问是否要安装 driver 的时候，选择否（n）。其他安装问题和路径问题都选择是（y）即可。</li>
+</ol>
+<h5>e. 安装 NVIDIA 的 cuDNN</h5>
+<p>cuDNN 下载地址是：<a href="http://developer.nvidia.com/rdp/cudnn-download">http://developer.nvidia.com/rdp/cudnn-download</a> </p>
+<p>首选需要注册一个 NVIDIA developer membership，登录以后，在下载时选择适配 CUDA Toolkit 版本的 cuDNN 版本，安装即可</p>
+<h2>0x03 安装 Python 和相关的机器学习库</h2>
+<h4>1. 我们使用 Python3</h4>
+<p>Ubuntu 16.04 LTS 自带的 Python3 版本是 Python3.5.x，我之前安装了python 3.6，反而会让系统很多依赖 Python 的指令直接崩溃（特别是 Terminal 啊啊啊啊啊啊啊好坑）。所以我们暂时不要动，保持 Python 3.5 版本。当然如果喜欢折腾，完全可以一点点攻克这个问题，但是我们的目标是快速地搭建出展出需要的稳定环境（或者学习）所以就暂时先不管了。</p>
+<h4>2. 安装 pip</h4>
+<ol>
+<li>首先安装 curl：<code>sudo apt-get install curl</code></li>
+<li>然后就可以按照官方参考说明上的安装指导进行安装了：<a href="https://pip.pypa.io/en/stable/installing/">https://pip.pypa.io/en/stable/installing/</a></li>
+<li>注意，如果你的系统默认 Python 是 2.x版本的，执行命令时候要用 Python3，而且记得执行时候的系统权限</li>
+</ol>
+<h4>3. 安装机器学习艺术相关的各种 Python 库</h4>
+<p>我们这次安装了以下几个库：</p>
+<ul>
+<li>
+<p><a href="http://genekogan.com">Gene Kogan</a> 的“风格转移”作品</p>
+<p><img alt="Style Transfer" src="/images/ai/ml_cubist_expressionist_impressionist.jpg"></p>
+<ul>
+<li>Opencv-Python: <code>pip install opencv-python</code></li>
+<li>Chainer: <code>pip install chainer</code></li>
+<li>Cupy: 如果 pip 版本比较老了，首先升级一下 <code>pip install -U setuptools pip</code> 然后再安装<strong>与 CUDA Toolkit 对应版本</strong>的 cupy 库（我的CUDA Toolkit 是 9.0，所以是 cuda-90）：<code>pip install cupy-cuda90</code></li>
+</ul>
+</li>
+<li>
+<p><a href="http://genekogan.com">Gene Kogan</a> 的“肉木偶”作品</p>
+<p><img alt="Meat Puppet" src="/images/ai/meat-puppet.jpg"></p>
+<ul>
+<li>Opencv-Python: <code>pip install opencv-python</code></li>
+<li>Tensorflow: <code>pip install tensorflow-gpu</code></li>
+<li>dlib: 首先要安装 cmake：<code>pip install cmake</code>，然后安装 dlib 库：<code>pip install dlib</code>（如果失败了，可以去 <a href="https://github.com/davisking/dlib">dlib 的 Github 库</a>上面 clone，然后按照它的说明 build 安装）</li>
+<li>Pyqtgraph: <code>pip install pyqtgraph</code></li>
+</ul>
+</li>
+</ul>
+<h2>0x04 测试</h2>
+<h4>1. 环境测试</h4>
+<p>运行一下 Python3，导入几个库试试，如果出现任何问题就 OK：</p>
+<ul>
+<li>
+<p><a href="http://genekogan.com">Gene Kogan</a> 的“风格转移”作品</p>
+<ul>
+<li><code>import chainer</code></li>
+<li><code>from chainer import cuda, Variable, serializers</code></li>
+<li><code>import cv2</code></li>
+</ul>
+</li>
+<li>
+<p><a href="http://genekogan.com">Gene Kogan</a> 的“肉木偶”作品</p>
+<ul>
+<li><code>import tensorflow</code></li>
+<li><code>import cv2</code></li>
+<li><code>import dlib</code>  </li>
+</ul>
+</li>
+</ul>
+<h4>2. 运行代码</h4>
+<p>一般上面安装测试通过了，你的环境就已经搭建成功了！如果你有代码，也可以运行试试。</p>
+<h2>0x05 其他安装</h2>
+<h3>摄像头</h3>
+<p>一般直接插上就可以用了。如果没有，可以用 <code>lsusb</code> 指令看一下 USB 上的情况</p>
+<h2>0x06 安装中遇到的各种坑爹问题</h2>
+<p>一口气配了 5 台电脑，中间各个电脑遇到的问题层出不穷，同样的配置和硬件竟然还遇到不同的问题（当然我觉得完全可能是电脑店装机的人装了什么蜜汁盗版 Windows 的原因【微笑】）</p>
+<p>但是这些问题完全可以靠 Google 解决！这里记录一下可能遇到的问题，以及解决办法。</p>
+<ul>
+<li>由于安装了 CUDA Toolkit 9.1 导致的一些问题，需要卸载删除 9.1 版本，再按照指示重新安装 9.0 版本。</li>
+<li>安装 dlib 库之前，必须要有 cmake，否则会安装失败。</li>
+<li>dlib 安装可以<a href="https://github.com/davisking/dlib">到这里</a>，安装完 C++ 库以后，还要接着按照 Readme.md 上面的“Compiling dlib Python API”继续。</li>
+<li>已经安装好了 cmake，但是在 dlib 安装时仍然出现了 “Python.h: no such file or directory” 的话，需要先安装 python-dev。如果使用的是 Python 3.5，就执行 <code>sudo apt-get install python3-dev</code>；如果使用的是 Python 3.6，则需要执行 <code>sudo apt-get install python3.6-dev</code></li>
+<li>cupy 库需要指定 CUDA 的版本安装，否则会安装失败。</li>
+</ul>
+<h2>0x07 补充资料</h2>
+<ol>
+<li><a href="https://gist.github.com/zhanwenchen/e520767a409325d9961072f666815bb8">如何在 UBUNTU 16.04 LTS 上安装 NVIDIA 驱动和 CUDA 9.0</a></li>
+</ol>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/how-to-encapsulate-in-max-msp.html" rel="bookmark"
+                           title="Permalink to Max/MSP 中的打包操作">Max/MSP 中的打包操作</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-05T23:34:00+00:00">
+                Published: 六 05 五月 2018
+        </abbr>
+		<br />
+        <abbr class="modified" title="2018-08-05T22:58:00+00:00">
+                Updated: 日 05 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/maxmspjitter.html">Max/MSP/Jitter</a> <a href="/tag/max.html">Max</a> <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a> <a href="/tag/creative-coding.html">Creative Coding</a> </p>
+</footer><!-- /.post-info -->                <p>最害怕庞大的 Max 文件了。要是有个哆啦A梦的口袋就好了。</p>
+                <a class="readmore" href="/how-to-encapsulate-in-max-msp.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/the-usage-of-message-in-max-msp.html" rel="bookmark"
+                           title="Permalink to 浅谈 Max/MSP 中 message 的用途">浅谈 Max/MSP 中 message 的用途</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-05T15:16:00+00:00">
+                Published: 六 05 五月 2018
+        </abbr>
+		<br />
+        <abbr class="modified" title="2018-05-08T18:37:00+00:00">
+                Updated: 二 08 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/maxmspjitter.html">Max/MSP/Jitter</a> <a href="/tag/max.html">Max</a> <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a> </p>
+</footer><!-- /.post-info -->                <p>MAX/MSP 中的 message（信息）是最让人迷惑的一个对象（或者不应该称为对象），我们经常能够看到它扮演着不同角色出现在各种操作中。是时候总结一下它的用法了。</p>
+                <a class="readmore" href="/the-usage-of-message-in-max-msp.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/print-cold-inlet-immediately-with-trigger-object-in-max-msp.html" rel="bookmark"
+                           title="Permalink to 巧用 Max/MSP 的 trigger 对象，让 cold inlet 实现立即输出">巧用 Max/MSP 的 trigger 对象，让 cold inlet 实现立即输出</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-04-13T17:08:00+00:00">
+                Published: 五 13 四月 2018
+        </abbr>
+		<br />
+        <abbr class="modified" title="2018-04-13T17:08:00+00:00">
+                Updated: 五 13 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/maxmspjitter.html">Max/MSP/Jitter</a> <a href="/tag/max.html">Max</a> <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a> <a href="/tag/ji-qiao.html">技巧</a> <a href="/tag/tips.html">tips</a> </p>
+</footer><!-- /.post-info -->                <p>MAX/MSP 中的 cold inlet 输入端仅可以改变对象中存储的参数值，而不会立刻输出。使用 trigger 对象可以实现让 cold inlet 改变后立即输出。</p>
+                <a class="readmore" href="/print-cold-inlet-immediately-with-trigger-object-in-max-msp.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/how-to-resize-a-large-sketch.html" rel="bookmark"
+                           title="Permalink to 如何缩放比屏幕尺寸大的 Processing 草图">如何缩放比屏幕尺寸大的 Processing 草图</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-26T14:50:00+00:00">
+                Published: 一 26 三月 2018
+        </abbr>
+		<br />
+        <abbr class="modified" title="2018-03-26T14:50:00+00:00">
+                Updated: 一 26 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/processing.html">Processing</a> <a href="/tag/fen-bian-lu.html">分辨率</a> </p>
+</footer><!-- /.post-info -->                <p>常遇到的一个问题：如果我们的 sketch 尺寸比自己电脑屏幕的尺寸还大，如何才能让草图完整地显示在屏幕上呢？</p>
+                <a class="readmore" href="/how-to-resize-a-large-sketch.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/how-to-use-simpleopenni-on-Processing-3.html" rel="bookmark"
+                           title="Permalink to 如何在 Processing 3 上使用 SimpleOpenNI 库">如何在 Processing 3 上使用 SimpleOpenNI 库</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-23T10:45:00+00:00">
+                Published: 五 23 三月 2018
+        </abbr>
+		<br />
+        <abbr class="modified" title="2018-03-23T10:45:00+00:00">
+                Updated: 五 23 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/processing.html">Processing</a> <a href="/tag/creative-coding.html">Creative Coding</a> <a href="/tag/kinect.html">Kinect</a> <a href="/tag/simpleopenni.html">SimpleOpenNI</a> <a href="/tag/openni.html">OpenNI</a> </p>
+</footer><!-- /.post-info -->                <p>SimpleOpenNI 已经很久没有更新了，原来的开发者也不再提供 SimpleOpenNI 对 Processing 3.x 的支持。但是业界始终有人在使用 Kinect 探测人体骨骼。今天来聊聊如何（非常勉强地）在 Processing 3 上使用 SimpleOpenNI 库进行开发。</p>
+                <a class="readmore" href="/how-to-use-simpleopenni-on-Processing-3.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/geometric-algorithm-if-a-point-is-inside-of-a-polygon.html" rel="bookmark"
+                           title="Permalink to 几何算法之判断点是否在多边形内">几何算法之判断点是否在多边形内</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-12T17:19:00+00:00">
+                Published: 一 12 三月 2018
+        </abbr>
+		<br />
+        <abbr class="modified" title="2018-03-12T17:19:00+00:00">
+                Updated: 一 12 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/suan-fa.html">算法</a> <a href="/tag/ji-he.html">几何</a> <a href="/tag/shu-xue.html">数学</a> </p>
+</footer><!-- /.post-info -->                <p>几何算法系列文章，总结一下判断某个点是否在多边形内的算法</p>
+                <a class="readmore" href="/geometric-algorithm-if-a-point-is-inside-of-a-polygon.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/Processing-IDE-tips.html" rel="bookmark"
+                           title="Permalink to Processing IDE (PDE) 使用技巧">Processing IDE (PDE) 使用技巧</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-03-11T11:57:00+00:00">
+                Published: 日 11 三月 2018
+        </abbr>
+		<br />
+        <abbr class="modified" title="2018-03-11T11:57:00+00:00">
+                Updated: 日 11 三月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/processing.html">Processing</a> <a href="/tag/pde.html">PDE</a> <a href="/tag/creative-coding.html">Creative Coding</a> <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a> <a href="/tag/ji-qiao.html">技巧</a> </p>
+</footer><!-- /.post-info -->                <p>总结 Processing 官方编辑器（PDE）的一些使用技巧</p>
+                <a class="readmore" href="/Processing-IDE-tips.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/how-to-learn-max-msp-jitter.html" rel="bookmark"
+                           title="Permalink to 如何自学 Max/MSP/Jitter">如何自学 Max/MSP/Jitter</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-01-11T15:40:00+00:00">
+                Published: 四 11 一月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/maxmspjitter.html">MAX/MSP/Jitter</a> <a href="/tag/zi-xue.html">自学</a> <a href="/tag/xue-xi.html">学习</a> <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a> <a href="/tag/jiao-hu-she-ji.html">交互设计</a> </p>
+</footer><!-- /.post-info -->                <ol>
+<li>
+<p>首先，你需要先明白自己学习 Max/MSP/Jitter 的目的是什么？是做交互装置、还是视觉设计，抑或是实验音乐作曲甚至其他的目标？</p>
+<p>Max 是专门为制作交互艺术项目的可视化编程（patching）类软件。它的功能非常强大，既可以为互动视觉设计服务，也可以为互动音乐的制作而服务。Max 软件本身有基础的图形和影像处理能力；而 MSP 是 Max 的一个拓展包，专门；另外还有一个更加高级的视觉处理拓展包 Jitter。所以你可以看到，使用 Max 的人除了交互设计师外，还有专门做 visual-audio 的 VJ们、以及搞实验音乐的大佬。</p>
+<p>所以我建议，你可以先学习软件基础，然后再根据你的不同需要，对这几个拓展包有侧重点的进行学习。</p>
+</li>
+<li>
+<p>在学习方法上，请多实践！是的，不要只读教程，一定要动手做里面的案例。而且不要死记硬背，多用几次自然就记住了。</p>
+<p>这里转一个台湾人写的学习方法（<a href="http://maxmsp.recorderz.org/2006/10/27/轉subborg-on-max學習方法/">原文见此</a>）：</p>
+<blockquote>
+<p>我想一般人對於學習，甚至 …</p></blockquote></li></ol>
+                <a class="readmore" href="/how-to-learn-max-msp-jitter.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/how-to-be-a-better-PM.html" rel="bookmark"
+                           title="Permalink to 工作小结与反思——如何做一个更优秀的产品经理">工作小结与反思——如何做一个更优秀的产品经理</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2017-03-07T03:10:00+00:00">
                 Published: 二 07 三月 2017
@@ -33,64 +390,597 @@
         </address>
 <p>In <a href="/category/ri-zhi.html">日志</a>.</p>
 <p>tags: <a href="/tag/chan-pin-guan-li.html">产品管理</a> <a href="/tag/chan-pin-jing-li.html">产品经理</a> <a href="/tag/product-management.html">Product Management</a> <a href="/tag/gong-zuo-zong-jie.html">工作总结</a> <a href="/tag/ri-ji.html">日记</a> </p>
-</footer><!-- /.post-info --><p>去年年末，我因为想要在产品道路上更进一步，选择离开携程进入一家创业公司做用户增长。我对自己在携程的工作还算满意，但是其实对这段在创业公司的工作很不满意，不过感觉也学到了很多，有了更多的感悟。刚在新公司入职不久，和以前的 leader 交流时我说过在创业公司做产品经理还挺不一样的，他问我有哪些感想，当时我没有完整的思考过，现在在这里一起写出来，作为一个对过去的反思和对未来的警示，也分享出来给更多看到这篇文章的初级产品经理们作为借鉴。</p>
-<p><strong>第一个感悟：及时调整工作状态和工作方法很重要。</strong></p>
-<p>在刚进入创业公司时，我的第一个感受是——快！名不虚传，的确创业公司的整体节奏比大公司要快得多。最让我印象深刻的是，这里的同事开会和吃饭时，行走、上下楼的速度都比一般人快很多。当然，这里说的快节奏的不仅仅是行为上的，在整个开发迭代中也是很迅速的。</p>
-<p>首先，是产品经理自己本身的工作就要求完成很快，一个需求基本上产品经理最多一两天就要完成所有产品设计。而我的工作方式一直都是想要花更多一点时间深入思考产品，所有展现方式或活动形式都要想一遍再确定，然后就是画很细致的原型。这未免就造成会有点跟不上他们节奏的后果。这点我主动问过产品总监如何做到速度和产品设计合理两者兼得。他的回答是：这一点就是需要产品经理平时积累，思考产品这种工作更多应该放在日常时间，每看到某种产品时，应该多想想产品如何实现的、然后想为什么这样设计规划。积累多了自然看到某个产品时就知道怎么做，不需要太复杂的思考就可以尽快下手。另外如何让产品工作完成得更快的关键是要分清需求的紧急程度和要产品设计到什么程度，避免完美主义作祟。我在这家公司还负责 SEO 方面的优化，这里需要配合第三方专业的 SEO 团队把 web 站改造成适合搜索引擎检索的版本，需要增加大量内容，相当于把现有的 web 站全部推翻做一个新的网站出来。我吭哧吭哧地思考网页上应该放什么内容、画原型。在离开时这个工作交接给另一个产品经理，他只是叫了设计总监和开发经理一起，口头一起决定了有哪些改造，就直接让UED去设计了。这件事如果只是单纯的说“产品经理自己不画原型图直接丢给设计”这一个行为，那么绝对所有互联网行业的 UED 和技术从业者都要义愤填膺，大呼“产品经理又挖坑了！”然而实际上，这件事在考虑当时的背景下，这样做是可以接受的——一方面，我们主要的产品还是基于 app 端，web 纯粹只是为了做 SEO，所以 web 设计样式好不好看、甚至用户体验始终都是次要的、可以慢慢迭代优化的小问题，关键还是在于内容要全，让搜索引擎可以覆盖到；另一方面，公司花了很多钱在 SEO 服务上，无论是出于免责也好、尽快实现预期目标也罢，自然需要我们内部尽快的把改造好的网站交给对方——因此，首要目标应当是：确定有哪些内容了，不管如何赶快上线一版。这里我其实有这个意识，但是显然还是对自己绷得太紧、对“产品经理”真正的职责认识的不够全面，没有更放松地去执行这个意识。</p>
-<p>那么这里这个所谓的“产品经理的真正指责”是什么？我认为，并不是画原型、做好产品设计就是合格的产品经理了。产品经理的真正任务在于“管理”，即推动产品周期的高效运转。产品设计固然重要，但同样重要的还是推动能力。关于这一点，在这个公司也发生了一件很有意思的事情：产品总监某天在招聘一个新的产品经理，但是他看到一个面试者的简历上写的自己做的项目时却果断否定了这个面试者。他当时说了一句话很触动我：“这个产品经理两个月还没有做出一个 app，不管是公司问题还是个人问题，都是不合格的产品经理。”想想之前有研发和我吐槽说某个部门两个产品经理两周多还没有出来一个产品原型；以及我刚刚转行做产品经理不久，将近两周才从 UED 那里拿到一个 app 的设计稿，当时我觉得自己实在效率太低很难过，但是同组的同事却很惊讶的说我这个 app 做的很快……还好我在携程时已经有一些主动推进的意识，否则也要变成这样被否定的角色了！这里的推进，其实是个大学问。一般刚做产品经理时，对推进项目的意识可能都只在催促设计和开发、和他们据理力争缩短排期、和其它项目抢夺资源等问题上，然而还有一些未被我们察觉到的问题也需要我们主动关注，例如：和其他部门或公司合作时，对方进度需要时刻跟进、敦促进度反馈；某个项目进度在领导暂时停滞了，也不能坐以待毙，需要我们主动和领导询问、甚至去提建议和共同讨论……这些问题不被初级产品经理重视的原因，很大情况上在于我们会认为这是项目经理 / 领导 / 对方团队等其他人负责的工作，不属于我们的工作范畴。</p>
-<p>小公司速度快。而大公司也有自己特定的不同的环境，比如跨部门协调问题等等。不同环境下，如何高效的完成产品工作，是需要我们尽快摸清公司和团队的风格与节奏，尽快适应和磨合。</p>
-<p><strong>第二点是关于产品经理的思维和工作方式，要有框架和结构性。</strong></p>
-<p>其实我在携程时，做产品是会想得比较系统和全面的，除了使用者体验外，我会有自己曾经做程序员时的结构化思维，系统争取做到通用、可插拔、解耦。在长远规划上，我也会想产品未来市场怎样、如何才能适合推广等问题。</p>
-<p>但是，当我在新公司最开始做用户增长时，我就比较欠缺完整的产品规划框架了。一开始，我直接罗列出我觉得需要改进的增长点。这时候很有经验的产品总监指出来：你的规划不应该是这样一点一点的，而应该有一个框架，根据这个框架去执行产品新增和优化。接着我们主要参考了国外著名的 AARRR 海盗模型，明确了这五个增长环节中有哪些可以做、应该做的事，同时列出优先级、用时和对应的 KPI（这个项目的目标究竟是激活拉新还是留存，或是分享？预计目标数据分别是多少？），按照这个框架严格执行。这样看来，“用户增长”这个非常模糊的概念就清楚的落实到每一个具体工作和目标中去了。</p>
-<p>同样的，这种框架性思维不仅限在产品规划上。在跟着这个产品总监工作的过程中，我发现他每一次做工作的规划（无论长期还是短期）或汇报，都会有一个非常清楚的纲要。我也慢慢领悟到，产品经理要渐渐总结形成出自己一套的方法论，这样工作才有更高的效率、也更清晰明了。大概这样的思维让我们变得更像一个职业经理人，但是我认为这样也的确可以帮助自己与他人理清思路，明确每一步的做什么、接下来做什么。</p>
-<p><strong>第三点感悟，产品经理真的是一个小 CEO。</strong></p>
-<p>在诸如《人人都是产品经理》这类书和各个忽悠别人来做产品经理的文章中，基本都提到这样的话：“产品经理就是一个小 CEO”，或给人“产品经理做好了未来可以做 CEO”的感觉。许多人真的做了产品经理以后，发现自己只是在真正的 CEO 们的“压迫”下完成产品的一小块功能，因此开始群起讽刺这种说法。</p>
-<p>我最开始转做产品经理时也有这样的状态。我觉得，这他妈真不是人干的活啊，经常要各种跪舔，还有一堆琐碎的破事，为什么我好好的开发不做跑来做一条狗呢？好歹程序猿还是灵长类动物啊有木有！</p>
-<p>现在做产品经理两三年，我的态度反而渐渐回到了最初的想法——产品经理的确就是一个小 CEO。</p>
-<p>这里并不是说产品经理的话语权有多高，而是身为产品经理，你要对产品的一切负起责任，也要学会主动承担本来不是你的工作。</p>
-<p>职场上，甩锅似乎是必备技能。但是身为产品经理，这个锅并不是随便甩的（当然了人在职场也是要多留意，厚黑学我不太懂，而且也和本文无关就不多说了）。基本上涉及产品的所有环节和流程，无论开发、运营、还是推广，身为产品经理都应该从大局上把控住。</p>
-<p>在大公司，人力资源比较齐备，这种需要产品经理多费心的情况偶尔也会出现但是不多。但是进入创业公司，这种体验就会明显增多。很多时候，许多本应该别人负责的工作因为种种原因被搁置，这时候身为产品经理应当主动顾及。这种主动，有时候是全力推动和督促对方进行下去，有时候对方实在分身乏术、而这是件不怎么涉及结果却很紧要的事时则要主动接手过去。总之，无论是丢给别人做还是自己主动替代完成，都要把它看成自己的职责所在管理起来。</p>
-<p>在我之前的产品总监离职后，新来了一个负责公司的社区产品的总监。当时我们正开始把粗犷的项目管理转为 PMO 制度的尝试。众人都认为使用协同工作一类 Saas 服务来管理效率很高。但是这其中，产品需求汇总到网页上一类琐碎工作，研发没有精力做，这个产品总监就主动承担起这个责任。更让我感到感动的是，她还教研发经理怎样和不懂技术的老板娘汇报工作进度。很多人都对女性产品经理有各种偏见，但是我见到的这个女总监十分负责而且温柔，让我非常自惭形秽。</p>
-<p>其实这类情况，其实身为一个营销方向的产品经理，需要对接的工作比较多、接手的需求比较杂，对比其他类型产品经理我原本遇到的就更多，可是当时在携程不够成熟，没有意识到这点，有时也没有处理好。</p>
-<p>我想，做产品经理，本身也是陪养自己有责任感的一个过程吧。从之前在珠海做开发时同事戏称我做的 BI 系统是“我的儿子”，到今天更加体会到自己对于产品的责任，我感到肩上的份量更重了。</p>
-<p><strong>第四点并不仅限于产品经理这个职业，那就是：职场中要学会管理上级。</strong></p>
-<p>这一点一直是我比较薄弱的地方，我想也应该是大部分技术出身的人薄弱的地方。我认为可能是接触人的机会比较少，还不够了解这个社会和人性所致。</p>
-<p>做技术的人一般喜欢埋头默默做事，并不擅长宣扬自己做了什么。可能也和我们从小受到的教育有关，东亚文化更加鼓励为人谦卑。这也是为什么国外留学生们都在埋怨印度人在职场上没怎么做事却说的很好听，抢走了所有功劳，而自己做了很多事却默默无闻。做事也要学会适当的说出来。其实仔细想想，这也算是“与上级沟通不畅”的问题之一吧！</p>
-<p>还有一些时候，我们认为领导和老板做的决策是错误的，其实我们没有站在领导的角度看问题。我们并不了解领导和老板做决策的初衷是出于什么考虑。而且作为基层员工，很多时候我们无法看到领导和老板们看到的事。</p>
-<p>这方面我还在摸索阶段，没有太多心得，但是我特意寻找过这方面的相关资料，学习到管理上级就是“帮助领导发挥他的长处，帮助他弥补他的不足”。我觉得非常对。我觉得一个好的上级关系永远是老师 + 朋友，你可以在他们身上学到很多。</p>
-<hr>
-<p>其实写完以上这几点感悟，我突然明白过来——这不就都是管理学的学问嘛！虽然我们身为产品经理，没有在做面向人的管理，但是始终也脱离不了管理职位这个本质。学好管理学一定也是很有帮助的！因此我最近在看项目管理和德鲁克的管理学书籍，希望结合以往的管理经验，可以有更多的收获。</p>
-<p>最后……我在这两三年做过的所有这些产品（无论是 2B 还是 2C、前端还是后台）中，逐渐明确了自己在产品方向的选择上的擅长之处和偏好，我个人更具备商业思维、喜欢和人打交道、对做一套完整的系统更有兴趣也更擅长。产品经理是一个非常让人成长的工作，接下来，我会带着这几年的经验和对未来更加明确的规划走下去，深耕一个方向，希望新的一年有更多的成长与收获！</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</footer><!-- /.post-info -->                <p>工作小结与反思——如何做一个更优秀的产品经理</p>
+                <a class="readmore" href="/how-to-be-a-better-PM.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/my-super-post.html" rel="bookmark"
-                           title="Permalink to My super title">My super title</a></h1>
+                    <h1><a href="/my-2015.html" rel="bookmark"
+                           title="Permalink to 我的2015年终总结">我的2015年终总结</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2010-12-03T10:20:00+00:00">
-                Published: 五 03 十二月 2010
-        </abbr>
-		<br />
-        <abbr class="modified" title="2010-12-05T19:30:00+00:00">
-                Updated: 日 05 十二月 2010
+        <abbr class="published" title="2016-01-11T11:08:00+00:00">
+                Published: 一 11 一月 2016
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="/author/alexis-metaireau.html">Alexis Metaireau</a>
-                        <a class="url fn" href="/author/conan-doyle.html">Conan Doyle</a>
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
         </address>
-<p>In <a href="/category/python.html">Python</a>.</p>
-<p>tags: <a href="/tag/pelican.html">pelican</a> <a href="/tag/publishing.html">publishing</a> </p>
-</footer><!-- /.post-info -->                <p>Short version for index and feeds</p>
-                <a class="readmore" href="/my-super-post.html">read more</a>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/gong-zuo-zong-jie.html">工作总结</a> <a href="/tag/ri-ji.html">日记</a> </p>
+</footer><!-- /.post-info -->                <p>一转眼又到了写年终总结的时候。还记得去年年终我在自学 iOS 开发时候写的总结。</p>
+<p>一年很快过去了，我的确不再写 Java 了，但是也没有成为一名 iOS 开发，而是成为了一名产品经理。现在我还是想写代码，但是我也喜欢做产品经理自己可以掌握产品生命的感觉。</p>
+<p><strong>今年上半年的关键词是“求职”。</strong></p>
+<p>我在3月份的离职太过冲动，虽然想法已经酝酿很久了——但是对求职市场的认知还是不够到位；对自己的技术水平也太过于自大。现在网络上已经有 iOS 工资大跌的新闻，更有很多培训班学员和公司面试官们对 iOS 求职市场混乱的抱怨，而在今年初我找工作时，这些 iOS 求职市场趋向饱和的现象就已经初见端倪。而且我的学习也的确不够到位，耐心还是太少，做了一半的豆瓣客户端就耐不住性子非想找个工作；另外对技术类职位的求职准备不够，求职知识准备不充分；最后也是最重要的是，我对深层次的技术知识似乎有潜意识的恐惧，不敢踏出自己在心理上的舒适圈，对新技术的特性不敢去深入探究。</p>
+<p>产品经理的工作，找起来更是机会少少，因为“人人都是产品经理”，这也是进入互联网行业门槛最低的职位之一。在珠三角投了一圈简历，还是没有得到几个机会，有的公司则是太奇葩太坑。没想到自己还有机会可以进入现在这家公司，更没有想到自己一进去就负责了这么多的产品，并且完整的参与了几个产品从开始到上线的过程 …</p>
+                <a class="readmore" href="/my-2015.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/how-to-prevent-bot.html" rel="bookmark"
+                           title="Permalink to 红包/优惠券防刷手段">红包/优惠券防刷手段</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-10-15T21:38:00+00:00">
+                Published: 四 15 十月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/ying-xiao.html">营销</a> <a href="/tag/feng-kong.html">风控</a> <a href="/tag/ying-xiao-huo-dong.html">营销活动</a> </p>
+</footer><!-- /.post-info -->                <p>在红包/优惠券发放的流程中，有以下关键的几个流程点：<strong>运营发送时、用户领用时、用户使用时</strong>，以及有时候会有的过程：<strong>现金的转账</strong>或<strong>优惠券的赠送</strong>等。在每个过程点上面都可以进行防刷措施。</p>
+<p>红包/优惠券又分为以下几种：<strong>现金红包、付款时抵扣、使用后返现、使用后返券</strong>等</p>
+<h2>防刷方法</h2>
+<ol>
+<li>
+<p>商业手段</p>
+<ul>
+<li>限制发放的库存</li>
+<li>改变使用的策略</li>
+<li>改变红包/优惠券的类型</li>
+</ul>
+</li>
+<li>
+<p>技术手段</p>
+<ul>
+<li>账户真实性验证（如实名制、验证码、手机校验码等）</li>
+<li>调用频率、时间段、IP/cookies等可疑性用户排除</li>
+<li>对于可获取的用户数据时，研究用户曾经的行为判定是否发放</li>
+<li>学习式防刷机制：学习刷单动作进行自动调整</li>
+</ul>
+</li>
+<li>
+<p>其他手段</p>
+</li>
+</ol>
+<p>最后，不但要注意防刷，还要防止误封了或防刷措施未起作用时对普通用户的补偿措施，以免用户产生怨念情绪。</p>
+                <a class="readmore" href="/how-to-prevent-bot.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/about-my-first-product.html" rel="bookmark"
+                           title="Permalink to 写在我的第一个产品上线前">写在我的第一个产品上线前</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-09-29T18:22:00+00:00">
+                Published: 二 29 九月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/gong-zuo-zong-jie.html">工作总结</a> <a href="/tag/ri-ji.html">日记</a> </p>
+</footer><!-- /.post-info -->                <p><em>——然而这个原本计划十一上线第一期的产品，仍然没有能在十一前上线。</em></p>
+<p>这是我接手的第二个产品，因为紧迫性排在了最前面，因此成为了预计可以第一个完成的产品。然而尽管大家都努力地投入精力在这个产品中，然而由于合作方的这个产品也没有开发完成，还在不停地变动，而且我自己也缺少经验做得很不足，因此掉进了一个又一个坑。</p>
+<p>通过这个产品，我算是真正的体验了一把大公司的工作氛围。原本我以为 MZ 就是大公司，如今才体会到了真正的“大”公司是什么样——第一就是分工之细，每个人安守自己岗位的本分，一个功能可能需要多个团队才能完成，这样在沟通过程中就会有一些困难和磕碰，而且也多出许多时间成本；第二，对“流程”比较重视，我觉得大部分人虽然痛恨所谓的“流程”，但是在工作中更多适应了大公司的员工则会善用“流程”来维护自己。在这个项目中，我接触到了多个部门的多个团队，也走了很多冗长的流程，每天白天都在不停的开会和跑来跑去沟通，只有下班后才有时间好好写一下需求文档，在和合作方沟通过程中，由于对方也是这样的大公司，而且对方对流程更加重视，因此沟通中花费了更多的时间成本。</p>
+<p>我所在的团队的风格是擅长执行，在写需求等书面性的事情上面则比较偏弱。我认为这一点在这次产品的实施中也造成了比较多的磕绊。由于商务和老板对这个产品都比较看重，leader 便希望可以快速上线一版，因此在提需求时，直接都是含糊的“第一版按照另一个XX产品做就好 …</p>
+                <a class="readmore" href="/about-my-first-product.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/to-be-a-growth-hacker.html" rel="bookmark"
+                           title="Permalink to 0岁产品经理(Growth Hacker)体验报告">0岁产品经理(Growth Hacker)体验报告</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-09-17T01:24:00+00:00">
+                Published: 四 17 九月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/gong-zuo-zong-jie.html">工作总结</a> <a href="/tag/ri-ji.html">日记</a> <a href="/tag/zeng-chang-hei-ke.html">增长黑客</a> </p>
+</footer><!-- /.post-info -->                <p>从我正式成为一个产品经理开始，已经有 2 个多月的时间了。这两个月过得十分充实，如果不回想一下，我还以为自己已经在这里工作很久了。感谢自己的 leader，将我放进一池水中让我自己学习游泳，一进入公司便被分配了几项产品来负责。和我做程序员时领悟到的学习方法一样——实践果然是最好的学习！</p>
+<p>目前我手头的产品有三个比较大型的和若干（数量 &gt; 3，且时刻在增长）的小产品。总体来说，有涉及到移动产品，更主要的则是为了营销而做的无线产品（好拗口）。从前这个营销的产品团队最主要都在负责 SEO/SEM 以及现有的某些与无线相关的技术营销产品，但是随着市场的不断变化、技术营销手段的不断进步，未来在这条道路也会变得更加宽广。</p>
+<p>虽然目前我的职位叫做“产品经理”，但是从团队的架构和接手的产品来看，这个职位都更接近目前硅谷很流行的 <code>growth hacker</code> 职位，而我们的团队也在向着增长团队而发展。</p>
+<p>增长黑客，或者技术营销产品经理这个角色，表面上和互联网行业的产品经理很像，但是我也在工作中体会到了两者的不同——</p>
+<ul>
+<li>growth hacker 比一般的产品经理更注重数据，不论是提供论据支撑还是分析现状</li>
+<li>growth hacker 对人本身的执行力要求更高，抗压力更强</li>
+<li>growth …</li></ul>
+                <a class="readmore" href="/to-be-a-growth-hacker.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/opponents-analysis-in-online-music-by-2014.html" rel="bookmark"
+                           title="Permalink to 2014年4月QQ音乐竞品分析报告">2014年4月QQ音乐竞品分析报告</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-05-09T10:01:00+00:00">
+                Published: 六 09 五月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/jing-pin-fen-xi.html">竞品分析</a> <a href="/tag/chan-pin-guan-li.html">产品管理</a> <a href="/tag/chan-pin-jing-li.html">产品经理</a> </p>
+</footer><!-- /.post-info -->                <blockquote>
+<p><strong>本文禁止转载</strong></p>
+</blockquote>
+<p>准备从开发转做产品，在辞职后看了一些产品方面的书，自学了一些产品方面的知识。用心研究了一下移动音乐app，写了一篇QQ音乐的竞品分析报告，原本想要用这个来应聘腾讯的产品职位，但是腾讯的初级产品职位只招实习生。</p>
+<p>现在放出下载地址：<a href="http://pan.baidu.com/s/1bn8Rtbp">戳这里百度网盘下载</a></p>
+<p>注：并非专业正规结构，仅供参考，禁止抄袭与转载</p>
+<p>页面截图：</p>
+<p><img alt="报告页面截图" src="http://sunrise-boulevard-github.qiniudn.com/20150501报告页面截图.png"></p>
+<p>这个报告选择了虾米音乐与网易云音乐作为竞品，主要侧重从功能、界面与运营上进行对比，分析移动音乐类app目前的市场发展状况。</p>
+                <a class="readmore" href="/opponents-analysis-in-online-music-by-2014.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/prepare-for-apple-watch-app-design.html" rel="bookmark"
+                           title="Permalink to Apple Watch 终来袭！考验产品人员的新时刻">Apple Watch 终来袭！考验产品人员的新时刻</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-03-28T16:14:00+00:00">
+                Published: 六 28 三月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/apple-watch.html">Apple Watch</a> <a href="/tag/chan-pin-fen-xi.html">产品分析</a> <a href="/tag/chan-pin-jing-li.html">产品经理</a> </p>
+</footer><!-- /.post-info -->                <p>今天一大早，手机上的 App Store 便在图标的右上角赫然显示了红红的 5 字，提示我今天有 5 个应用的更新。</p>
+<p>点击进入查看，其中竟然有 4 款应用的更新都是为了适配 Apple 公司新发布的 Apple Watch。距离苹果公司上次发布会已经有两周多的时间，直到今天，我们才可以说感受到 Apple Watch 风暴的强势来袭。那让我们来看一看这四款应用分别都新增了哪些功能：</p>
+<blockquote>
+<ul>
+<li>微信（正如发布会中展示的那几个功能）</li>
+<li>在 Apple Watch 上接受朋友的消息并快速回复</li>
+<li>在 Apple Watch 上浏览朋友圈</li>
+<li>
+<p>在 Apple Watch 上通过<em>“雷达加朋友”</em>添加新朋友</p>
+</li>
+<li>
+<p>微博</p>
+</li>
+<li>有关 Apple Watch 的功能：<ul>
+<li>重要消息一触即达，不再错过任何新鲜事</li>
+<li>更快捷查看你的运动信息</li>
+</ul>
+</li>
+<li>
+<p>另外为微博添加了 …</p></li></ul></blockquote>
+                <a class="readmore" href="/prepare-for-apple-watch-app-design.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/develop-lbs-on-coding-app.html" rel="bookmark"
+                           title="Permalink to 为Coding iOS 客户端添加 LBS 定位功能">为Coding iOS 客户端添加 LBS 定位功能</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-03-06T13:35:00+00:00">
+                Published: 五 06 三月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/ios.html">iOS</a> <a href="/tag/core-location.html">Core Location</a> <a href="/tag/ke-hu-duan-kai-fa.html">客户端开发</a> </p>
+</footer><!-- /.post-info -->                <h2>I 准备工作</h2>
+<h3>项目中的需要考虑的问题与难点</h3>
+<ol>
+<li>
+<p>地点信息怎样获取？怎样显示在地图上？</p>
+<p>Core Location Framework : 如何获得权限？以及向前（&lt; iOS 8）兼容的代码如何实现？</p>
+</li>
+<li>
+<p>周边情况如何获取？大众点评或者其他的SDK吗？</p>
+<p>难点：如果用了别人的SDK，自己创建一个地点，怎么保存？只是保存在自己手机中，还是怎样？</p>
+</li>
+<li>
+<p>搜索用什么方法实现？</p>
+</li>
+<li>
+<p>储存的格式？怎样实现的？</p>
+</li>
+<li>
+<p>界面的实现：统一自定义的 View 的设计——刷新时候的插件？搜索框？还有其他的……都如何实现？</p>
+</li>
+</ol>
+<h3>分析结构</h3>
+<ul>
+<li>“冒泡”页面中，每个 cell 都加一个显示地点的 UIButton，点击该地点 button 打开一个新视图，显示该地点的具体信息（或打开地图显示信息）</li>
+<li>“发布新冒泡”页面，加入一个“添加一个地点”的 UIButton …</li></ul>
+                <a class="readmore" href="/develop-lbs-on-coding-app.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/ios-delegation.html" rel="bookmark"
+                           title="Permalink to iOS 开发学习笔记：Delegation 的理解">iOS 开发学习笔记：Delegation 的理解</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-01-16T16:23:00+00:00">
+                Published: 五 16 一月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/ios.html">iOS</a> <a href="/tag/delegate.html">delegate</a> <a href="/tag/dai-li-mo-shi.html">代理模式</a> <a href="/tag/ke-hu-duan-kai-fa.html">客户端开发</a> </p>
+</footer><!-- /.post-info -->                <p>iOS中的 delegation 对于我来说一直比较难以理解，这个代理模式按照字面看不难，但是深层次就比较难以理解了。在网上查了很多资料，理清了下思路：</p>
+<ul>
+<li><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/CocoaEncyclopedia/DelegatesandDataSources/DelegatesandDataSources.html#//apple_ref/doc/uid/TP40010810-CH11-SW1">Apple 官方文档：Concepts in Objective-C 中的 Delegates and Data Source 章节</a></li>
+<li><a href="http://programmers.stackexchange.com/a/190400/80422">What is Delegation and why is it important in iOS programming?</a></li>
+<li><a href="http://www.raywenderlich.com/46988/ios-design-patterns">Raywenderlich.com 的 iOS Design Pattern 教程</a></li>
+</ul>
+<p>理解：</p>
+<ul>
+<li>松耦合：使得 A 类（delegate）依赖于 B 类（delegating 类），而不让 B 类知晓 …</li></ul>
+                <a class="readmore" href="/ios-delegation.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/iOS-UI.html" rel="bookmark"
+                           title="Permalink to iOS 开发学习笔记：界面的自定义">iOS 开发学习笔记：界面的自定义</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-01-08T17:31:00+00:00">
+                Published: 四 08 一月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/ios.html">iOS</a> <a href="/tag/ui.html">UI</a> <a href="/tag/ke-hu-duan-kai-fa.html">客户端开发</a> </p>
+</footer><!-- /.post-info -->                <p>前几天已经实现了豆瓣的登陆授权，用的比较简单的 UIWebView 中网页方式，没有自己使用界面模拟授权。</p>
+<p>今天开始做豆瓣的首页——即关注的人的广播页面。设计是用自定义的 UITableView  展示。今天学习下 Table View 的自定义。暂时没有用代码实现，继续用 storyboard。</p>
+<p>参考材料：</p>
+<ul>
+<li><em>官方文档：<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TableView_iPhone/AboutTableViewsiPhone/AboutTableViewsiPhone.html">Table View Programming Guide for iOS</a></em></li>
+<li><em>iOS Programming The Big Nerd Ranch Guide 4th Edition</em></li>
+<li><em>官方文档：<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/index.html#//apple_ref/doc/uid/TP40006556">iOS Human Interface Guidelines</a></em></li>
+</ul>
+<h2>I 基础知识</h2>
+<p>两种基本的形式：<code>plain</code> 和 <code>grouped</code>，前者是不可分割的列表，后者有分离的 sections。</p>
+<p>使用 cell …</p>
+                <a class="readmore" href="/iOS-UI.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/my-2014-review.html" rel="bookmark"
+                           title="Permalink to Bye 2014! Hello 2015!">Bye 2014! Hello 2015!</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-01-08T10:39:00+00:00">
+                Published: 四 08 一月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/gong-zuo-zong-jie.html">工作总结</a> <a href="/tag/ri-ji.html">日记</a> </p>
+</footer><!-- /.post-info -->                <p>2014 过去了，这一年于我来说似乎没有太大的印象。本命年对我的影响似乎不大，但是着实也不小。我不知今年究竟是幸运更多，抑或是不幸更多。但是比起 2013 年，已然是平淡安稳的一年。</p>
+<p>过去的这一年中，我并没有太多的关注自己的技术发展。当初选择 Java 是因为当初恰巧有这样的入行的机遇，而且 Java 又机会比较多、技术相对学过 C 的我来说比较简单。如今算是大半只脚踏入了互联网行业，但是始终工作没有我理想中的那么开心和自如。这一年半做数据项目的时间中，快乐的时间太少。我自然知道未来数据的重要性，数据工作人员的职业发展潜力会很大。但是当初做程序员，我只是希望可以做出有趣的东西，如今这份工作实在谈不上“有趣”，除了和测试妹子们以外，与人的交流也太少，我深深的感觉到自己已经快要长毛了。而且组里给我的机会太少，不知是不是因为我是女生的关系。年中时我看了一些 Android 开发的资料，最终没有下定决心转做移动客户端。最后压垮骆驼的稻草则是，一贯比较自由的公司竟然宣布施行 “996制度”。对魅族深深的失望、对珠海的落后的反感，我终于还是下定了决心不再做 Java 了，也不想再留在魅族 …</p>
+                <a class="readmore" href="/my-2014-review.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/learning-iOS-20141209.html" rel="bookmark"
+                           title="Permalink to iOS-开发学习日记-20141209">iOS-开发学习日记-20141209</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-12-09T13:15:00+00:00">
+                Published: 二 09 十二月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/ios.html">iOS</a> <a href="/tag/bi-ji.html">笔记</a> <a href="/tag/xue-xi.html">学习</a> </p>
+</footer><!-- /.post-info -->                <h1>I.《马上着手开发 iOS 应用程序 (Start Developing iOS Apps Today)》</h1>
+<p>使用系统 OS X 10.10，Xcode 6.1.1 进行开发学习，教程中有遗漏的点：</p>
+<ul>
+<li><code>Introduction</code> —&gt; <code>Tutorial: Basics</code> 中，Xcode 6.1.1 缺少的 <code>Empty Application</code> 模版可以在这里进行下载：<a href="https://github.com/cDigger/AddMissingTemplates">the Missing Templates</a></li>
+<li><code>串联图（Storyboard）</code>步骤中，Xcode 6 中会出现按照教程中步骤创建完 Storyboard 无法启动模拟器、程序 crash 掉的现象，新创建的这个串联图也并没有教程中所说的“箭头”产生。这是因为默认新创建的 …</li></ul>
+                <a class="readmore" href="/learning-iOS-20141209.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/learn-redis.html" rel="bookmark"
+                           title="Permalink to Redis学习笔记">Redis学习笔记</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-11-12T22:56:00+00:00">
+                Published: 三 12 十一月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/redis.html">redis</a> <a href="/tag/nosql.html">NoSQL</a> <a href="/tag/bi-ji.html">笔记</a> <a href="/tag/xue-xi.html">学习</a> <a href="/tag/hou-duan-kai-fa.html">后端开发</a> </p>
+</footer><!-- /.post-info -->                <h2>Redis 介绍</h2>
+<ul>
+<li>Redis 是一种“key-value”的存储，通常被当做一个NoSQL数据库</li>
+<li>原子操作：<code>INCR</code></li>
+</ul>
+<h2>基本操作</h2>
+<ul>
+<li><code>SET</code> 负责<strong>永久</strong>存储一个数值在指定的键上；<code>SETNX</code> = set if key not exit：</li>
+</ul>
+<p><code>shell
+    SET key some-value</code></p>
+<ul>
+<li><code>GET</code> 负责读取一个键对应的值：</li>
+</ul>
+<p><code>shell
+    GET key</code></p>
+<ul>
+<li><code>DEL</code> 操作删除一个key；<code>INCR</code> 自增</li>
+<li><code>EXPIRE</code> 定时过期：</li>
+</ul>
+<p><code>shell
+    EXPIRE key second</code></p>
+<p><code>TTL</code> 过期前的剩余时间，返回值是-2则表示key已不存在，-1表示永远不会过期。如果 <code>SET</code> 了key，它的 <code>TTL</code> 会被重置：</p>
+<p><code>shell …</code></p>
+                <a class="readmore" href="/learn-redis.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/difference-between-null-and-empty-in-mysql.html" rel="bookmark"
+                           title="Permalink to MySQL中NULL与空值的区别">MySQL中NULL与空值的区别</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-11-07T18:57:00+00:00">
+                Published: 五 07 十一月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/mysql.html">MySQL</a> <a href="/tag/shu-ju-ku.html">数据库</a> <a href="/tag/database.html">Database</a> <a href="/tag/db.html">DB</a> </p>
+</footer><!-- /.post-info -->                <p>昨天在工作时，出现一个问题：数据库中建表某个字段规定为<code>NOT NULL</code>的，但是插入的相应字段的字符串为<code>""</code>时候，直接插入数据库中，而没有禁止插入。</p>
+<p>在网上查了一下，发现在MySQL中，<code>NULL</code>（空）与 <code>""</code>意义并不相同：</p>
+<!--more-->
+
+<ul>
+<li>StackOverFlow.com上相关问题 <a href="http://stackoverflow.com/questions/1267999/mysql-better-to-insert-null-or-empty-string">"MySQL, better to insert NULL or empty string?"</a> 高票答案：</li>
+</ul>
+<p>使用<code>NULL</code>可以区分“没有输入数据”和“输入空数据”， 差异在于：
+  + <code>NULL</code>的长度就是<code>NULL</code>，空字符串的长度为<code>0</code>
+  + 一串<code>NULL</code>数据比空字符串优先排序
+  + <code>COUNT(message)</code>会将空字符串计数进去，但是不会将<code>NULL</code>数据们计入
+  + 可以使用绑定变量搜索某个空字符串，但是不可以这样搜索 …</p>
+                <a class="readmore" href="/difference-between-null-and-empty-in-mysql.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/notes-of-programming-hive-1.html" rel="bookmark"
+                           title="Permalink to Programming Hive 笔记 (I)">Programming Hive 笔记 (I)</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-11-03T22:41:00+00:00">
+                Published: 一 03 十一月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/hive.html">Hive</a> <a href="/tag/bi-ji.html">笔记</a> <a href="/tag/xue-xi.html">学习</a> </p>
+</footer><!-- /.post-info -->                <h2>I. Hive介绍</h2>
+<ul>
+<li>Hadoop中，有一个计算系统MapReduce，将计算任务分解到集群中的服务器上计算，这样可以更有效率的处理大数据的计算；计算系统下面有一个分布式文件系统（HDFS）。那么问题来了：<blockquote>
+<p>怎样把已有的建立在关系型数据库上面的、使用SQL的数据结构，迁移到Hadoop上面呢？</p>
+</blockquote>
+</li>
+</ul>
+<p>答案：</p>
+<blockquote>
+<p>HIVE! </p>
+</blockquote>
+<!--more-->
+
+<ul>
+<li>Hive使用大家都熟悉的类SQL语言从Hadoop集群中查询数据，让使用者把注意力都放在查询上，而不是其他方面</li>
+<li>适合使用Hive的场景：数据仓储应用中——相对静态的数据被分析，不要求快速回应，数据没有频繁的变化</li>
+<li>Hive不是完整的数据库。Hive的功能被Hadoop和HDFS的限制所限制。</li>
+<li>Hive不提供一条纪录水平上的update、insert、delete。可以通过查询生成新的表，或者导出查询结果到文件</li>
+<li>因为Hadoop是面向批处理的系统，Hive查询延迟更高（因为MapReduce的开销），再小的数据集，Hive查询相比传统DB也要花费更长的时间</li>
+<li>Hive不提供事务</li>
+</ul>
+                <a class="readmore" href="/notes-of-programming-hive-1.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/my-last-week-review.html" rel="bookmark"
+                           title="Permalink to 一周总结">一周总结</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-09T02:06:00+00:00">
+                Published: 日 09 三月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/gong-zuo-zong-jie.html">工作总结</a> <a href="/tag/ri-ji.html">日记</a> </p>
+</footer><!-- /.post-info -->                <p>很晚了，我快速的总结下。</p>
+<p>总体来说这周并没有上一周那么专注。上一周可以随时背单词，并且中午学习德语，而且可以专注在自己的项目上很长时间，这周更容易走神，刷网页也比较多。可惜现在必须要熟悉自己的手机，不然我还是更喜欢用原来那个诺基亚的黑白机来抵制自己浪费时间。</p>
+<p>工作不是太忙，所以多了很多时间看b3log的代码。我还是选择去看GAE部分的代码了。b3log用的是他们自己开发的类似Spring MVC的latke框架，并且用了FreeMarker做render渲染前端。这一周我大致明白了这个程序的结构，同时通过看b3log和latke的源代码学习到了不少东西。它们的代码都很漂亮，构架并不复杂很清晰，逻辑性挺强的。通过它和自己手头目前仅有的bi项目和曾经接触过的FM web，感觉自己越来越进步了。</p>
+<!--more-->
+
+<p>所以还是要多看代码、自己多写。下面一周就不能再只是看代码了，要开始开发了。</p>
+<p>看了一下，如果要重新改进它的MarkDown编辑器，主要还是在排版CSS上面下功夫，如果重新写一个编辑器，可能也是用JS基于已有的开源编辑器开发，我并不是前端，不知道究竟是不是要花精力去搞这个东西。毕竟现在我后端的东西还不太扎实，还有太多要学习的。但是前端毕竟只是一个过渡性的职业，未来一定不仅仅分前后端的，我要都会才行呀，不如就慢慢学吧。买了一本《写给大家看的设计书》。</p>
+<p>唉，做“全栈工程师”还有太长太长的路要走，现在我只是武侠游戏中刚刚走出山村里面家门的主人公，只有生砍这个招数，想要成为武林中有名声的人物 …</p>
+                <a class="readmore" href="/my-last-week-review.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/gdg-devfest-woman.html" rel="bookmark"
+                           title="Permalink to 妇女节GDG DevFestW行简要记录">妇女节GDG DevFestW行简要记录</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-03-09T02:00:00+00:00">
+                Published: 日 09 三月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/gdg.html">GDG</a> <a href="/tag/gu-ge-kai-fa-zhe-she-qu.html">谷歌开发者社区</a> <a href="/tag/dev-fest.html">Dev Fest</a> <a href="/tag/ri-ji.html">日记</a> </p>
+</footer><!-- /.post-info -->                <p>迎着春日依旧料峭潮湿的寒风，我昨日踏进到了位于拱北区域的金山公司的大门。之前在公司内部论坛看到了同事分享的GDG（谷歌开发者社区）珠海针对妇女节的活动（Dev Fest W），于是周六早上我便拉上还没有毕业的实习生妹子一起赶去了。</p>
+<p>珠海并不像北上广深杭那样有着浓厚的互联网氛围，有GDG珠海的分组，让我很是惊讶。到了才知道，珠海group成立还不到两年，牵头人是金山公司里一个有趣的开发者。半个多小时以后，人陆陆续续的来了一部分，大家签到后都落了座，活动也就这样开始了。</p>
+<!--more-->
+
+<p>一番对组织和活动的简单介绍后，第一位“讲师”上台了。这是一个很漂亮的姑娘，也是金山的内部员工。她毕业后做过测试，后面转了岗位，做了HR，现在负责员工的培训。我了解到这个环节应该是讲职业规划，也有心听一听过来人的经验之谈。没想到现场调查时，全场几十个男生和女生中，大部分都是大学生，更有不少是大一大二的，而像我一样已经工作的寥寥无几。顿时心中有点讶异和少许的失落。接下来的讲座，讲师并没有谈太多IT业的职业规划，而是更针对“要有职业规划和目标”这个话题展开了略显冗长的论述。</p>
+<p>在她谈到“对未来有目标”时，她提了一个问题：“未来这几年你有什么规划，愿意分享下吗？”在座的没有任何一个人应答，于是我想了下 …</p>
+                <a class="readmore" href="/gdg-devfest-woman.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/install-java-blog-platform.html" rel="bookmark"
+                           title="Permalink to 个人博客的初尝试">个人博客的初尝试</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-02-27T01:47:00+00:00">
+                Published: 四 27 二月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/java.html">Java</a> <a href="/tag/xia-gu-dao.html">瞎鼓捣</a> </p>
+</footer><!-- /.post-info -->                <p>从上周周末开始搭建自己的blog。选用国人使用Java开发的B3log开源博客系统，因为这样学习成本会小很多。到了昨天终于把它在本地tomcat+mysql环境上、以及GAE上搭建起来。</p>
+<p><img alt="B3log" src="http://m1.img.srcdd.com/farm4/d/2014/0227/12/061434D52774A2BBAD4DD2DEBC332710_B500_900_153_56.png"></p>
+<!--more-->
+
+<p>搭建本地tomcat环境时可参考他们给出的<a href="https://docs.google.com/file/d/0BydqZRqXE5TUdF9nVlg4YjhsUVE/edit">官方文档</a>，因为从github上面扒下来的项目的目录结构和平常的不太一样。</p>
+<p>本地GAE环境还没有搭建起来，因为GAE被墙了，一直在考虑要不要用它，不过BAE最近限制注册，也是个麻烦。服务器上面架设比较简单，直接把b3log的GAE文件夹下面web的文件夹下面的所有文件全部上传（或者打成war包上传）到GAE上自己的application下面（之前要改一下设置，见他们的<a href="https://github.com/andiechu/b3log-solo/wiki">官方wiki</a>）。</p>
+<p>接下来一周的计划：</p>
+<ul>
+<li>利用周末两天看完GAE的相关知识，搭建好本地的GAE环境；</li>
+<li>熟悉工程，以及他们自己开发的latke框架。</li>
+<li>如果时间够，改进一下或者直接重写一个MarkDown编辑器。前端很丑，但是编辑器好不好用还是很重要的呀。</li>
+</ul>
+                <a class="readmore" href="/install-java-blog-platform.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/a-coder-destine-to-be.html" rel="bookmark"
+                           title="Permalink to 毕业两年总结展望（I）之事业：我是要做程序员的姑娘！">毕业两年总结展望（I）之事业：我是要做程序员的姑娘！</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-02-22T01:34:00+00:00">
+                Published: 六 22 二月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/gong-zuo-zong-jie.html">工作总结</a> <a href="/tag/ri-ji.html">日记</a> </p>
+</footer><!-- /.post-info -->                <p>过往的两年里发生了很多事。由于我已经慢慢丧失了写博客的习惯，因此很多东西也慢慢的被遗忘了。但是不能被遗忘的始终是大四和刚毕业大半年对未来和自我定位的失落和迷惘。如今距离那段日子已有快两年之久，生活也随着岁月的慢慢流逝而渐渐趋于稳定——当然了，对于我来说，是如滚滚长江中央一座磐石一样的稳定，而非四季如春的山谷中花朵般的稳定。在2014新年时，我就想做一下总结，但是一直却犹豫，今天或许可以写一下这一年中的历程。</p>
+<!--more-->
+
+<p>刚刚毕业时，我怀揣着一个目前根本不可能实现的“梦想”，其实也是对自己的迷茫，回到北京。当我发现我就是在发梦时，我开始渐渐清醒，想那么就做一个公关吧！毕竟大学时候我也认真的为它投入过。当时面试了几家公司的实习生，只有P公司的digital组要了我。于是我就成为了国贸那边的一枚朝九晚六的小实习生。那段时间我工作的并不投入，渐渐的也看清楚了到底PR是什么，感觉不到这份职业有实质性的创造。在帮忙运营官方微博的时候，我开始觉得“无非就是这个样”，是的，杜蕾斯的微博、肯德基的人人，做的很成功，但是似乎又没创造出什么贡献。或许是我这个人太急功近利，看不到品牌维护和提升中，这些小动作到底做了多少贡献。但是在我看来的是，PR这种东西也是有某种曲线规律的，当公司自己的策略适当、自己的发展恰好到了那个时候，PR才会发出巨大的效果；但是当公司自己的策略都不得当时，PR做的功远远抵消不了公司自己产生的反作用效果。而且我也通过这些社交网络，看了很多人丑恶的一面，包括我自己 …</p>
+                <a class="readmore" href="/a-coder-destine-to-be.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->

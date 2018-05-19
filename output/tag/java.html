@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>A Pelican Blog - Java</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/guan-yu-wo.html">关于我</a></li>
+                    <li><a href="/category/ri-zhi.html">日志</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/install-java-blog-platform.html">个人博客的初尝试</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-02-27T01:47:00+00:00">
+                Published: 四 27 二月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/java.html">Java</a> <a href="/tag/xia-gu-dao.html">瞎鼓捣</a> </p>
+</footer><!-- /.post-info --><p>从上周周末开始搭建自己的blog。选用国人使用Java开发的B3log开源博客系统，因为这样学习成本会小很多。到了昨天终于把它在本地tomcat+mysql环境上、以及GAE上搭建起来。</p>
+<p><img alt="B3log" src="http://m1.img.srcdd.com/farm4/d/2014/0227/12/061434D52774A2BBAD4DD2DEBC332710_B500_900_153_56.png"></p>
+<!--more-->
+
+<p>搭建本地tomcat环境时可参考他们给出的<a href="https://docs.google.com/file/d/0BydqZRqXE5TUdF9nVlg4YjhsUVE/edit">官方文档</a>，因为从github上面扒下来的项目的目录结构和平常的不太一样。</p>
+<p>本地GAE环境还没有搭建起来，因为GAE被墙了，一直在考虑要不要用它，不过BAE最近限制注册，也是个麻烦。服务器上面架设比较简单，直接把b3log的GAE文件夹下面web的文件夹下面的所有文件全部上传（或者打成war包上传）到GAE上自己的application下面（之前要改一下设置，见他们的<a href="https://github.com/andiechu/b3log-solo/wiki">官方wiki</a>）。</p>
+<p>接下来一周的计划：</p>
+<ul>
+<li>利用周末两天看完GAE的相关知识，搭建好本地的GAE环境；</li>
+<li>熟悉工程，以及他们自己开发的latke框架。</li>
+<li>如果时间够，改进一下或者直接重写一个MarkDown编辑器。前端很丑，但是编辑器好不好用还是很重要的呀。</li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

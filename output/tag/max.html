@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>A Pelican Blog - Max</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/guan-yu-wo.html">关于我</a></li>
+                    <li><a href="/category/ri-zhi.html">日志</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/how-to-encapsulate-in-max-msp.html">Max/MSP 中的打包操作</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-05-05T23:34:00+00:00">
+                Published: 六 05 五月 2018
+        </abbr>
+		<br />
+        <abbr class="modified" title="2018-08-05T22:58:00+00:00">
+                Updated: 日 05 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/maxmspjitter.html">Max/MSP/Jitter</a> <a href="/tag/max.html">Max</a> <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a> <a href="/tag/creative-coding.html">Creative Coding</a> </p>
+</footer><!-- /.post-info --><h2>0x00 随手打包：使用 patcher 对象进行打包</h2>
+<ul>
+<li>使用对象：<code>patcher</code>（简称 <code>p</code>）</li>
+<li>其他使用的对象：<code>inlet</code> 和 <code>outlet</code></li>
+<li>具体使用方法：新建 patcher 对象，并且在新弹出的窗口中创建自己的模块化逻辑。使用 inlet 作为输入的代替；outlet 作为输出的代替。或者选中要打包的对象，按 <code>CMD/Control</code> + <code>SHIFT</code> + <code>E</code> 快捷键，快速新建并打包好一个 patcher. </li>
+</ul>
+<h2>0x01 多次复用：抽象操作（Abstraction）</h2>
+<p>上述 subpatcher 方法虽然简单，但是不太方便复用。Max/MSP 中还有另一个方法可以重新实现这一点，这个方法叫做——抽象操作（abstraction）。</p>
+<p>创建一个 abstraction 其实酒是新建一个 patcher 并保存在另一个独立的文件中（须要在 Max 定义的文件路径中）。然后你就可以像新建一个对象一样，可以直接写它的名字进行使用。</p>
+<p>在 abstraction 的 patcher 中加入 <code>#1</code>、<code>#2</code> 这类占位符，代表它的参数，如下图所示：</p>
+<p><img alt="Abstraction 的用法及参数的使用" src="/images/maxmsp/create-abstraction.png"></p>
+<h2>0x02 白盒打包：<code>bpatcher</code></h2>
+<p>以上两种方法在使用时，在不打开包文件的时候是看不到包内各种数据的变化，只能看到输入对输出结果的影响——所谓的“黑盒”操作。但是如果我们想要看到包内的各种对象是怎么变化的呢？这时我们就需要 <code>bpatcher</code> 对象。</p>
+<p>使用方法：</p>
+<ol>
+<li>
+<p>新建一个文件，把你想要的对象、inlet、outlet 全放进去，然后保存为一个 abstraction
+    <img alt="新建一个abstraction" src="/images/maxmsp/create-bpatcher-1.png"></p>
+</li>
+<li>
+<p>在主文件中，新建一个 bpatcher 对象。</p>
+</li>
+<li>
+<p>选择这个 bpatcher 对象，并打开检视器，在监视器中的 <code>Fatcher File</code> 中选择刚才你保存的 abstraction
+    <img alt="新建 bpatcher" src="/images/maxmsp/create-bpatcher-2.png"></p>
+</li>
+<li>
+<p>搞掂！随心所欲的用吧。
+    <img alt="可以看到 UI 的哦" src="/images/maxmsp/create-bpatcher-3.png"></p>
+</li>
+</ol>
+<h2>0x03 快速创建：小片段 <code>Snippet</code></h2>
+<p>其实这个并不是打包（encapsulation）操作！只是一种快速创建和复用的操作。如果你创建了一些对象的组合，你觉得还不错，以后会经常用到，你可以把他们保存成为“<code>snippet</code>”，见 Max 界面最右边的曲别针型按钮。</p>
+<p><img alt="Snippets" src="/images/maxmsp/snippets.png"></p>
+<p>使用方法：</p>
+<ol>
+<li>选中你需要保存的组合</li>
+<li>鼠标右键单击，在弹出的菜单中选择“<code>Save Snippet</code>”，在下方出现的文本框中为片段命名</li>
+<li>以后你想使用这个片段时，点击软件右边的 Snippets 按钮并选择你之前创建的片段，就可以快速创建了</li>
+</ol>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/the-usage-of-message-in-max-msp.html" rel="bookmark"
+                           title="Permalink to 浅谈 Max/MSP 中 message 的用途">浅谈 Max/MSP 中 message 的用途</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-05T15:16:00+00:00">
+                Published: 六 05 五月 2018
+        </abbr>
+		<br />
+        <abbr class="modified" title="2018-05-08T18:37:00+00:00">
+                Updated: 二 08 五月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/maxmspjitter.html">Max/MSP/Jitter</a> <a href="/tag/max.html">Max</a> <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a> </p>
+</footer><!-- /.post-info -->                <p>MAX/MSP 中的 message（信息）是最让人迷惑的一个对象（或者不应该称为对象），我们经常能够看到它扮演着不同角色出现在各种操作中。是时候总结一下它的用法了。</p>
+                <a class="readmore" href="/the-usage-of-message-in-max-msp.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/print-cold-inlet-immediately-with-trigger-object-in-max-msp.html" rel="bookmark"
+                           title="Permalink to 巧用 Max/MSP 的 trigger 对象，让 cold inlet 实现立即输出">巧用 Max/MSP 的 trigger 对象，让 cold inlet 实现立即输出</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-04-13T17:08:00+00:00">
+                Published: 五 13 四月 2018
+        </abbr>
+		<br />
+        <abbr class="modified" title="2018-04-13T17:08:00+00:00">
+                Updated: 五 13 四月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/andie-chu.html">Andie Chu</a>
+        </address>
+<p>In <a href="/category/ri-zhi.html">日志</a>.</p>
+<p>tags: <a href="/tag/maxmspjitter.html">Max/MSP/Jitter</a> <a href="/tag/max.html">Max</a> <a href="/tag/chuang-yi-bian-cheng.html">创意编程</a> <a href="/tag/ji-qiao.html">技巧</a> <a href="/tag/tips.html">tips</a> </p>
+</footer><!-- /.post-info -->                <p>MAX/MSP 中的 cold inlet 输入端仅可以改变对象中存储的参数值，而不会立刻输出。使用 trigger 对象可以实现让 cold inlet 改变后立即输出。</p>
+                <a class="readmore" href="/print-cold-inlet-immediately-with-trigger-object-in-max-msp.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
