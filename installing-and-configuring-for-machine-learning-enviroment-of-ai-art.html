@@ -113,6 +113,7 @@
 </ol>
 <h5>b. 安装 git</h5>
 <p>按照<a href="https://git-scm.com/download/linux">官网的安装指示</a>安装。由于我的系统用的是 LTS 版本，所以按照稳定版的 Git 安装。</p>
+<p>如果你的系统在用 apt-get 安装 Git 时显示缺少一些依赖，可能是因为你的系统中的 apt-get 版本太老了，首先需要升级 apt-get：<code>sudo apt-get update</code>。然后升级系统的包并修正坏掉的包：<code>sudo apt-get -f dist-upgrade</code>。仅修补坏掉的包：<code>sudo apt-get -f install</code></p>
 <h5>c. 编辑器安装（atom）</h5>
 <ol>
 <li>官网下载 .deb 的安装包</li>
